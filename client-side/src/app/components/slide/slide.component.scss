@@ -1,0 +1,274 @@
+@use '@pepperi-addons/ngx-lib/src/core/style/abstracts/variables' as ngx-variables;
+@use '@pepperi-addons/ngx-lib/src/core/style/abstracts/functions' as ngx-functions;
+@use '@pepperi-addons/ngx-lib/src/core/style/abstracts/mixins' as ngx-mixins;
+
+.ng-component-container{
+    width: inherit;
+    display: flex;
+    height: inherit;
+    margin: 0 auto;
+    
+
+    &.horAlign_right{
+
+        justify-content: end;
+
+        ::ng-deep{
+            .pep-main-area{
+                display: grid !important;
+                justify-items: end;
+            }
+        }
+    }
+    &.horAlign_center{
+
+        justify-content: center;
+
+        ::ng-deep{
+            .pep-main-area{
+                display: grid !important;
+                justify-items: center;
+            }
+        }
+    }
+    &.horAlign_left{
+
+        justify-content: start;
+
+        ::ng-deep{
+            .pep-main-area{
+                display: grid !important;
+                justify-items: start;
+            }
+        }
+    }
+    
+    &.inner_padding_sm{
+        padding: ngx-variables.$spacing-md;
+
+        .withArrow_margin{ 
+            margin-inline: 2.5rem;
+        }
+    }
+    &.inner_padding_md{
+        padding: ngx-variables.$spacing-lg;
+
+        .withArrow_margin{ 
+            margin-inline: 3rem;
+        }
+    }
+    &.inner_padding_lg{
+        padding: ngx-variables.$spacing-xl;
+
+        .withArrow_margin{ 
+            padding-inline: 3.5rem;
+        }
+    }
+    
+    .slide-box{
+            display: grid;
+            grid-template-rows: min-content min-content min-content;
+            // align-self: center;
+            width: 100%;
+            color: ngx-functions.get-pep-color(color-text, color-main);
+            
+            .subtitle-cont{
+                overflow: hidden;
+
+                &.body-sm{
+                    font-size: calc(#{ngx-variables.$fs-sm} * 1.25) !important;  
+                    height: calc(#{ngx-variables.$fs-lg} * 1.25) !important;  
+                    line-height: calc(#{ngx-variables.$fs-lg} * 1.25) !important;  
+                }
+                &.body-md{
+                    font-size: calc(#{ngx-variables.$fs-md} * 1.5) !important;  
+                    height: calc(#{ngx-variables.$fs-lg} * 1.5) !important;  
+                    line-height: calc(#{ngx-variables.$fs-lg} * 1.5) !important;  
+                }
+                &.body-lg{
+                    font-size: calc(#{ngx-variables.$fs-lg} * 1.75) !important; 
+                    height: calc(#{ngx-variables.$fs-lg} * 1.75) !important;  
+                    line-height: calc(#{ngx-variables.$fs-lg} * 1.75) !important;  
+                }
+                &.body-xl{
+                    font-size: calc(#{ngx-variables.$fs-xl} * 2) !important; 
+                    height: calc(#{ngx-variables.$fs-xl} * 2) !important; 
+                    line-height: calc(#{ngx-variables.$fs-xl} * 2) !important;     
+                }
+            }
+            &.contentWidth_Narrow{
+                width: 50%;
+            }
+            &.contentWidth_Regular{
+                width: 75%;
+            }
+            &.contentWidth_Wide{
+                width: 100%;
+            }
+
+            &.horAlign_left{
+                text-align: left;
+            }
+            &.horAlign_center{
+                text-align: center;
+            }
+            &.horAlign_right{
+                text-align: right;
+            }
+
+            &.verAlign_start{
+                align-self: start;
+            }
+            &.verAlign_middle{
+                align-self: center;
+            }
+            &.verAlign_end{
+                align-self: end;
+            }
+
+            &.rowGap_sm{
+                grid-row-gap: .25rem;
+            }
+            &.rowGap_md{
+                grid-row-gap: .5rem;
+            }
+            &.rowGap_lg{
+                grid-row-gap: 1rem;
+            }
+
+            .textColor_system{
+                color: ngx-functions.get-pep-color(color-text, color-regular);
+            }
+            .textColor_dimmed{
+                color: ngx-functions.get-pep-color(color-text, color-dimmed);
+            }
+            .textColor_inverted{
+                color: ngx-functions.get-pep-color(color-text, color-invert);
+            }
+            .textColor_strong{
+                color: ngx-functions.get-pep-color(color-text, color-strong);
+            }
+
+            .buttons-box{
+                z-index: 2;
+                display: flex;
+                gap: ngx-variables.$spacing-sm;
+
+                pep-button{
+                    display: inline;
+                }
+            }
+    }
+
+    div{
+            &.title-sm{
+                font-size: calc(#{ngx-variables.$fs-sm} * 2.5) !important;  
+                height: calc(#{ngx-variables.$fs-lg} * 2.5) !important;  
+                line-height: calc(#{ngx-variables.$fs-lg} * 2.5) !important;  
+            }
+            &.title-md{
+                font-size: calc(#{ngx-variables.$fs-md} * 2.75) !important;  
+                height: calc(#{ngx-variables.$fs-lg} * 2.75) !important;  
+                line-height: calc(#{ngx-variables.$fs-lg} * 2.75) !important;  
+            }
+            &.title-lg{
+                font-size: calc(#{ngx-variables.$fs-lg} * 3) !important; 
+                height: calc(#{ngx-variables.$fs-lg} * 3) !important;  
+                line-height: calc(#{ngx-variables.$fs-lg} * 3) !important;  
+            }
+            &.title-xl{
+                font-size: calc(#{ngx-variables.$fs-xl} * 3.25) !important; 
+                height: calc(#{ngx-variables.$fs-xl} * 3.25) !important; 
+                line-height: calc(#{ngx-variables.$fs-xl} * 3.25) !important;     
+            }
+        
+     }
+
+    .backgroundImage{
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+
+        &.inner_margin_sm{
+            margin: calc(-1 * (#{ngx-variables.$spacing-md}));
+            // margin-inline-start: calc((-1 * #{ngx-variables.$spacing-md}) - 1rem);
+            // margin-inline-end: calc((-1 * #{ngx-variables.$spacing-md}) - 1rem);
+        }
+        &.inner_margin_md{
+            margin: calc(-1 * (#{ngx-variables.$spacing-lg}));
+            // margin-inline-start: calc((-1 * #{ngx-variables.$spacing-lg}) - 1rem);
+            // margin-inline-end: calc((-1 * #{ngx-variables.$spacing-lg}) - 1rem);
+        }
+        &.inner_margin_lg{
+            margin: calc(-1 * (#{ngx-variables.$spacing-xl}));
+            // margin-inline-start: calc((-1 * #{ngx-variables.$spacing-xl}) - 1rem);
+            // margin-inline-end: calc((-1 * #{ngx-variables.$spacing-xl}) - 1rem);
+        }
+    }
+}
+
+.shadow-xs{
+    &.soft{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-xs, soft);
+    }
+    &.regular{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-xs, regular);
+    }
+    &.hard{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-xs, hard);
+    }
+}
+.shadow-sm{
+    &.soft{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-sm, soft);
+    }
+    &.regular{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-sm, regular);
+    }
+    &.hard{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-sm, hard);
+    }
+}
+.shadow-md{
+    &.soft{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-md, soft);
+    }
+    &.regular{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-md, regular);
+    }
+    &.hard{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-md, hard);
+    }
+}
+.shadow-lg{
+    &.soft{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-lg, soft);
+    }
+    &.regular{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-lg, regular);
+    }
+    &.hard{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-lg, hard);
+    }
+}
+.shadow-xl{
+    &.soft{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-xl, soft);
+    }
+    &.regular{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-xl, regular);
+    }
+    &.hard{
+        box-shadow: ngx-functions.get-pep-shadow(shadow-xl, hard);
+    }
+}
+
+
+
+
+
+
+
+

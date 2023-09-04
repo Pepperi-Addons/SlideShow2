@@ -1,0 +1,203 @@
+@use '@pepperi-addons/ngx-lib/src/core/style/abstracts/variables' as ngx-variables;
+@use '@pepperi-addons/ngx-lib/src/core/style/abstracts/functions' as ngx-functions;
+@use '@pepperi-addons/ngx-lib/src/core/style/abstracts/mixins' as ngx-mixins;
+
+.slideShowCont {
+    position: relative;
+    /*overflow-x: hidden;*/
+    overflow: hidden; // remove the scroll y from the slide show cont
+    display: grid; 
+    grid-template-columns: 1fr 0px;
+
+    #navigationCont{
+        align-items: center;
+        display: flex;
+        //padding: 1rem;
+
+        pep-button{
+            position: absolute;
+            margin-inline: 1rem;
+            z-index: 3;
+
+            &:last-of-type{
+                right: 0;
+            }
+        }
+        ::ng-deep{
+            .rotate180{
+                transform: rotate(180deg);
+            }
+            
+            .arrowShape_none{
+                button{
+                    border-radius: 0;
+                }
+            }
+            
+            .arrowShape_round{
+                button{
+                    border-radius: 50%;
+                }
+            } 
+        }    
+    }
+    #slideFooterBtn{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        z-index: 100;
+        left: 50%;
+        transform: translate(-50%, 0);
+        gap: .5rem;
+
+
+        #dotsCont{
+            border-radius: ngx-variables.$border-radius-md;
+        }
+
+        #dotsCont{
+
+            padding: 0 .5rem;
+            display: flex;
+            align-items: center;
+        
+            .dot {
+                cursor: pointer;
+                display: flex;
+                align-items: center;;
+                transition: background-color 0.6s ease;
+                width: 1.25rem;
+                height: 1.25rem;
+                opacity: 0.5;
+               // background: rgba(26, 26, 26, 0.24);
+            }
+            
+            .active, .dot:hover {
+                opacity: 1 !important;
+            }
+        }
+    }
+
+    slide{
+        
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        height: inherit;
+        background-color: #fff;
+        //transform: translateX(-100%) ;
+        
+        opacity: 1;
+
+        &.none{
+            &.activeSlide{
+                z-index: 2;
+            }
+        }
+        &.fade{
+            opacity: .2;
+            transition: opacity;
+            transition-timing-function: linear;
+
+            &.activeSlide{
+                opacity: 1;
+                z-index: 2;
+            }
+        }
+        &.blur{
+                    filter: blur(10px);
+                    -webkit-filter: blur(10px); 
+                    transition: filter;
+                    -webkit-transition: -webkit-filter;
+                    transition-timing-function: linear;
+                
+            
+            &.activeSlide{
+                z-index: 2;
+                filter: blur(0);
+                -webkit-filter: blur(0);     
+            }
+        }
+        &.slide
+        {
+            transform: translateX(0);
+            transition: none;
+            display: block;
+            
+            
+            &.activeSlide{
+                z-index: 2;
+                transition: transform;
+                transform: translateX(120%);
+                transition-timing-function: linear;  
+            }
+            
+        }
+    }
+
+    &.shadow-xs{
+        &.soft{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-xs, soft);
+        }
+        &.regular{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-xs, regular);
+        }
+        &.hard{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-xs, hard);
+        }
+    }
+    &.shadow-sm{
+        &.soft{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-sm, soft);
+        }
+        &.regular{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-sm, regular);
+        }
+        &.hard{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-sm, hard);
+        }
+    }
+    &.shadow-md{
+        &.soft{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-md, soft);
+        }
+        &.regular{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-md, regular);
+        }
+        &.hard{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-md, hard);
+        }
+    }
+    &.shadow-lg{
+        &.soft{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-lg, soft);
+        }
+        &.regular{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-lg, regular);
+        }
+        &.hard{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-lg, hard);
+        }
+    }
+    &.shadow-xl{
+        &.soft{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-xl, soft);
+        }
+        &.regular{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-xl, regular);
+        }
+        &.hard{
+            box-shadow: ngx-functions.get-pep-shadow(shadow-xl, hard);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+

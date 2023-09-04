@@ -1,0 +1,153 @@
+{
+    "Ok": "Ok",
+    "Select_Label": "Select Label",
+    "Title_Addon": "Hello Addon",
+    "Open_Dialog": "Open Dialog",
+    "Dialog_Body": "Dialog from sub addon 1",
+    "Dialog_Title": "Dialog",
+
+    "GROUP_SIZE": {
+        "NONE": "None",
+        "SM": "SM",
+        "MD": "MD",
+        "LG": "LG",
+        "XL": "XL"
+    },
+
+    "SLIDESHOW": {
+        "GENERAL": "General",
+        "CONTENT": "Content",
+        "ROUND_CORNER": "Round corner",
+        "SLIDES": "Slides",
+        "ADD_SLIDE": "Add slide",
+        "FILL_HEIGHT_SECTION_TITLE": "Fill Height",
+        "FILL_HEIGHT_SECTION_DESCRIPTION": "Set Fill Height on to make the section fill the relative screen size. Works only if parent Section Fill Height is set to true.",
+        "HEIGHT": "Height (REM)",
+        "INNERSPACING_TITLE": "Inner spacing",
+        "INNERPADDING_TITLE": "Inner padding",
+        "TRANSITION": "Transition",
+        "TRANSITION_TITLE": "Set transition duration and type.",
+        "SLIDE_DURATION": "Slide loop duration (seconds)",
+        "TRANSITION_TYPE": "Transition type",
+        "TRANSITIONTYPES": {
+            "NONE": "None",
+            "FADE": "Fade",
+            "SLIDE": "Slide",
+            "BLUR": "Blur"
+        },
+        "TRANSITION_TIME": "Transition time (s)",
+        "ARROWS": "Arrows",
+        "ARROWS_DESC": "Arrows used the navigate the slides from start to end.<br>Arrows are hidden in mobile view.",
+        "ARROWS_TYPE": "Arrows type",
+        "ARROWS_DISPLAY": "Display arrows",
+        "ARROWS_BUTTONS": "Arrows buttons roundness",
+        "ARROWS_STYLE": "Style",
+        "ARROWS_COLOR": "Color",
+        "ARROW_TYPE": {
+            "TWO_ARROWS": ">>",
+            "ONE_ARROW": ">",
+            "STYLED_ARROW":" -->"
+        },
+        "ARROW_BUTTON": {
+            "REGULAR":"Regular",
+            "ROUND":"Round"
+        },
+        "CONTROLLERS": "Controllers",
+        "CONTROLLERS_DESC": "Dots indecate the number of sildes<br>and the silde position, they are<br>clickable and will change the silde.",
+        "CONTROLLERS_PROPERTIES":{
+            "PAUSE_PLAY": "Show Pause/Play",
+            "INVERT_STYLE": "Invert style",
+            "SHOW_CONTROLLERS": "Show controllers in slider"
+        },
+        "CONTROLLER_SIZE": "Controller size",
+        "CONTROLLER_DISPLAY": "Display controllers"
+    },
+
+    "SLIDE_EDITOR": {
+        "SHOW": "Show",
+        "HIDE": "Hide",
+        "TITLE": "Title",
+        "TITLE_CONTENT": "Title text",
+        "SUBTITLE_CONTENT": "Subtitle text",
+        "CONTENT": "Content",
+        "MAIN_TITLE_SIZE": "Main title size",
+        "MAIN_TITLE_WEIGHT": "Title font weight",
+        "SUB_TITLE": "Subtitle",
+        "SUB_TITLE_SIZE": "Sub title size",
+        "CONTENT_BLOCK_WIDTH": "Content block width",
+        "HORIZONTAL_ALIGN": "Horizontal Align",
+        "VERTICAL_ALIGN": "Vertical Align",
+        "TEXT_COLOR_TITLE": "Text Color",
+        "BUTTONS": "Buttons",
+        "BUTTON_SIZE": "Button Size",
+        "BUTTON_COLOR_TITLE": "Button Color",
+        "FIRST_BUTTON": "1st Button",
+        "LABEL": "Label",
+        "LINK_TO": "Link to",
+        "BUTTON_STYLE": "Button style",
+        "SECOND_BUTTON": "2nd Button",
+        "GRADIENT_OVERLAY": "Gradient Overlay",
+        "GRADIENT_OVERLAY_COLOR": "Gradient Overlay Color",
+        "GRADIENT_OVERLAY_OPACITY": "Gradieant Overlay Opacity",
+        "OVERLAY": "Overlay",
+        "OVERLAY_COLOR": "Overlay Color",
+        "OVERLAY_OPACITY": "Overlay",
+        "IMAGE": "Image",
+        "CHOOSE_IMAGE": "Choose image",
+        "OPEN_ASSETS_MANAGER": "Assets Manager",
+        "IMAGE_HORIZONTAL_POSITION": "Horizontal Position",
+        "IMAGE_VERTICAL_POSITION": "Vertical Position",
+        "DROP_SHADOW": "Drop Shadow",
+        "SOFT": "Soft",
+        "REGULAR": "Regular",
+        "SHADOW_INTENSITY": "Shadow Intensity",
+        "SHADOW_TYPE": "Shadow Type",
+        "ACTION": "Action",
+        "ONLOAD_FLOW": "Onload flow",
+        "CHOOSE_FLOW": "Flow",
+        "FLOW_ONLOAD_DESC": "Choose the flow you want to activate in On Load Event",
+        "FLOW_ONCLICK_DESC": "Choose the flow you want to activate in On Click Event",
+        "FONT_WEIGHT": {
+            "NORMAL": "Normal",
+            "BOLD": "Bold",
+            "BOLDER": "Bolder"
+        },
+        "TEXT_COLOR": {
+            "SYSTEM": "System",
+            "DIMMED": "Dimmed",
+            "INVERTED": "Inverted",
+            "STRONG": "Strong"
+        },"BUTTON_STYLES": {
+            "REGULAR": "Regular",
+            "WEAK": "Weak",
+            "WEAK_INVERT": "Weak Inverted",
+            "STRONG": "Strong"
+        },
+        "BUTTON_COLOR": {
+            "SYSTEM": "System",
+            "SYSTEM-INVERTED": "System inverted",
+            "PRIMARY": "Primary",
+            "SECONDARY": "Secondary",
+            "INVERTED": "Inverted",
+            "USER": "User",
+            "CAUTION": "Caution",
+            "SUCCESS": "Success"
+        },
+        "WIDTH_SIZE": {
+            "NARROW": "Narrow",
+            "REGULAR": "Regular",
+            "WIDE": "Wide"
+        },
+        "HORIZONTAL_ALIGN_DIRECTION": {
+            "LEFT": "Left",
+            "CENTER": "Center",
+            "RIGHT": "Right"
+        },
+        "VERTICAL_ALIGN_DIRECTION": {
+            "TOP": "Top",
+            "MIDDLE": "Middle",
+            "BOTTOM": "Bottom"
+        }
+    }
+
+}
