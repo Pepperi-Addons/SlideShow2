@@ -1,4 +1,3 @@
-import { AddonData } from "@pepperi-addons/papi-sdk";
 
 // **********************************************************************************************
 //                          Client & User events const
