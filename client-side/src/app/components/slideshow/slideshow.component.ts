@@ -153,7 +153,7 @@ export class SlideshowComponent implements OnInit {
         //check if slide btn has flow
         if(event){
             const btn = this.configuration?.Slides[event.slideIndex][event.btnName] || null;
-            if(btn.Flow){
+            if(btn?.Flow){
                 this.hostEvents.emit({
                     action: 'button-click',
                     buttonKey: event

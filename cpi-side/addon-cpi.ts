@@ -35,7 +35,7 @@ router.post('/run_slide_click_event', async (req, res) => {
     const btnName = req.body.btnName;
     const slideIndex = req.body.slideIndex;
     const btn = configuration?.Slides[slideIndex][btnName] || null;
-    
+    // check if button is enable and have flow
     if (btn?.Flow){
         const cpiService = new SlidesowCpiService();
         //CALL TO FLOWS AND SET CONFIGURATION
