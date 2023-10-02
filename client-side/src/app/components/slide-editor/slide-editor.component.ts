@@ -28,15 +28,11 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
     @Input() isDraggable = false;
     @Input() showActions = true;
 
-    private _pageParameters: any = {};
-    @Input()
-    set pageParameters(value: any) {
-        this._pageParameters = value;
-    }
-
     @Output() hostEvents: EventEmitter<any> = new EventEmitter<any>();
     @Output() removeClick: EventEmitter<any> = new EventEmitter();
     @Output() editClick: EventEmitter<any> = new EventEmitter();
+    @Output() duplicateClick: EventEmitter<any> = new EventEmitter();
+    @Output() flowChange: EventEmitter<any> = new EventEmitter();
 
     TitleWeight: Array<PepButton> = [];
     WidthSize:  Array<PepButton> = [];
@@ -108,6 +104,10 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
         this.editClick.emit({id: this.id});
     }
 
+    onDuplicateClick(){
+        this.duplicateClick.emit({id: this.id});
+    }
+
     onSlideFieldChange(key, event){
         const value = event && event.source && event.source.key ? event.source.key : event && event.source && event.source.value ? event.source.value :  event;
         
@@ -172,62 +172,10 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
         }     
     }
 
-    // openFlowPickerDialog(btnName: string) {
-    //     const flow = this.configuration?.Slides[this.id][btnName].Flow ? JSON.parse(atob(this.configuration?.Slides[this.id][btnName].Flow)) : null;
-    //     let hostObj = {};
-  
-    //     if(flow?.FlowKey !== ''){
-    //         hostObj = { 
-    //             runFlowData: { 
-    //                 FlowKey: flow.FlowKey, 
-    //                 FlowParams: flow.FlowParams 
-    //             },
-    //             fields: {
-    //                 OnLoad: {
-    //                     Type: 'Object',
-    //                 },
-    //                 Test: {
-    //                     Type: 'String'
-    //                 }
-    //             }
-    //         };
-    //     }
-    //     else{
-    //         hostObj = { 
-    //             fields: {
-    //                     OnLoad: {
-    //                         Type: 'Object',
-    //                     },
-    //                     Test: {
-    //                         Type: 'String'
-    //                     }
-    //                 },
-    //             }
-    //     }
-
-    //     //hostObj = Object.keys(flow).length && flow.FlowKey !== '' ? { 'runFlowData': { 'FlowKey': flow.FlowKey, 'FlowParams': flow.FlowParams }} : hostObj;
-    //     const self = this;
-    //     this.dialogRef = this.addonBlockLoaderService.loadAddonBlockInDialog({
-    //         container: this.viewContainerRef,
-    //         name: 'FlowPicker',
-    //         size: 'large',
-    //         hostObject: hostObj,
-    //         hostEventsCallback: async (event) => {
-    //             if (event.action === 'on-done') {
-    //                     const base64Flow = btoa(JSON.stringify(event.data));
-    //                     this.configuration.Slides[this.id][btnName].Flow =  base64Flow;
-    //                     this.updateHostObjectField(`Slides[${this.id}][${btnName}].Flow`, base64Flow, true);
-    //                     this.dialogRef.close();   
-    //             } else if (event.action === 'on-cancel') {
-    //                             this.dialogRef.close();
-    //             }
-    //         }
-    //     })
-    // }
-
     onFlowChange(flowData: any, btnName: string) {
         const base64Flow = btoa(JSON.stringify(flowData));
         this.configuration.Slides[this.id][btnName].Flow =  base64Flow;
         this.updateHostObjectField(`Slides[${this.id}][${btnName}].Flow`, base64Flow, true);
+        this.flowChange.emit();
     }
 }

@@ -2,7 +2,6 @@ import '@pepperi-addons/cpi-node'
 export const router:any = Router()
 import SlidesowCpiService from './slideshow-cpi.service';
 import path from 'path';
-import { CLIENT_ACTION_ON_SLIDE_BUTTON_CLICK } from 'shared'
 
 router.post('/on_slideshow_block_load', async (req, res) => {
 
@@ -26,6 +25,22 @@ router.post('/on_slideshow_block_load', async (req, res) => {
             }))
             configuration.Slides = Slides;
          }
+    }
+    res.json({Configuration: configuration});
+});
+
+router.post('/run_slide_click_event', async (req, res) => {
+    let configuration = req?.body?.Configuration;
+    const state = req.body.State;
+    const btnName = req.body.btnName;
+    const slideIndex = req.body.slideIndex;
+    const btn = configuration?.Slides[slideIndex][btnName] || null;
+    
+    if (btn?.Flow){
+        const cpiService = new SlidesowCpiService();
+        //CALL TO FLOWS AND SET CONFIGURATION
+        const result: any = await cpiService.getOptionsFromFlow(btn.Flow || [], state , req.context, configuration);
+        configuration = result?.configuration || configuration;
     }
     res.json({Configuration: configuration});
 });
@@ -55,12 +70,4 @@ function fixURLIfNeeded(url) {
 export async function load(configuration: any) {
     
 }
-
-/**********************************  client events starts /**********************************/
-pepperi.events.intercept(CLIENT_ACTION_ON_SLIDE_BUTTON_CLICK as any, {}, async (data): Promise<any> => {
-    const cpiService = new SlidesowCpiService();
-    const res = await cpiService.getOptionsFromFlow(data.flow, data.parameters, data, data.parameters.configuration );
-    return res;
-});
-/***********************************  client events ends /***********************************/
 

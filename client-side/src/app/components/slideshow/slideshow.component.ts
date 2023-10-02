@@ -2,7 +2,6 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from "@angular/core";
 import { PepLayoutService, PepScreenSizeType } from '@pepperi-addons/ngx-lib';
 import { IHostObject, ISlideEditor, ISlideShow, ISlideshowEditor } from '../slideshow.model';
-import { CLIENT_ACTION_ON_SLIDE_BUTTON_CLICK } from 'shared';
 
 @Component({
   selector: 'slideshow',
@@ -150,33 +149,17 @@ export class SlideshowComponent implements OnInit {
         return res;
     }
 
-     onSlideButtonClicked(event){
-        const flowData = event.flow;
-        const parameters = {
-            configuration: this.configuration
-        }
-        if(flowData){
-            try{
-                const eventData = {
-                    detail: {
-                        eventKey: CLIENT_ACTION_ON_SLIDE_BUTTON_CLICK,
-                        eventData: { flow: flowData, parameters: parameters },
-                        completion: (res: any) => {
-                                if (res?.configuration) {
-                                    this.configuration = res.configuration;
-                                } else {
-
-                                    // Show default error.
-                                }
-                            }
-                    }
-                };
-                const customEvent = new CustomEvent('emit-event', eventData);
-                window.dispatchEvent(customEvent);
-            }
-            catch(err){
-
+    onSlideButtonClicked(event){
+        //check if slide btn has flow
+        if(event){
+            const btn = this.configuration?.Slides[event.slideIndex][event.btnName] || null;
+            if(btn.Flow){
+                this.hostEvents.emit({
+                    action: 'button-click',
+                    buttonKey: event
+                });
             }
         }
-     }
+    
+    }
 }

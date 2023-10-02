@@ -1,13 +1,7 @@
 import { PepStyleType, PepSizeType, PepHorizontalAlignment} from '@pepperi-addons/ngx-lib';
 import { PepShadowSettings} from "@pepperi-addons/ngx-composite-lib/shadow-settings";
 import { PepColorSettings } from "@pepperi-addons/ngx-composite-lib/color-settings";
-export interface IHostObject {
-    configuration: ISlideShow;
-    // pageConfiguration?: PageConfiguration;
-    // pageType?: any;
-    // context?: any;
-    // filter?: any;
-}
+import { Page } from '@pepperi-addons/papi-sdk';
 
 export type HeightUnit = 'REM' | 'VH';
 export type TransitionType = 'none' | 'fade' | 'blur' | 'slide';
@@ -135,26 +129,6 @@ export class ISlideEditor {
     GradientOverlay: PepColorSettings = new PepColorSettings(true, 'hsl(0, 100%, 50%)', 75);
     Overlay: PepColorSettings = new PepColorSettings(true, 'hsl(0, 0%, 0%)', 75);
     Image: SlideImage = new SlideImage();
-    //useTitle: boolean = true;
-    //titleContent: string = 'Title';
-    //titleSize: PepSizeType = 'md';
-    //titleWeight: FontWeight = 'normal';
-    //useSubTitle: boolean = true;
-    //subTitleContent: string = 'Sub title';
-    //subTitleSize: PepSizeType = 'md';
-    //textColor: textColor = 'inverted';
-
-    
-    //horizontalAlign: PepHorizontalAlignment = 'left';
-    //verticalAlign: 'start' | 'middle' | 'end' = 'start';//  PepVerticalAlignment = 'middle';
-    
-   
-    //buttonsSize: PepSizeType  = 'md';
-    //buttonColor: buttonColor= 'system-primary';
-    
-    //gradientOverlay: PepColorSettings = new PepColorSettings(true, 'hsl(0, 100%, 50%)', 75);
-    
-    
 }
 
 export interface slide {
@@ -165,5 +139,14 @@ export interface slide {
 export interface ISlideShow{
     SlideshowConfig: ISlideshowEditor,
     Slides: Array<ISlideEditor>
+}
+
+export interface IHostObject {
+    state: any;
+    configuration: ISlideShow;
+    configurationSource: ISlideShow;
+    pageConfiguration: any;
+    page: Page,
+    parameters: any;
 }
  

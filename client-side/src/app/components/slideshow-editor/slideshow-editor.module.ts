@@ -19,7 +19,7 @@ import { FlowService } from 'src/services/flow.service';
 import { PepFieldTitleModule } from '@pepperi-addons/ngx-lib/field-title';
 import { PepPageLayoutModule } from '@pepperi-addons/ngx-lib/page-layout';
 import { MatDialogModule } from '@angular/material/dialog';
-import { pepIconTextAlignCenter, pepIconTextAlignLeft, pepIconTextAlignRight,  pepIconArrowBackRight, pepIconArrowBackLeft, pepIconArrowBack, pepIconArrowLeftAlt,pepIconArrowDown, pepIconArrowUp, PepIconModule, pepIconNumberPlus, PepIconRegistry, pepIconSystemBin, pepIconSystemBolt, pepIconSystemClose, pepIconSystemEdit, pepIconSystemMove } from '@pepperi-addons/ngx-lib/icon';
+import { pepIconTextAlignCenter, pepIconTextAlignLeft, pepIconTextAlignRight,  pepIconArrowBackRight, pepIconArrowBackLeft, pepIconArrowBack, pepIconArrowLeftAlt,pepIconArrowDown, pepIconArrowUp, pepIconNumberPlus, PepIconRegistry, pepIconSystemBin, pepIconSystemBolt, pepIconSystemClose, pepIconSystemEdit, pepIconSystemMove, pepIconSystemCopy } from '@pepperi-addons/ngx-lib/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PepShadowSettingsModule } from '@pepperi-addons/ngx-composite-lib/shadow-settings';
 import { PepColorSettingsModule } from '@pepperi-addons/ngx-composite-lib/color-settings';
@@ -43,6 +43,7 @@ const pepIcons = [
     pepIconSystemBolt,
     pepIconSystemEdit,
     pepIconSystemMove,
+    pepIconSystemCopy,
     pepIconSystemBin,
     pepIconArrowLeftAlt,
     pepIconArrowDown,

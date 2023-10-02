@@ -122,6 +122,6 @@ export class SlideComponent implements OnInit {
 
     onSlideButtonClicked(btnName: string){
         const flowData = this.slide[btnName] && this.slide[btnName].Flow;
-        this.buttonClick.emit({flow: flowData}); 
+        this.buttonClick.emit({slideIndex: this.slideIndex, btnName: btnName}); 
     }
 }

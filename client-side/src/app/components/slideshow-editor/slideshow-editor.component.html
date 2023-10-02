@@ -115,8 +115,8 @@
             <div (cdkDropListDropped)="drop($event)"  cdkDropList #availableSlidesContainer id="availableSlides" class="available-slides">
                 <slide-editor *ngFor="let currentSlide of configuration?.Slides;" class="available-slide" (hostEvents)='onHostObjectChange($event)'
                     [id]="currentSlide?.id" [showActions]="true" 
-                    [isDraggable]="true" (editClick)='onSlideEditClick($event);' (removeClick)='onSlideRemoveClick($event);'
-                    [configuration]="configuration" [configurationSource]="configurationSource"
+                    [isDraggable]="true" (editClick)='onSlideEditClick($event);' (removeClick)='onSlideRemoveClick($event);' (duplicateClick)="onSlideDuplicateClick($event)"
+                    [configuration]="configuration" [configurationSource]="configurationSource" (flowChange)='onSlideBtnFlowChanged($event);'
                     cdkDrag [cdkDragDisabled]="currentSlide?.id == configuration?.SlideshowConfig?.EditSlideIndex" style="cursor: grab;" (cdkDragStarted)="onDragStart($event)" (cdkDragEnded)="onDragEnd($event)">
                 </slide-editor>
             </div>

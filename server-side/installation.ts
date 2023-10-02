@@ -194,8 +194,8 @@ async function runMigration(client){
                     }
                 }
              },
-             BlockLoadEndpoint: "/addon-cpi/on_slideshow_block_load"
-             //OnPageLoadEndpoint: "/addon-cpi/prepare_assets",
+             BlockLoadEndpoint: "/addon-cpi/on_slideshow_block_load",
+             BlockButtonClickEndpoint: "/addon-cpi/run_slide_click_event"
         }; 
         
         const service = new MyService(client);
