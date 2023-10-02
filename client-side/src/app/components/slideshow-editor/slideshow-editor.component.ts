@@ -5,8 +5,6 @@ import { PepStyleType} from '@pepperi-addons/ngx-lib';
 import { PepButton } from '@pepperi-addons/ngx-lib/button';
 import { ISlideShow, ISlideshowEditor, TransitionType, ISlideEditor, IHostObject } from '../slideshow.model';
 import { Page, PageConfiguration } from '@pepperi-addons/papi-sdk';
-//import { PepAddonBlockLoaderService } from '@pepperi-addons/ngx-lib/remote-loader';
-//import { SlideshowService } from 'src/services/slideshow.service';
 import { FlowService } from 'src/services/flow.service';
 
 @Component({
@@ -57,7 +55,7 @@ export class SlideshowEditorComponent implements OnInit {
 
     @Output() hostEvents: EventEmitter<any> = new EventEmitter<any>();
     blockLoaded = false;
-
+    selectedSlideIndex: number = -1;
     transitionTypes: Array<{key: TransitionType, value: string}> = [];
     buttonStyle: Array<{key: PepStyleType, value: string}> = [];
     buttonColor: Array<PepButton> = [];
@@ -234,15 +232,7 @@ export class SlideshowEditorComponent implements OnInit {
     }
 
     onSlideEditClick(event) {
-       
-        if(this.configuration.SlideshowConfig.EditSlideIndex === event.id){ //close the editor
-            this.configuration.SlideshowConfig.EditSlideIndex = "-1";
-        }
-        else{ 
-            this.currentSlideindex = this.configuration.SlideshowConfig.EditSlideIndex = event.id;
-        }
-
-        this.updateHostObject();
+        this.selectedSlideIndex = this.selectedSlideIndex == event.id ? -1 : event.id;
     }
 
     onSlideRemoveClick(event){

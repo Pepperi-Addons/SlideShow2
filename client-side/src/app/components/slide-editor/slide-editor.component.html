@@ -2,15 +2,15 @@
     <div>
         <pep-button classNames="lock-events" sizeType="xs" iconName="system_move"></pep-button>
     </div>
-    <div *ngIf="title !== ''" class="title-container" (click)="onEditClick();">
+    <div *ngIf="title !== ''" class="title-container ellipsis" (click)="onEditClick();">
         <span class="body-sm ellipsis">{{id+1}}.&nbsp;</span>
         <span class="body-sm color-link bold ellipsis" title="{{title}}">{{title}}</span>
     </div>
-    <div class="actions" *ngIf="showActions">
+    <div class="actions">
         <pep-button sizeType="xs" iconName="system_copy" title="{{'EDITOR.CONTENT.DUPLICATE' | translate}}" (buttonClick)="onDuplicateClick();"></pep-button>
         <pep-button classNames="caution" sizeType="xs" iconName="system_bin" (buttonClick)="onRemoveClick();"></pep-button> 
     </div>
-    <div class="editorCont" *ngIf="id == configuration?.SlideshowConfig?.EditSlideIndex">
+    <div class="editorCont" *ngIf="id ==  selectedSlideIndex?.toString()">
    <pep-checkbox [value]="configuration?.Slides[id].Title?.Use" [label]="'SLIDE_EDITOR.TITLE' | translate" [renderTitle]="false" 
         (valueChange)="onSlideFieldChange('Title.Use',$event)">
     </pep-checkbox>

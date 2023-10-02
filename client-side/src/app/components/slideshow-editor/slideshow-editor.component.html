@@ -114,10 +114,10 @@
             <label class="body-xl bold ellipsis">{{'SLIDESHOW.SLIDES' | translate}}</label>
             <div (cdkDropListDropped)="drop($event)"  cdkDropList #availableSlidesContainer id="availableSlides" class="available-slides">
                 <slide-editor *ngFor="let currentSlide of configuration?.Slides;" class="available-slide" (hostEvents)='onHostObjectChange($event)'
-                    [id]="currentSlide?.id" [showActions]="true" 
+                    [id]="currentSlide?.id" [selectedSlideIndex]="selectedSlideIndex"
                     [isDraggable]="true" (editClick)='onSlideEditClick($event);' (removeClick)='onSlideRemoveClick($event);' (duplicateClick)="onSlideDuplicateClick($event)"
                     [configuration]="configuration" [configurationSource]="configurationSource" (flowChange)='onSlideBtnFlowChanged($event);'
-                    cdkDrag [cdkDragDisabled]="currentSlide?.id == configuration?.SlideshowConfig?.EditSlideIndex" style="cursor: grab;" (cdkDragStarted)="onDragStart($event)" (cdkDragEnded)="onDragEnd($event)">
+                    cdkDrag [cdkDragDisabled]="currentSlide?.id == selectedSlideIndex" style="cursor: grab;" (cdkDragStarted)="onDragStart($event)" (cdkDragEnded)="onDragEnd($event)">
                 </slide-editor>
             </div>
 

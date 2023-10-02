@@ -20,13 +20,9 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
     
     @Input() configuration: ISlideShow;
     @Input() configurationSource: ISlideShow;
-    
     @Input() id: string;
-    
-    public title: string;
-    
     @Input() isDraggable = false;
-    @Input() showActions = true;
+    @Input() selectedSlideIndex = -1;
 
     @Output() hostEvents: EventEmitter<any> = new EventEmitter<any>();
     @Output() removeClick: EventEmitter<any> = new EventEmitter();
@@ -41,6 +37,8 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
     buttonColor: Array<PepButton> = [];
     buttonStyle: Array<{key: PepStyleType, value: string}> = [];
 
+        
+    public title: string;
     public flowHostObject;
     public flowHostObjectBtn2;
 

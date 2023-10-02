@@ -81,7 +81,6 @@ export class Controllers {
 
 //export interface ISlideshowEditor {
 export class ISlideshowEditor {
-    EditSlideIndex: string = "-1";
     OnLoadFlow: any;
     Structure: Structure = new Structure('REM', false, '16', 'md');
     Transition: Transition = new Transition();
