@@ -222,6 +222,7 @@ export class SlideshowEditorComponent implements OnInit {
         // When finish load raise block-editor-loaded.
         //this.hostEvents.emit({action: 'block-editor-loaded'});
         this.blockLoaded = true;
+        this.flowHostObject = this.flowService.prepareFlowHostObject((this.configuration.SlideshowConfig?.OnLoadFlow || null));
     }
 
     addNewSlideClick() {
