@@ -32,8 +32,8 @@ router.post('/on_slideshow_block_load', async (req, res) => {
 router.post('/run_slide_click_event', async (req, res) => {
     let configuration = req?.body?.Configuration;
     const state = req.body.State;
-    const btnName = req.body.buttonKey.btnName;
-    const slideIndex = req.body.buttonKey.slideIndex;
+    const btnName = req.body.ButtonKey.btnName;
+    const slideIndex = req.body.ButtonKey.slideIndex;
     const btn = configuration?.Slides[slideIndex][btnName] || null;
     // check if button is enable and have flow
     if (btn?.Flow){
