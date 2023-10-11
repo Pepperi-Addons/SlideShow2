@@ -1,7 +1,7 @@
 import '@pepperi-addons/cpi-node'
 export const router:any = Router()
 import SlidesowCpiService from './slideshow-cpi.service';
-import path from 'path';
+import * as _ from 'lodash'
 
 router.post('/on_slideshow_block_load', async (req, res) => {
     let configuration = req?.body?.Configuration;
@@ -25,10 +25,13 @@ router.post('/on_slideshow_block_load', async (req, res) => {
             configurationRes.Slides = Slides;
          }
     }
-
-    //const mergeState = Object.assign(Object.assign({}, state), {configuration: configurationRes});
+    const difference = _.differenceWith(_.toPairs(configurationRes), _.toPairs(configuration), _.isEqual);
+    difference.forEach(diff => {
+        state[diff[0]] = diff[1];
+    });
 
     res.json({
+        State: state,
         Configuration: configurationRes,
     });
 });
@@ -36,7 +39,15 @@ router.post('/on_slideshow_block_load', async (req, res) => {
 router.post('/run_slide_click_event', async (req, res) => {
     const state = req.body.State;
     const btnName = req.body.ButtonKey.btnName;
-    let configuration = state?.configuration || req?.body?.Configuration;
+    let configuration = req?.body?.Configuration;
+
+    for (var prop in configuration) {
+        // skip loop if the property dont exits on state object
+        if (!state.hasOwnProperty(prop)) continue;
+        //update configuration with the object from state
+        configuration[prop] = state[prop]; 
+    }
+
     let configurationRes = configuration;
     const slideIndex = req.body.ButtonKey?.slideIndex;
     const btn = configuration?.Slides[slideIndex][btnName] || null;
@@ -47,9 +58,14 @@ router.post('/run_slide_click_event', async (req, res) => {
         const result: any = await cpiService.getOptionsFromFlow(btn.Flow || [], state , req.context, configuration);
         configurationRes = result?.configuration || configuration;
     }
-    const mergeState = Object.assign(Object.assign({}, state), {configuration: configurationRes});
+    
+    const difference = _.differenceWith(_.toPairs(configurationRes), _.toPairs(configuration), _.isEqual);
+    difference.forEach(diff => {
+        state[diff[0]] = diff[1];
+    });
+
     res.json({
-        State: mergeState,
+        State: state,
         Configuration: configurationRes,
     });
 });
