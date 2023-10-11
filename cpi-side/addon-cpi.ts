@@ -26,10 +26,9 @@ router.post('/on_slideshow_block_load', async (req, res) => {
          }
     }
 
-    const mergeState = Object.assign(Object.assign({}, state), {configuration: configurationRes});
+    //const mergeState = Object.assign(Object.assign({}, state), {configuration: configurationRes});
 
     res.json({
-        State: mergeState,
         Configuration: configurationRes,
     });
 });
