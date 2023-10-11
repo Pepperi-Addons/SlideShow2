@@ -39,9 +39,9 @@ export class SlideComponent implements OnInit {
         this.slideIndex = this.slide.id;
     }
     
-    private getDefaultHostObject(): ISlideShow {
-        return { SlideshowConfig: new ISlideshowEditor(), Slides: Array<ISlideEditor>() };
-    }
+    // private getDefaultHostObject(): ISlideShow {
+    //     return { SlideshowConfig: new ISlideshowEditor(), Slides: Array<ISlideEditor>() };
+    // }
     
     getRGBAcolor(colObj: PepColorSettings, opac = null){
         let rgba = 'rgba(255,255,255,0';

@@ -195,7 +195,8 @@ async function runMigration(client){
                 }
              },
              BlockLoadEndpoint: "/addon-cpi/on_slideshow_block_load",
-             BlockButtonClickEndpoint: "/addon-cpi/run_slide_click_event"
+             BlockButtonClickEndpoint: "/addon-cpi/run_slide_click_event",
+             BlockStateChangeEndpoint: "/addon-cpi/on_block_state_change"
         }; 
         
         const service = new MyService(client);

@@ -53,11 +53,20 @@ export class SlideshowComponent implements OnInit {
     }
     
     async ngOnInit() {
+        this.hostEvents.emit({
+            action: 'register-state-change',
+            callback: this.registerStateChange.bind(this)
+        });
+        
+        this.showSlides();
+    }
+
+    private registerStateChange(data: {state: any, configuration: any}) {
+        this.configuration = data.configuration;
         this.showSlides();
     }
     
     showSlides() {
-
         if (this.configuration && Object.keys(this.configuration).length > 0) {
             if (!this.configuration.SlideshowConfig.Transition.Use) {
                 this.isPause = true;
