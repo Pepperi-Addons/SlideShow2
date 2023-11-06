@@ -125,7 +125,6 @@ export class SlideshowEditorComponent implements OnInit {
     }
 
     private updateHostObject() {
-        
         this.hostEvents.emit({
             action: 'set-configuration',
             configuration: this.configuration
@@ -227,7 +226,8 @@ export class SlideshowEditorComponent implements OnInit {
         let slide = new ISlideEditor();
         slide.id = (this.configuration.Slides.length);
         slide.Title.Content = this.getOrdinal(slide.id+1) + this.translate.instant('SLIDE_EDITOR.TITLE');
-        this.configuration.Slides.push( slide); 
+        this.configuration.Slides.push(JSON.parse(JSON.stringify(slide))); 
+        this.configurationSource.Slides.push(JSON.parse(JSON.stringify(slide))); 
         this.updateHostObject();  
     }
 
