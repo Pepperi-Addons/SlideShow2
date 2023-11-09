@@ -77,7 +77,8 @@ export class SlideshowComponent implements OnInit {
                 if (this.slideIndex >= Slides.length) {this.slideIndex = 0}
                 
                 var that = this;
-                var duration = this.configuration.SlideshowConfig.Transition.Duration * 1000;
+                var duration = parseInt(this.configuration.SlideshowConfig.Transition.Duration) * 1000;
+                clearTimeout(this.timer);
                 this.timer = setTimeout(function(){that.slideIndex ++; that.showSlides() }, duration);
             }
         }   

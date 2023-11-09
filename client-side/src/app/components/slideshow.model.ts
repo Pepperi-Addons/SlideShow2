@@ -57,7 +57,7 @@ export class Corners {
 
 export class Transition {
     Use: boolean = true;
-    Duration: number = 5;
+    Duration: string = '5';
     Type: TransitionType = 'fade';
     Time: string = '0.75';
 }

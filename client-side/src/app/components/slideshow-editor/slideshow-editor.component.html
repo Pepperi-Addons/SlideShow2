@@ -23,7 +23,7 @@
                 <pep-checkbox [value]="configuration?.SlideshowConfig?.Transition.Use" [label]="'SLIDESHOW.TRANSITION' | translate" [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Transition.Use',$event)"></pep-checkbox>
                 <label class="body-xs normal ellipsis">{{'SLIDESHOW.TRANSITION_TITLE' | translate}}</label>
                 <pep-textbox [label]="'SLIDESHOW.SLIDE_DURATION' | translate" type="int" [disabled]="!configuration?.SlideshowConfig?.Transition.Use"
-                             [value]="configuration?.SlideshowConfig?.Transition?.TransitionDuration" (valueChange)="onSlideshowFieldChange('Transition.Duration',$event)"></pep-textbox>
+                             [value]="configuration?.SlideshowConfig?.Transition?.Duration || '0'" (valueChange)="onSlideshowFieldChange('Transition.Duration',$event)"></pep-textbox>
                 
                 <div class="split-area">
                     <pep-select [label]="'SLIDESHOW.TRANSITION_TYPE' | translate" [value]="configuration?.SlideshowConfig?.Transition?.Type" [options]="transitionTypes" 
