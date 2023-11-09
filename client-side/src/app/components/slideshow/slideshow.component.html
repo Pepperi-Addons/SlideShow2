@@ -30,7 +30,7 @@
        [showSlide]="slideIndex == currentSlide.id"
        [slide]="currentSlide" 
        [SlideshowConfig]="configuration?.SlideshowConfig"
-       [ngClass]="[configuration?.SlideshowConfig?.Transition?.Type , slideIndex == currentSlide.id ? 'activeSlide' : '']"
+       [ngClass]="[configuration?.SlideshowConfig?.Transition?.Type , slideIndex == currentSlide.id && configuration?.Slides > 1  ? 'activeSlide' : '']"
        [ngStyle]="{'transition-duration':  configuration?.SlideshowConfig?.Transition?.Time + 's',
                    'height' : getSlideHeight()}">
 </slide>

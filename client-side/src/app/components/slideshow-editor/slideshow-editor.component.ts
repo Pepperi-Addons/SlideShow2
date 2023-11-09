@@ -17,10 +17,9 @@ export class SlideshowEditorComponent implements OnInit {
     @ViewChild('availableSlidesContainer', { read: ElementRef }) availableBlocksContainer: ElementRef;
 
     @Input()
-    set hostObject(value: IHostObject) {
+    set hostObject(value: any) {
         if (value && value.configuration && Object.keys(value.configuration).length > 0) {
             this._configuration = value.configuration
-
             if(value.configurationSource && Object.keys(value.configuration).length > 0){
                     this.configurationSource = value.configurationSource;
             }
@@ -226,8 +225,8 @@ export class SlideshowEditorComponent implements OnInit {
         let slide = new ISlideEditor();
         slide.id = (this.configuration.Slides.length);
         slide.Title.Content = this.getOrdinal(slide.id+1) + this.translate.instant('SLIDE_EDITOR.TITLE');
-        this.configuration.Slides.push(JSON.parse(JSON.stringify(slide))); 
-        this.configurationSource.Slides.push(JSON.parse(JSON.stringify(slide))); 
+        this.configuration.Slides.push(slide); 
+        //this.configurationSource.Slides.push(JSON.parse(JSON.stringify(slide))); 
         this.updateHostObject();  
     }
 
