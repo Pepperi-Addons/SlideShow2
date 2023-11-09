@@ -226,7 +226,7 @@ export class SlideshowEditorComponent implements OnInit {
         slide.id = (this.configuration.Slides.length);
         slide.Title.Content = this.getOrdinal(slide.id+1) + this.translate.instant('SLIDE_EDITOR.TITLE');
         this.configuration.Slides.push(slide); 
-        //this.configurationSource.Slides.push(JSON.parse(JSON.stringify(slide))); 
+        this.configurationSource.Slides.push(slide); 
         this.updateHostObject();  
     }
 
@@ -246,7 +246,7 @@ export class SlideshowEditorComponent implements OnInit {
 
         slide.id = (this.configuration?.Slides.length);
         this.configuration?.Slides.push(slide);
-        this._configuration = this.configuration
+        //this._configuration = this.configuration
         this.updateHostObject();  
     }
 

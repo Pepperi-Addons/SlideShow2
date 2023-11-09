@@ -143,7 +143,7 @@ export interface ISlideShow{
 export interface IHostObject {
     state: any;
     configuration: ISlideShow;
-    //configurationSource: ISlideShow;
+    configurationSource: ISlideShow;
     pageConfiguration: any;
     page: Page,
     parameters: any;

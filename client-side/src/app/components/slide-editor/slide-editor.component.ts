@@ -51,7 +51,6 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
     }
 
     async ngOnInit(): Promise<void> {
-        
         this.title = this.configuration.Slides[this.id].Title.Content;
 
         const desktopTitle = await this.translate.get('SLIDESHOW.HEIGHTUNITS_REM').toPromise();

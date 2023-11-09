@@ -19,6 +19,7 @@ export class SlideshowComponent implements OnInit {
     set hostObject(value: IHostObject) {
         // TODO: support all other properties if needed.
         this._configuration = value?.configuration;
+        this._parameters = value?.parameters || {};
         // if (value && value.configuration) {
         //     this._configuration = value.configuration;
         // } else {
@@ -100,7 +101,6 @@ export class SlideshowComponent implements OnInit {
       }
 
       navigate(event){
-        
         this.slideIndex = event === 'forward' ? this.slideIndex + 1 : this.slideIndex - 1;
         
         if(this.slideIndex == this.configuration.Slides.length) {
