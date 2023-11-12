@@ -19,7 +19,7 @@
                  (valueChange)="onSlideFieldChange('Title.Content',$event)">
     </pep-textbox>
     <pep-group-buttons-settings 
-        pepResetConfigurationField="Slides[id].Title.Size" [hideReset]="configuration.Slides[id].Title.Size === configurationSource?.Slides[id].Title.Size"
+        pepResetConfigurationField="Slides[{{id}}].Title.Size" [hideReset]="configuration.Slides[id].Title.Size === configurationSource?.Slides[id].Title.Size"
         [resetHostEvents]="hostEvents"
         [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.MAIN_TITLE_SIZE' | translate" 
         [btnKey]="configuration?.Slides[id].Title.Size" [excludeKeys]="['xs']"

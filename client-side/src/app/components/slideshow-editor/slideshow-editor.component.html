@@ -5,7 +5,7 @@
             <span class="header-title body-xs checkbox-description">{{('SLIDESHOW.FILL_HEIGHT_SECTION_DESCRIPTION' | translate)}}</span>
         </div>
         <pep-textbox    type="real"
-                        pepResetConfigurationField="SlideshowConfig?.Structure.Height" [hideReset]="configuration?.SlideshowConfig?.Structure.Height === configurationSource?.SlideshowConfig?.Structure.Height"
+                        pepResetConfigurationField="SlideshowConfig.Structure.Height" [hideReset]="configuration.SlideshowConfig?.Structure?.Height === configurationSource?.SlideshowConfig.Structure?.Height"
                         [resetHostEvents]="hostEvents"
                         [disabled]="configuration?.SlideshowConfig?.Structure?.FillHeight" 
                         [value]="configuration?.SlideshowConfig?.Structure.Height" 
@@ -14,7 +14,7 @@
         </pep-textbox>
                 
         <pep-group-buttons-settings 
-                    pepResetConfigurationField="SlideshowConfig?.Structure.InnerPadding" [hideReset]="configuration?.SlideshowConfig?.Structure.InnerPadding === configurationSource?.SlideshowConfig?.Structure.InnerPadding"
+                    pepResetConfigurationField="SlideshowConfig.Structure.InnerPadding" [hideReset]="configuration?.SlideshowConfig?.Structure.InnerPadding === configurationSource?.SlideshowConfig?.Structure.InnerPadding"
                     [resetHostEvents]="hostEvents"
                     [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERPADDING_TITLE' | translate"
                     [btnKey]="configuration?.SlideshowConfig?.Structure.InnerPadding" [excludeKeys]="['xs','xl']"
@@ -36,7 +36,7 @@
                 <label class="body-xs normal ellipsis" [innerHTML]="'SLIDESHOW.ARROWS_DESC' | translate"></label>
                 <div>
                 <pep-group-buttons-settings 
-                        pepResetConfigurationField="SlideshowConfig?.Arrows?.Display" [hideReset]="configuration?.SlideshowConfig?.Arrows?.Display === configurationSource?.SlideshowConfig?.Arrows?.Display"
+                        pepResetConfigurationField="SlideshowConfig.Arrows.Display" [hideReset]="configuration?.SlideshowConfig?.Arrows?.Display === configurationSource?.SlideshowConfig?.Arrows?.Display"
                         [resetHostEvents]="hostEvents" [btnsArray]="arrowsDisplayTypes"
                         [groupType]="'custom'" [subHeader]="'SLIDESHOW.ARROWS_DISPLAY' | translate" 
                         [btnKey]="configuration?.SlideshowConfig?.Arrows?.Display"
@@ -60,7 +60,7 @@
                 <label class="body-xl bold ellipsis">{{'SLIDESHOW.CONTROLLERS' | translate}}</label>
                 <label class="body-xs normal" [innerHTML]="'SLIDESHOW.CONTROLLERS_DESC' | translate"></label>
                 <pep-group-buttons-settings 
-                              pepResetConfigurationField="SlideshowConfig?.Controllers?.Display" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Display === configurationSource?.SlideshowConfig?.Controllers?.Display"
+                              pepResetConfigurationField="SlideshowConfig.Controllers.Display" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Display === configurationSource?.SlideshowConfig?.Controllers?.Display"
                               [resetHostEvents]="hostEvents" [btnsArray]="controllersDisplayTypes"
                               [groupType]="'custom'" [subHeader]="'SLIDESHOW.CONTROLLER_DISPLAY' | translate" 
                               [btnKey]="configuration?.SlideshowConfig?.Controllers?.Display"
@@ -79,7 +79,7 @@
     
                 </div>
                 <pep-group-buttons-settings 
-                              pepResetConfigurationField="SlideshowConfig?.Controllers?.Size" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Size === configurationSource?.SlideshowConfig?.Controllers?.Size"
+                              pepResetConfigurationField="SlideshowConfig.Controllers.Size" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Size === configurationSource?.SlideshowConfig?.Controllers?.Size"
                               [resetHostEvents]="hostEvents"
                               [groupType]="'sizes'" [subHeader]="'SLIDESHOW.CONTROLLER_SIZE' | translate" 
                               [btnKey]="configuration?.SlideshowConfig?.Controllers?.Size" [excludeKeys]="['xs','lg','xl']"
