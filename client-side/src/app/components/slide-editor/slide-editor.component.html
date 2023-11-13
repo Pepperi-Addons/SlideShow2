@@ -19,7 +19,7 @@
                  (valueChange)="onSlideFieldChange('Title.Content',$event)">
     </pep-textbox>
     <pep-group-buttons-settings 
-        pepResetConfigurationField="Slides[{{id}}].Title.Size" [hideReset]="configuration.Slides[id].Title.Size === configurationSource?.Slides[id].Title.Size"
+        pepResetConfigurationField="Slides[{{id}}].Title.Size" [hideReset]="configuration?.Slides[id]?.Title?.Size === configurationSource?.Slides[id]?.Title?.Size"
         [resetHostEvents]="hostEvents"
         [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.MAIN_TITLE_SIZE' | translate" 
         [btnKey]="configuration?.Slides[id].Title.Size" [excludeKeys]="['xs']"
@@ -39,14 +39,14 @@
     </pep-textarea>
 
     <pep-group-buttons-settings 
-        pepResetConfigurationField="Slides[{{id}}].SubTitle?.Size" [hideReset]="configuration.Slides[id].SubTitle?.Size === configurationSource?.Slides[id].SubTitle?.Size"
+        pepResetConfigurationField="Slides[{{id}}].SubTitle?.Size" [hideReset]="configuration.Slides[id]?.SubTitle?.Size === configurationSource?.Slides[id]?.SubTitle?.Size"
          [resetHostEvents]="hostEvents"
         [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.SUB_TITLE_SIZE' | translate" [excludeKeys]="['xs']" (btnkeyChange)="onSlideFieldChange('SubTitle.Size',$event)"
         [disabled]="!configuration?.Slides[id].SubTitle.Use" [btnKey]="configuration?.Slides[id].SubTitle?.Size">
     </pep-group-buttons-settings>
 
     <pep-group-buttons-settings
-        pepResetConfigurationField="Slides[{{id}}].ContentWidth" [hideReset]="configuration.Slides[id].ContentWidth === configurationSource?.Slides[id].ContentWidth"
+        pepResetConfigurationField="Slides[{{id}}].ContentWidth" [hideReset]="configuration.Slides[id]?.ContentWidth === configurationSource?.Slides[id]?.ContentWidth"
          [resetHostEvents]="hostEvents" 
         [groupType]="'custom'" [header]="'SLIDE_EDITOR.CONTENT' | translate" [subHeader]="'SLIDE_EDITOR.CONTENT_BLOCK_WIDTH' | translate" [btnsArray]="WidthSize"
         [btnKey]="configuration?.Slides[id].ContentWidth">
@@ -59,7 +59,7 @@
     </pep-group-buttons-settings>
 
     <pep-group-buttons-settings 
-            pepResetConfigurationField="Slides[{{id}}].Alignment.Horizontal" [hideReset]="configuration.Slides[id].Alignment.Horizontal === configurationSource?.Slides[id].Alignment.Horizontal"
+            pepResetConfigurationField="Slides[{{id}}].Alignment.Horizontal" [hideReset]="configuration?.Slides[id]?.Alignment.Horizontal === configurationSource?.Slides[id]?.Alignment?.Horizontal"
              [resetHostEvents]="hostEvents" 
             [groupType]="'horizontal-align'" [subHeader]="'SLIDE_EDITOR.HORIZONTAL_ALIGN' | translate"
             [btnKey]="configuration?.Slides[id].Alignment?.Horizontal"
@@ -67,7 +67,7 @@
     </pep-group-buttons-settings>
 
     <pep-group-buttons-settings 
-                pepResetConfigurationField="Slides[{{id}}].Alignment.Vertical" [hideReset]="configuration.Slides[id].Alignment.Vertical === configurationSource?.Slides[id].Alignment.Vertical"
+                pepResetConfigurationField="Slides[{{id}}].Alignment.Vertical" [hideReset]="configuration?.Slides[id]?.Alignment?.Vertical === configurationSource?.Slides[id]?.Alignment?.Vertical"
                 [resetHostEvents]="hostEvents" 
                 [groupType]="'vertical-align'" [subHeader]="'SLIDE_EDITOR.VERTICAL_ALIGN' | translate"
                 [btnKey]="configuration?.Slides[id].Alignment?.Vertical"
@@ -78,7 +78,7 @@
                 (valueChange)="onSlideFieldChange('TextColor',$event)" [emptyOption]="false" [disabled]="false"></pep-select>
 
     <pep-group-buttons-settings 
-            pepResetConfigurationField="Slides[{{id}}].Button.Size" [hideReset]="configuration.Slides[id].Button?.Size === configurationSource?.Slides[id].Button?.Size"
+            pepResetConfigurationField="Slides[{{id}}].Button.Size" [hideReset]="configuration?.Slides[id]?.Button?.Size === configurationSource?.Slides[id]?.Button?.Size"
              [resetHostEvents]="hostEvents" 
             [header]="'SLIDE_EDITOR.BUTTONS' | translate" [subHeader]="'SLIDE_EDITOR.BUTTON_SIZE' | translate"
             [groupType]="'sizes'" [excludeKeys]="['xs']" (btnkeyChange)="onSlideFieldChange('Button.Size',$event)"
@@ -135,7 +135,7 @@
     </assets-button>
 
     <pep-slider
-        pepResetConfigurationField="Slides[{{id}}].Image.HorizontalPosition" [hideReset]="configuration.Slides[id].Image.HorizontalPosition === configurationSource?.Slides[id].Image.HorizontalPosition"
+        pepResetConfigurationField="Slides[{{id}}].Image.HorizontalPosition" [hideReset]="configuration?.Slides[id]?.Image?.HorizontalPosition === configurationSource?.Slides[id]?.Image?.HorizontalPosition"
          [resetHostEvents]="hostEvents" 
         [label]="'SLIDE_EDITOR.IMAGE_HORIZONTAL_POSITION' | translate" 
         [hint]="configuration?.Slides[id].Image.HorizontalPosition?.toString()" 
@@ -146,7 +146,7 @@
         (valueChange)="onSlideFieldChange('Image.HorizontalPosition',$event)">
     </pep-slider>
     <pep-slider
-        pepResetConfigurationField="Slides[{{id}}].Image.VerticalPosition" [hideReset]="configuration.Slides[id].Image.VerticalPosition === configurationSource?.Slides[id].Image.VerticalPosition"
+        pepResetConfigurationField="Slides[{{id}}].Image.VerticalPosition" [hideReset]="configuration?.Slides[id]?.Image?.VerticalPosition === configurationSource?.Slides[id]?.Image?.VerticalPosition"
          [resetHostEvents]="hostEvents" 
         [label]="'SLIDE_EDITOR.IMAGE_VERTICAL_POSITION' | translate" 
         [hint]="configuration?.Slides[id].Image.VerticalPosition?.toString()" 

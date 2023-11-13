@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, AfterViewInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ISlideShow, ISlideshowEditor, slide, TransitionType, ArrowShape, ISlideEditor, textColor, IHostObject } from '../slideshow.model';
+import { ISlideShow, ISlideshowEditor, TransitionType, ArrowShape, ISlideEditor, textColor, IHostObject } from '../slideshow.model';
 import { PepStyleType, PepSizeType, PepColorService} from '@pepperi-addons/ngx-lib';
 import { PepButton } from '@pepperi-addons/ngx-lib/button';
 import { PepColorSettings } from '@pepperi-addons/ngx-composite-lib/color-settings';

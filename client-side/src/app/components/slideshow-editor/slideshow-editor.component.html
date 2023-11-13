@@ -4,8 +4,8 @@
             <pep-checkbox class="checkbox-as-title" [value]="configuration?.SlideshowConfig?.Structure?.FillHeight" [label]="'SLIDESHOW.FILL_HEIGHT_SECTION_TITLE' | translate" [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Structure.FillHeight',$event)"></pep-checkbox>
             <span class="header-title body-xs checkbox-description">{{('SLIDESHOW.FILL_HEIGHT_SECTION_DESCRIPTION' | translate)}}</span>
         </div>
-        <pep-textbox    type="real"
-                        pepResetConfigurationField="SlideshowConfig.Structure.Height" [hideReset]="configuration.SlideshowConfig?.Structure?.Height === configurationSource?.SlideshowConfig.Structure?.Height"
+        <pep-textbox  type="real"
+                        pepResetConfigurationField="SlideshowConfig.Structure.Height" [hideReset]="configuration?.SlideshowConfig?.Structure?.Height === configurationSource?.SlideshowConfig?.Structure?.Height"
                         [resetHostEvents]="hostEvents"
                         [disabled]="configuration?.SlideshowConfig?.Structure?.FillHeight" 
                         [value]="configuration?.SlideshowConfig?.Structure.Height" 

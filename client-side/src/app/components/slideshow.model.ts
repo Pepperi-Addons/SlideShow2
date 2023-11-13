@@ -130,10 +130,7 @@ export class ISlideEditor {
     Image: SlideImage = new SlideImage();
 }
 
-export interface slide {
-    id: string,
-    Title?: string,
-}
+
 
 export interface ISlideShow{
     SlideshowConfig: ISlideshowEditor,
