@@ -2,6 +2,7 @@ import { PepStyleType, PepSizeType, PepHorizontalAlignment} from '@pepperi-addon
 import { PepShadowSettings} from "@pepperi-addons/ngx-composite-lib/shadow-settings";
 import { PepColorSettings } from "@pepperi-addons/ngx-composite-lib/color-settings";
 import { Page } from '@pepperi-addons/papi-sdk';
+import { v4 as uuid } from 'uuid';
 
 export type HeightUnit = 'REM' | 'VH';
 export type TransitionType = 'none' | 'fade' | 'blur' | 'slide';
@@ -18,13 +19,15 @@ export class SlideButton {
     Use: boolean;
     Label: string = 'Button';
     Flow: any;
-    //script: any = {};
+    ButtonKey: string = uuid();
     Style: PepStyleType;
+
 
     constructor(use = true, label = 'Yess', style: PepStyleType = 'weak-invert') {
         this.Use = use;
         this.Label = label;
         this.Style = style;
+
       }
 }
 

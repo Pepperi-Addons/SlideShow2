@@ -98,6 +98,8 @@
         <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONCLICK_DESC' | translate"></pep-field-title>
         <pep-flow-picker-button [flowHostObject]="flowHostObject" (flowChange)="onFlowChange($event,'FirstButton')"></pep-flow-picker-button>
     </div>
+    <pep-textbox [label]="'SLIDE_EDITOR.ACTION_KEY' | translate" type="string" [disabled]="true" 
+                     [value]="configuration?.Slides[id].FirstButton.ButtonKey"></pep-textbox>
 
     <pep-select [label]="'SLIDE_EDITOR.BUTTON_STYLE' | translate" [value]="configuration?.Slides[id].FirstButton.Style" 
                 [options]="buttonStyle" (valueChange)="onSlideFieldChange('FirstButton.Style',$event)" [emptyOption]="false" 
@@ -111,6 +113,9 @@
         <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONCLICK_DESC' | translate"></pep-field-title>
         <pep-flow-picker-button [flowHostObject]="flowHostObjectBtn2" (flowChange)="onFlowChange($event, 'SecondButton')"></pep-flow-picker-button>
     </div>
+    <pep-textbox [label]="'SLIDE_EDITOR.ACTION_KEY' | translate" type="string" [disabled]="true" 
+                     [value]="configuration?.Slides[id].SecondButton.ButtonKey"></pep-textbox>
+
     <pep-select [label]="'SLIDE_EDITOR.BUTTON_STYLE' | translate" [value]="configuration?.Slides[id].SecondButton.Style" [options]="buttonStyle"
                 (valueChange)="onSlideFieldChange('SecondButton.Style',$event)" [emptyOption]="false" [disabled]="!configuration?.Slides[id].SecondButton.Use">
     </pep-select>

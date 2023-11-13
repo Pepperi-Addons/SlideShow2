@@ -166,7 +166,7 @@ export class SlideshowComponent implements OnInit {
             if(btn?.Flow){
                 this.hostEvents.emit({
                     action: 'button-click',
-                    buttonKey: event
+                    buttonKey: btn.ButtonKey
                 });
             }
         }

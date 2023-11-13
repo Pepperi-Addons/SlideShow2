@@ -38,7 +38,8 @@ router.post('/on_slideshow_block_load', async (req, res) => {
 
 router.post('/run_slide_click_event', async (req, res) => {
     const state = req.body.State;
-    const btnName = req.body.ButtonKey.btnName;
+
+    const btnKey = req.body.ButtonKey;
     let configuration = req?.body?.Configuration;
 
     for (var prop in configuration) {
@@ -49,8 +50,18 @@ router.post('/run_slide_click_event', async (req, res) => {
     }
 
     let configurationRes = configuration;
-    const slideIndex = req.body.ButtonKey?.slideIndex;
-    const btn = configuration?.Slides[slideIndex][btnName] || null;
+    let btn;
+    for(let i=0; i< configuration.Slides.length; i++){
+            const slide = configuration.Slides[i];
+            if(slide['FirstButton'].ButtonKey === btnKey){
+                btn = slide['FirstButton']; 
+                break;  
+             }
+             else if(slide['SecondButton'].ButtonKey === btnKey){
+                 btn = slide['SecondButton'];
+                 break;
+             } 
+    }
     // check if button is enable and have flow
     if (btn?.Flow){
         const cpiService = new SlidesowCpiService();
