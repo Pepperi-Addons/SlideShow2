@@ -17,7 +17,7 @@
                     pepResetConfigurationField="SlideshowConfig.Structure.InnerPadding" [hideReset]="configuration?.SlideshowConfig?.Structure.InnerPadding === configurationSource?.SlideshowConfig?.Structure.InnerPadding"
                     [resetHostEvents]="hostEvents"
                     [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERPADDING_TITLE' | translate"
-                    [btnKey]="configuration?.SlideshowConfig?.Structure.InnerPadding" [excludeKeys]="['xs','xl']"
+                    [btnKey]="configuration?.SlideshowConfig?.Structure.InnerPadding" [excludeKeys]="['xs','xl', '2xl']"
                     (btnkeyChange)="onSlideshowFieldChange('Structure.InnerPadding',$event)">
         </pep-group-buttons-settings>      
                 <pep-checkbox [value]="configuration?.SlideshowConfig?.Transition.Use" [label]="'SLIDESHOW.TRANSITION' | translate" [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Transition.Use',$event)"></pep-checkbox>
@@ -82,7 +82,7 @@
                               pepResetConfigurationField="SlideshowConfig.Controllers.Size" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Size === configurationSource?.SlideshowConfig?.Controllers?.Size"
                               [resetHostEvents]="hostEvents"
                               [groupType]="'sizes'" [subHeader]="'SLIDESHOW.CONTROLLER_SIZE' | translate" 
-                              [btnKey]="configuration?.SlideshowConfig?.Controllers?.Size" [excludeKeys]="['xs','lg','xl']"
+                              [btnKey]="configuration?.SlideshowConfig?.Controllers?.Size" [excludeKeys]="['xs','xl','2xl']"
                               (btnkeyChange)="onSlideshowFieldChange('Controllers.Size',$event)">
                 </pep-group-buttons-settings>
 
@@ -99,7 +99,7 @@
                 
                 <pep-group-buttons-settings [groupType]="'sizes'"
                     [disabled]="!configuration?.SlideshowConfig?.Corners?.Use" 
-                    [btnKey]="configuration?.SlideshowConfig?.Corners?.Size" [excludeKeys]="['xs']"
+                    [btnKey]="configuration?.SlideshowConfig?.Corners?.Size" [excludeKeys]="['xs', '2xl']"
                     (btnkeyChange)="onSlideshowFieldChange('Corners.Size',$event)">
                 </pep-group-buttons-settings>
 

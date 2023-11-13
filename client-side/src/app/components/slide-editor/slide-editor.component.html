@@ -22,7 +22,7 @@
         pepResetConfigurationField="Slides[{{id}}].Title.Size" [hideReset]="configuration?.Slides[id]?.Title?.Size === configurationSource?.Slides[id]?.Title?.Size"
         [resetHostEvents]="hostEvents"
         [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.MAIN_TITLE_SIZE' | translate" 
-        [btnKey]="configuration?.Slides[id].Title.Size" [excludeKeys]="['xs']"
+        [btnKey]="configuration?.Slides[id].Title.Size" [excludeKeys]="['xs', '2xl']"
         (btnkeyChange)="onSlideFieldChange('Title.Size',$event)">
     </pep-group-buttons-settings>
 
@@ -41,7 +41,7 @@
     <pep-group-buttons-settings 
         pepResetConfigurationField="Slides[{{id}}].SubTitle?.Size" [hideReset]="configuration.Slides[id]?.SubTitle?.Size === configurationSource?.Slides[id]?.SubTitle?.Size"
          [resetHostEvents]="hostEvents"
-        [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.SUB_TITLE_SIZE' | translate" [excludeKeys]="['xs']" (btnkeyChange)="onSlideFieldChange('SubTitle.Size',$event)"
+        [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.SUB_TITLE_SIZE' | translate" [excludeKeys]="['xs','2xl']" (btnkeyChange)="onSlideFieldChange('SubTitle.Size',$event)"
         [disabled]="!configuration?.Slides[id].SubTitle.Use" [btnKey]="configuration?.Slides[id].SubTitle?.Size">
     </pep-group-buttons-settings>
 
@@ -54,7 +54,7 @@
 
     <pep-group-buttons-settings 
         [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERSPACING_TITLE' | translate" 
-        [btnKey]="configuration?.Slides[id].InnerSpacing" [excludeKeys]="['xl']"
+        [btnKey]="configuration?.Slides[id].InnerSpacing" [excludeKeys]="['xl', '2xl']"
         (btnkeyChange)="onSlideFieldChange('InnerSpacing',$event)">
     </pep-group-buttons-settings>
 
@@ -81,7 +81,7 @@
             pepResetConfigurationField="Slides[{{id}}].Button.Size" [hideReset]="configuration?.Slides[id]?.Button?.Size === configurationSource?.Slides[id]?.Button?.Size"
              [resetHostEvents]="hostEvents" 
             [header]="'SLIDE_EDITOR.BUTTONS' | translate" [subHeader]="'SLIDE_EDITOR.BUTTON_SIZE' | translate"
-            [groupType]="'sizes'" [excludeKeys]="['xs']" (btnkeyChange)="onSlideFieldChange('Button.Size',$event)"
+            [groupType]="'sizes'" [excludeKeys]="['xs', '2xl']" (btnkeyChange)="onSlideFieldChange('Button.Size',$event)"
             [btnKey]="configuration?.Slides[id].Button?.Size">
     </pep-group-buttons-settings>
 
