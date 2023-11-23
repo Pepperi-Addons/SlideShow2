@@ -107,7 +107,6 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
 
     onSlideFieldChange(key, event){
         const value = event && event.source && event.source.key ? event.source.key : event && event.source && event.source.value ? event.source.value :  event;
-        
         if(key.indexOf('.') > -1){
             let keyObj = key.split('.');
             this.configuration.Slides[this.id][keyObj[0]][keyObj[1]] = value;

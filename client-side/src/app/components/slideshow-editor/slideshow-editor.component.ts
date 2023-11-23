@@ -131,7 +131,6 @@ export class SlideshowEditorComponent implements OnInit {
     }
 
     onSlideshowFieldChange(key, event){
-
         const value = event && event.source && event.source.key ? event.source.key : event && event.source && event.source.value ? event.source.value :  event;
        
         if(key.indexOf('.') > -1){

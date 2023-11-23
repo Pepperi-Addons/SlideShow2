@@ -13,13 +13,6 @@
   ],
   "PublishConfig": {
     "ClientStack": "ng14",
-    "Editors": [
-      {
-        "ParentPackageName": "CHANGE_TO_ADDON_CONTAINER_NAME",
-        "PackageName": "CHANGE_TO_ADDON_PATH",
-        "Description": "CHANGE_TO_ADDON_DESCRIPTION"
-      }
-    ],
     "Dependencies": {
       "cpi_node": "1.3.6",
       "assets": "1.2.2",

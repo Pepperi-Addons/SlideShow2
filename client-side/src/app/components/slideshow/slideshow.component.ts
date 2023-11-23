@@ -63,6 +63,7 @@ export class SlideshowComponent implements OnInit {
     }
 
     private registerStateChange(data: {state: any, configuration: any}) {
+        debugger;
         this.configuration = data.configuration;
         this.showSlides();
     }
@@ -86,7 +87,10 @@ export class SlideshowComponent implements OnInit {
       }
 
       setSlideIndex(index){
-          this.slideIndex = index;
+        clearTimeout(this.timer);
+        this.slideIndex = index;
+        this.showSlides();
+
       }
 
       setRunState(event){

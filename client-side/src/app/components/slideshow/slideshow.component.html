@@ -42,18 +42,12 @@
        <div id="dotsCont" 
             class="pep-button"
             [ngClass]='[configuration?.SlideshowConfig?.Controllers?.Size || "md", configuration?.SlideshowConfig?.Controllers?.Style || "weak"]'>
-            
             <pep-icon name="system_circle" 
                       class="dot" 
                       *ngFor="let slide of configuration?.Slides; let i = index"
                       (click)="setSlideIndex(i)"
                       [ngClass]="[i  ===  slideIndex ? 'active' : '']">
             </pep-icon>
-              <!-- <span *ngFor="let slide of configuration?.Slides; let i = index" 
-                     class="dot" 
-                     (click)="setSlideIndex(i)" 
-                     [ngClass]="{'active': i ===  slideIndex}">
-              </span> -->
        </div>
        <ng-container *ngIf="configuration?.SlideshowConfig?.Transition?.Use && configuration?.SlideshowConfig?.Controllers?.ShowPause">
               <pep-button *ngIf="!isPause" [sizeType]='configuration?.SlideshowConfig?.Controllers?.Size' 
