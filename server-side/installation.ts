@@ -22,10 +22,14 @@ export async function install(client: Client, request: Request): Promise<any> {
     const slideshowRelationsRes = await runMigration(client);
     const dimxRes = await createDimxRelations(client);
     const dimxSchemeRes = await addDimxScheme(client);
+    const deleteOldSlideRelation = await deleteOldSlideshowRelation(client, request);
    
     return {
-        success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success,
-        errorMessage: `slideshowRelationsRes: ${slideshowRelationsRes.errorMessage}, userDeviceResourceRes: ${dimxRes.errorMessage}, userDeviceResourceRes: ${dimxSchemeRes.errorMessage}`
+        success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success && deleteOldSlideRelation,
+        errorMessage: `slideshowRelationsRes: ${slideshowRelationsRes.errorMessage}, 
+                      userDeviceResourceRes: ${dimxRes.errorMessage}, 
+                      userDeviceResourceRes: ${dimxSchemeRes.errorMessage}, 
+                      deleteOldSlideRelation: ${deleteOldSlideRelation.errorMessage}`
     };
 }
 
@@ -37,10 +41,13 @@ export async function upgrade(client: Client, request: Request): Promise<any> {
     const slideshowRelationsRes = await runMigration(client);
     const dimxRes = await createDimxRelations(client);
     const dimxSchemeRes = await addDimxScheme(client);
-   
+    const deleteOldSlideRelation = await deleteOldSlideshowRelation(client, request);
     return {
-        success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success,
-        errorMessage: `slideshowRelationsRes: ${slideshowRelationsRes.errorMessage}, userDeviceResourceRes: ${dimxRes.errorMessage}, userDeviceResourceRes: ${dimxSchemeRes.errorMessage}`
+        success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success && deleteOldSlideRelation.success,
+        errorMessage: `slideshowRelationsRes: ${slideshowRelationsRes.errorMessage}, 
+                       userDeviceResourceRes: ${dimxRes.errorMessage}, 
+                       userDeviceResourceRes: ${dimxSchemeRes.errorMessage},
+                       deleteOldSlideRelation: ${deleteOldSlideRelation.errorMessage}`
     };
 }
 
@@ -204,6 +211,20 @@ async function runMigration(client){
         return {success:true, errorMessage: '' };
     } catch(e) {
         return { success: false, errorMessage: e || '' };
+    }
+}
+
+async function deleteOldSlideshowRelation(client: Client, request: Request){
+    try {
+        const service = new MyService(client);
+        await service.papiClient.addons.api.uuid('f93658be-17b6-4c92-9df3-4e6c7151e038').file('api').func('delete_relation').post({ 'client': client, 'request': request });
+        return {
+            success: true,
+            errorMessage: ''
+        }
+    }
+    catch(e) {
+        return { success: false, errorMessage: e || 'Slideshow - delete relation failed' };
     }
 }
 
