@@ -63,7 +63,6 @@ export class SlideshowComponent implements OnInit {
     }
 
     private registerStateChange(data: {state: any, configuration: any}) {
-        debugger;
         this.configuration = data.configuration;
         this.showSlides();
     }

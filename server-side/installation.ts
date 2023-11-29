@@ -22,7 +22,7 @@ export async function install(client: Client, request: Request): Promise<any> {
     const slideshowRelationsRes = await runMigration(client);
     const dimxRes = await createDimxRelations(client);
     const dimxSchemeRes = await addDimxScheme(client);
-    const deleteOldSlideRelation = await deleteOldSlideshowRelation(client, request);
+    const deleteOldSlideRelation = await deleteOldSlideshowRelation(client);
    
     return {
         success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success && deleteOldSlideRelation,
@@ -41,7 +41,7 @@ export async function upgrade(client: Client, request: Request): Promise<any> {
     const slideshowRelationsRes = await runMigration(client);
     const dimxRes = await createDimxRelations(client);
     const dimxSchemeRes = await addDimxScheme(client);
-    const deleteOldSlideRelation = await deleteOldSlideshowRelation(client, request);
+    const deleteOldSlideRelation = await deleteOldSlideshowRelation(client);
     return {
         success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success && deleteOldSlideRelation.success,
         errorMessage: `slideshowRelationsRes: ${slideshowRelationsRes.errorMessage}, 
@@ -214,7 +214,7 @@ async function runMigration(client){
     }
 }
 
-async function deleteOldSlideshowRelation(client: Client, request: Request){
+async function deleteOldSlideshowRelation(client: Client){
     try {
         const service = new MyService(client);
         await service.papiClient.addons.api.uuid('f93658be-17b6-4c92-9df3-4e6c7151e038').file('api').func('delete_relation').post();

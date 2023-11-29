@@ -6,6 +6,7 @@ import { PepButton } from '@pepperi-addons/ngx-lib/button';
 import { ISlideShow, ISlideshowEditor, TransitionType, ISlideEditor, IHostObject } from '../slideshow.model';
 import { Page, PageConfiguration } from '@pepperi-addons/papi-sdk';
 import { FlowService } from 'src/services/flow.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
     selector: 'slideshow-editor',
@@ -246,8 +247,10 @@ export class SlideshowEditorComponent implements OnInit {
         slide = JSON.parse(JSON.stringify(this.configuration.Slides[event.id]));
 
         slide.id = (this.configuration?.Slides.length);
+        slide.FirstButton.ButtonKey = uuid();
+        slide.SecondButton.ButtonKey = uuid();
         this.configuration?.Slides.push(slide);
-        //this._configuration = this.configuration
+
         this.updateHostObject();  
     }
 
