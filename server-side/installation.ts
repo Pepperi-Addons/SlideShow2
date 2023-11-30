@@ -217,10 +217,10 @@ async function runMigration(client){
 async function deleteOldSlideshowRelation(client: Client){
     try {
         const service = new MyService(client);
-        await service.papiClient.addons.api.uuid('f93658be-17b6-4c92-9df3-4e6c7151e038').file('api').func('delete_relation').post();
+        const res = await service.papiClient.addons.api.uuid('f93658be-17b6-4c92-9df3-4e6c7151e038').file('api').func('delete_relation').post();
         return {
-            success: true,
-            errorMessage: ''
+            success:res.success,
+            errorMessage: res.erroeMessage
         }
     }
     catch(e) {
