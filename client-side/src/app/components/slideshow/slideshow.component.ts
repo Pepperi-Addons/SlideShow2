@@ -63,10 +63,22 @@ export class SlideshowComponent implements OnInit {
     }
 
     private registerStateChange(data: {state: any, configuration: any}) {
-        this.configuration = data.configuration;
-        this.showSlides();
+        //this.configuration = data.configuration;
+        if(data?.configuration){
+            this.mergeConfiguration(data.configuration);
+            this.showSlides();
+        }
     }
     
+    private mergeConfiguration(newConfiguration){
+        for (const prop in this.configuration) {
+            // skip loop if the property dont exits on new object
+            if (!newConfiguration.hasOwnProperty(prop)) continue;
+            //update configuration with the object from new object
+            this.configuration[prop] = newConfiguration[prop]; 
+        }
+    }
+
     showSlides() {
         if (this.configuration && Object.keys(this.configuration).length > 0) {
             if (!this.configuration.SlideshowConfig.Transition.Use) {

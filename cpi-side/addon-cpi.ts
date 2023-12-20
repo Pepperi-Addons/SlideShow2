@@ -9,10 +9,15 @@ router.post('/on_slideshow_block_load', async (req, res) => {
     const state = req.body.State;
     //check if flow configured to on load --> run flow (instaed of onload event)
     if(configuration?.SlideshowConfig?.OnLoadFlow){
-        const cpiService = new SlidesowCpiService();
-        //CALL TO FLOWS AND SET CONFIGURATION
-        const res: any = await cpiService.getOptionsFromFlow(configuration.SlideshowConfig.OnLoadFlow, state, req.context, configuration );
-        configurationRes = res?.configuration || configuration;
+        try{
+            const cpiService = new SlidesowCpiService();
+            //CALL TO FLOWS AND SET CONFIGURATION
+            const res: any = await cpiService.getOptionsFromFlow(configuration.SlideshowConfig.OnLoadFlow, state, req.context, configuration );
+            configurationRes = res?.configuration || configuration;
+        }
+        catch(err){
+            configurationRes = configuration;
+        }
     }
 
     if(!(await pepperi['environment'].isWebApp())) {
@@ -25,10 +30,6 @@ router.post('/on_slideshow_block_load', async (req, res) => {
             configurationRes.Slides = Slides;
          }
     }
-    const difference = _.differenceWith(_.toPairs(configurationRes), _.toPairs(configuration), _.isEqual);
-    difference.forEach(diff => {
-        state[diff[0]] = diff[1];
-    });
 
     res.json({
         State: state,
@@ -42,14 +43,6 @@ router.post('/run_slide_click_event', async (req, res) => {
     const btnKey = req.body.ButtonKey;
     let configuration = req?.body?.Configuration;
 
-    for (var prop in configuration) {
-        // skip loop if the property dont exits on state object
-        if (!state.hasOwnProperty(prop)) continue;
-        //update configuration with the object from state
-        configuration[prop] = state[prop]; 
-    }
-
-    let configurationRes = configuration;
     let btn;
     for(let i=0; i< configuration.Slides.length; i++){
             const slide = configuration.Slides[i];
@@ -62,18 +55,14 @@ router.post('/run_slide_click_event', async (req, res) => {
                  break;
              } 
     }
+    let configurationRes = null;
     // check if button is enable and have flow
     if (btn?.Flow){
         const cpiService = new SlidesowCpiService();
         //CALL TO FLOWS AND SET CONFIGURATION
         const result: any = await cpiService.getOptionsFromFlow(btn.Flow || [], state , req.context, configuration);
-        configurationRes = result?.configuration || configuration;
+        configurationRes = result?.configuration;
     }
-    
-    const difference = _.differenceWith(_.toPairs(configurationRes), _.toPairs(configuration), _.isEqual);
-    difference.forEach(diff => {
-        state[diff[0]] = diff[1];
-    });
 
     res.json({
         State: state,
