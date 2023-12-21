@@ -18,7 +18,9 @@ export class SlideshowComponent implements OnInit {
     @Input()
     set hostObject(value: IHostObject) {
         // TODO: support all other properties if needed.
-        this._configuration = value?.configuration;
+        if(value?.configuration && Object.keys(value.configuration).length){
+            this.configuration = value?.configuration;
+        }
         this._parameters = value?.parameters || {};
         // if (value && value.configuration) {
         //     this._configuration = value.configuration;
@@ -63,11 +65,13 @@ export class SlideshowComponent implements OnInit {
     }
 
     private registerStateChange(data: {state: any, configuration: any}) {
-        //this.configuration = data.configuration;
-        if(data?.configuration){
-            this.mergeConfiguration(data.configuration);
-            this.showSlides();
+        if(!this.configuration && data?.configuration){
+            this.configuration = data.configuration;
         }
+        else if(data?.configuration){
+            this.mergeConfiguration(data.configuration);
+        }
+        this.showSlides();
     }
     
     private mergeConfiguration(newConfiguration){
