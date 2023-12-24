@@ -22,14 +22,13 @@ export async function install(client: Client, request: Request): Promise<any> {
     const slideshowRelationsRes = await runMigration(client);
     const dimxRes = await createDimxRelations(client);
     const dimxSchemeRes = await addDimxScheme(client);
-    const deleteOldSlideRelation = await deleteOldSlideshowRelation(client);
+    // const deleteOldSlideRelation = await deleteOldSlideshowRelation(client);
    
     return {
-        success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success && deleteOldSlideRelation,
+        success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success,
         errorMessage: `slideshowRelationsRes: ${slideshowRelationsRes.errorMessage}, 
                       userDeviceResourceRes: ${dimxRes.errorMessage}, 
-                      userDeviceResourceRes: ${dimxSchemeRes.errorMessage}, 
-                      deleteOldSlideRelation: ${deleteOldSlideRelation.errorMessage}`
+                      userDeviceResourceRes: ${dimxSchemeRes.errorMessage}`
     };
 }
 
@@ -41,13 +40,12 @@ export async function upgrade(client: Client, request: Request): Promise<any> {
     const slideshowRelationsRes = await runMigration(client);
     const dimxRes = await createDimxRelations(client);
     const dimxSchemeRes = await addDimxScheme(client);
-    const deleteOldSlideRelation = await deleteOldSlideshowRelation(client);
+    // const deleteOldSlideRelation = await deleteOldSlideshowRelation(client);
     return {
-        success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success && deleteOldSlideRelation.success,
+        success: slideshowRelationsRes.success && dimxRes.success && dimxSchemeRes.success,
         errorMessage: `slideshowRelationsRes: ${slideshowRelationsRes.errorMessage}, 
                        userDeviceResourceRes: ${dimxRes.errorMessage}, 
-                       userDeviceResourceRes: ${dimxSchemeRes.errorMessage},
-                       deleteOldSlideRelation: ${deleteOldSlideRelation.errorMessage}`
+                       userDeviceResourceRes: ${dimxSchemeRes.errorMessage}`
     };
 }
 
