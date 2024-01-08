@@ -18,7 +18,7 @@
       "assets": "1.2.2",
       "pfs": "1.2.28",
       "pages": "2.0.96",
-      "pepperi_pack": "1.1.5"
+      "pepperi_pack": "1.1.6"
     },
     "CPISide": [
       "addon-cpi.ts"
@@ -48,7 +48,8 @@
       "ngx-quill": "12",
       "ngx-signaturepad": "0",
       "ngx-virtual-scroller": "4",
-      "quill": "1"
+      "quill": "1",
+      "rxjs": "7"
     }
   }
 }
