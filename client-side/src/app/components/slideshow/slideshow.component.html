@@ -41,7 +41,7 @@
      [ngClass]="[configuration?.SlideshowConfig?.DropShadow?.use === true ? 'with-shadow-margin' : '' ]">
        <div id="dotsCont" 
             class="pep-button"
-            [ngClass]='[configuration?.SlideshowConfig?.Controllers?.Size || "md", configuration?.SlideshowConfig?.Controllers?.Style || "weak"]'>
+            [ngClass]='[configuration?.SlideshowConfig?.Controllers?.Size || "sm", configuration?.SlideshowConfig?.Controllers?.Style || "weak"]'>
             <pep-icon name="system_circle" 
                       class="dot" 
                       *ngFor="let slide of configuration?.Slides; let i = index"

@@ -77,8 +77,8 @@ export class Arrows {
 export class Controllers {
     ShowInSlider: boolean = true;
     Display: DisplayStates = 'show';
-    Size: PepSizeType = 'md';
-    Style: PepStyleType= 'weak';
+    Size: PepSizeType = 'sm';
+    Style: PepStyleType= 'weak-invert';
     ShowPause: boolean = true;
 }
 

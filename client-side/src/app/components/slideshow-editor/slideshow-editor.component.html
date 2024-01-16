@@ -82,7 +82,7 @@
                               pepResetConfigurationField="SlideshowConfig.Controllers.Size" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Size === configurationSource?.SlideshowConfig?.Controllers?.Size"
                               [resetHostEvents]="hostEvents"
                               [groupType]="'sizes'" [subHeader]="'SLIDESHOW.CONTROLLER_SIZE' | translate" 
-                              [btnKey]="configuration?.SlideshowConfig?.Controllers?.Size" [excludeKeys]="['xs','xl','2xl']"
+                              [btnKey]="configuration?.SlideshowConfig?.Controllers?.Size || 'sm'" [excludeKeys]="['xs','xl','2xl']"
                               (btnkeyChange)="onSlideshowFieldChange('Controllers.Size',$event)">
                 </pep-group-buttons-settings>
 
