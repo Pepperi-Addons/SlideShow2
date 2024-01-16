@@ -6,10 +6,11 @@
         <span class="body-sm ellipsis">{{id+1}}.&nbsp;</span>
         <span class="body-sm color-link bold ellipsis" title="{{title}}">{{title}}</span>
     </div>
-    <div class="actions">
-        <pep-button sizeType="xs" iconName="system_copy" title="{{'EDITOR.CONTENT.DUPLICATE' | translate}}" (buttonClick)="onDuplicateClick();"></pep-button>
-        <pep-button classNames="caution" sizeType="xs" iconName="system_bin" (buttonClick)="onRemoveClick();"></pep-button> 
-    </div>
+    <pep-menu
+        sizeType="xs"
+        [items]="actiosMenu"
+        (menuItemClick)="onMenuItemClick($event)">
+    </pep-menu>
     <div class="editorCont" *ngIf="id ==  selectedSlideIndex?.toString()">
    <pep-checkbox [value]="configuration?.Slides[id].Title?.Use" [label]="'SLIDE_EDITOR.TITLE' | translate" [renderTitle]="false" 
         (valueChange)="onSlideFieldChange('Title.Use',$event)">

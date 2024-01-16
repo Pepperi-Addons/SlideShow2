@@ -5,6 +5,7 @@ import { PepStyleType, PepSizeType, PepColorService} from '@pepperi-addons/ngx-l
 import { PepButton } from '@pepperi-addons/ngx-lib/button';
 import { PepColorSettings } from '@pepperi-addons/ngx-composite-lib/color-settings';
 import { FlowService } from 'src/services/flow.service';
+import { IPepMenuItemClickEvent, PepMenuItem } from '@pepperi-addons/ngx-lib/menu';
 
 interface groupButtonArray {
     key: string; 
@@ -36,7 +37,7 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
     textColors: Array<groupButtonArray> = [];
     buttonColor: Array<PepButton> = [];
     buttonStyle: Array<{key: PepStyleType, value: string}> = [];
-
+    actiosMenu: Array<PepMenuItem> = [];
         
     public title: string;
     public flowHostObject;
@@ -83,7 +84,12 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
             { key: 'weak-invert', value: this.translate.instant('SLIDE_EDITOR.BUTTON_STYLES.WEAK_INVERT')},
             { key: 'regular', value: this.translate.instant('SLIDE_EDITOR.BUTTON_STYLES.REGULAR')},
             { key: 'strong', value:this.translate.instant('SLIDE_EDITOR.BUTTON_STYLES.STRONG')}
-        ];  
+        ]; 
+        
+        this.actiosMenu = [
+            { key: 'duplicate', text: this.translate.instant('SLIDESHOW.DUPLICATE') },
+            { key: 'delete', text: this.translate.instant('SLIDESHOW.DELETE') }
+        ]
         
      }
 
@@ -92,17 +98,17 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
         this.flowHostObjectBtn2 = this.flowService.prepareFlowHostObject((this.configuration?.Slides[this.id]['SecondButton'].Flow || null));
     }
 
-
-    onRemoveClick() {
-        this.removeClick.emit({id: this.id});
-    }
-
     onEditClick() {
         this.editClick.emit({id: this.id});
     }
 
-    onDuplicateClick(){
-        this.duplicateClick.emit({id: this.id});
+    onMenuItemClick(item: IPepMenuItemClickEvent){
+        if(item?.source?.key == 'delete'){
+            this.removeClick.emit({id: this.id});
+        }
+        else if(item?.source?.key == 'duplicate'){
+            this.duplicateClick.emit({id: this.id});
+        }
     }
 
     onSlideFieldChange(key, event){

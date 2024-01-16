@@ -20,6 +20,8 @@
         "ROUND_CORNER": "Round corner",
         "SLIDES": "Slides",
         "ADD_SLIDE": "Add slide",
+        "DELETE": "Delete",
+        "DUPLICATE": "Duplicate",
         "FILL_HEIGHT_SECTION_TITLE": "Fill Height",
         "FILL_HEIGHT_SECTION_DESCRIPTION": "Set Fill Height on to make the section fill the relative screen size. Works only if parent Section Fill Height is set to true.",
         "HEIGHT": "Height (REM)",
