@@ -126,8 +126,8 @@ export class ISlideEditor {
     TextColor: textColor = 'inverted';
     Button = new Button();
     Alignment = new Alignment();
-    ContentWidth: WidthUnits = 'Regular';
-    InnerSpacing: PepSizeType = "md";
+    ContentWidth: WidthUnits = 'Wide';
+    InnerSpacing: PepSizeType | "none" = "none";
     GradientOverlay: PepColorSettings = new PepColorSettings(true, 'hsl(0, 100%, 50%)', 75);
     Overlay: PepColorSettings = new PepColorSettings(true, 'hsl(0, 0%, 0%)', 75);
     Image: SlideImage = new SlideImage();

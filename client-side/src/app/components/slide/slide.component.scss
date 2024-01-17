@@ -77,23 +77,19 @@
 
                 &.body-sm{
                     font-size: calc(#{ngx-variables.$fs-sm} * 1.25) !important;  
-                    height: calc(#{ngx-variables.$fs-lg} * 1.25) !important;  
-                    line-height: calc(#{ngx-variables.$fs-lg} * 1.25) !important;  
+                    line-height: calc(#{ngx-variables.$lh-sm} * 1) !important;  
                 }
                 &.body-md{
-                    font-size: calc(#{ngx-variables.$fs-md} * 1.5) !important;  
-                    height: calc(#{ngx-variables.$fs-lg} * 1.5) !important;  
-                    line-height: calc(#{ngx-variables.$fs-lg} * 1.5) !important;  
+                    font-size: calc(#{ngx-variables.$fs-md} * 1.5) !important;   
+                    line-height: calc(#{ngx-variables.$lh-md} * 1.25) !important;  
                 }
                 &.body-lg{
                     font-size: calc(#{ngx-variables.$fs-lg} * 1.75) !important; 
-                    height: calc(#{ngx-variables.$fs-lg} * 1.75) !important;  
-                    line-height: calc(#{ngx-variables.$fs-lg} * 1.75) !important;  
+                    line-height: calc(#{ngx-variables.$lh-lg} * 1.50) !important;  
                 }
                 &.body-xl{
                     font-size: calc(#{ngx-variables.$fs-xl} * 2) !important; 
-                    height: calc(#{ngx-variables.$fs-xl} * 2) !important; 
-                    line-height: calc(#{ngx-variables.$fs-xl} * 2) !important;     
+                    line-height: calc(#{ngx-variables.$lh-xl} * 1.75) !important;     
                 }
             }
             &.contentWidth_Narrow{
@@ -126,14 +122,14 @@
                 align-self: end;
             }
 
+            &.rowGap_xs{
+                grid-row-gap: ngx-variables.$spacing-2xs;
+            }
             &.rowGap_sm{
-                grid-row-gap: .25rem;
+                grid-row-gap: ngx-variables.$spacing-xs
             }
             &.rowGap_md{
-                grid-row-gap: .5rem;
-            }
-            &.rowGap_lg{
-                grid-row-gap: 1rem;
+                grid-row-gap: ngx-variables.$spacing-sm;
             }
 
             .textColor_system{
@@ -153,6 +149,7 @@
                 z-index: 2;
                 display: flex;
                 gap: ngx-variables.$spacing-sm;
+                margin-block-start: ngx-variables.$spacing-lg;
 
                 pep-button{
                     display: inline;
@@ -163,23 +160,19 @@
     div{
             &.title-sm{
                 font-size: calc(#{ngx-variables.$fs-sm} * 2.5) !important;  
-                height: calc(#{ngx-variables.$fs-lg} * 2.5) !important;  
-                line-height: calc(#{ngx-variables.$fs-lg} * 2.5) !important;  
+                line-height: calc(#{ngx-variables.$lh-sm} * 2.25) !important;  
             }
             &.title-md{
-                font-size: calc(#{ngx-variables.$fs-md} * 2.75) !important;  
-                height: calc(#{ngx-variables.$fs-lg} * 2.75) !important;  
-                line-height: calc(#{ngx-variables.$fs-lg} * 2.75) !important;  
+                font-size: calc(#{ngx-variables.$fs-md} * 2.5) !important;  
+                line-height: calc(#{ngx-variables.$lh-md} * 2.25) !important;  
             }
             &.title-lg{
-                font-size: calc(#{ngx-variables.$fs-lg} * 3) !important; 
-                height: calc(#{ngx-variables.$fs-lg} * 3) !important;  
-                line-height: calc(#{ngx-variables.$fs-lg} * 3) !important;  
+                font-size: calc(#{ngx-variables.$fs-lg} * 2.5) !important;  
+                line-height: calc(#{ngx-variables.$lh-lg} * 2.25) !important;   
             }
             &.title-xl{
-                font-size: calc(#{ngx-variables.$fs-xl} * 3.25) !important; 
-                height: calc(#{ngx-variables.$fs-xl} * 3.25) !important; 
-                line-height: calc(#{ngx-variables.$fs-xl} * 3.25) !important;     
+                font-size: calc(#{ngx-variables.$fs-xl} * 2.5) !important;  
+                line-height: calc(#{ngx-variables.$lh-xl} * 2.25) !important;   
             }
         
      }

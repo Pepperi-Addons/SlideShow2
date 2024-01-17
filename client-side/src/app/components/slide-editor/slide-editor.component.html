@@ -29,7 +29,7 @@
 
     <pep-group-buttons-settings 
         [groupType]="'custom'" [subHeader]="'SLIDE_EDITOR.MAIN_TITLE_WEIGHT' | translate" [btnsArray]="TitleWeight"
-        [disabled]="!configuration?.Slides[id].Title?.Use" [btnKey]="configuration?.Slides[id].titleWeight">
+        [disabled]="!configuration?.Slides[id].Title?.Use" [btnKey]="configuration?.Slides[id].Title.Weight">
     </pep-group-buttons-settings>
 
     <pep-checkbox [value]="configuration?.Slides[id].SubTitle.Use" [label]="'SLIDE_EDITOR.SUB_TITLE' | translate" [renderTitle]="false" 
@@ -54,8 +54,8 @@
     </pep-group-buttons-settings>
 
     <pep-group-buttons-settings 
-        [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERSPACING_TITLE' | translate" 
-        [btnKey]="configuration?.Slides[id].InnerSpacing" [excludeKeys]="['xl', '2xl']"
+        [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERSPACING_TITLE' | translate" [useNone]="true"
+        [btnKey]="configuration?.Slides[id].InnerSpacing" [excludeKeys]="['lg','xl', '2xl']"
         (btnkeyChange)="onSlideFieldChange('InnerSpacing',$event)">
     </pep-group-buttons-settings>
 
