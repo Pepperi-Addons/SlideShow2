@@ -1,4 +1,4 @@
-<mat-tab-group  #tabGroup class="editor-tabs" animationDuration="0ms">
+<mat-tab-group  #tabGroup class="editor-tabs page-builder-editor-tabs mat-primary" animationDuration="0ms">
     <mat-tab label="{{'SLIDESHOW.GENERAL' | translate}}">
         <div>
             <pep-checkbox class="checkbox-as-title" [value]="configuration?.SlideshowConfig?.Structure?.FillHeight" [label]="'SLIDESHOW.FILL_HEIGHT_SECTION_TITLE' | translate" [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Structure.FillHeight',$event)"></pep-checkbox>
