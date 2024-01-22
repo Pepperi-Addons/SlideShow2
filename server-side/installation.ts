@@ -165,6 +165,19 @@ async function runMigration(client){
                                         }
                                     }
                                 },
+                                "FirstButton":{
+                                    "Type": "Object",
+                                    "Fields": {
+                                        "Visible": {
+                                            "Type": "String",
+                                            "ConfigurationPerScreenSize": true
+                                        }
+                                    }
+                                },
+                                "SlideInteractivity": {
+                                    "Type": "String",
+                                    "ConfigurationPerScreenSize": true
+                                },
                                 "Image": {
                                     "Type": "Object",
                                     "Fields": {

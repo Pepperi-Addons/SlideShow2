@@ -95,7 +95,7 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         this.flowHostObject = this.flowService.prepareFlowHostObject((this.configuration?.Slides[this.id]['FirstButton'].Flow || null));
-        this.flowHostObjectBtn2 = this.flowService.prepareFlowHostObject((this.configuration?.Slides[this.id]['SecondButton'].Flow || null));
+        //this.flowHostObjectBtn2 = this.flowService.prepareFlowHostObject((this.configuration?.Slides[this.id]['SecondButton'].Flow || null));
     }
 
     onEditClick() {

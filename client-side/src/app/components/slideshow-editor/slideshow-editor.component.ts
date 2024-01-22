@@ -248,7 +248,7 @@ export class SlideshowEditorComponent implements OnInit {
 
         slide.id = (this.configuration?.Slides.length);
         slide.FirstButton.ButtonKey = uuid();
-        slide.SecondButton.ButtonKey = uuid();
+        //slide.SecondButton.ButtonKey = uuid();
         this.configuration?.Slides.push(slide);
 
         this.updateHostObject();  
@@ -279,7 +279,7 @@ export class SlideshowEditorComponent implements OnInit {
     private getPageConfigurationParametersNames(): Array<string> {
         const parameters = new Set<string>();
         // Array of actions buttons
-        const scriptBtns = ['FirstButton','SecondButton'];
+        const scriptBtns = ['FirstButton'];
 
         // Go for all slides scripts and add parameters to page configuration if Source is dynamic.
         for (let index = 0; index < this.configuration.Slides.length; index++) {
@@ -346,7 +346,7 @@ export class SlideshowEditorComponent implements OnInit {
         }
         
         // Move on all the gallery cards flows.
-        const scriptBtns = ['FirstButton','SecondButton'];
+        const scriptBtns = ['FirstButton'];
         for (let index = 0; index < this.configuration?.Slides?.length; index++) {
             const slide = this.configuration.Slides[index];
             // run on 1st & 2th buttons for eace slide

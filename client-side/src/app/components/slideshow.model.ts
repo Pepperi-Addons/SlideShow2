@@ -21,13 +21,14 @@ export class SlideButton {
     Flow: any;
     ButtonKey: string = uuid();
     Style: PepStyleType;
+    Visible: string;
 
 
-    constructor(use = true, label = 'Yess', style: PepStyleType = 'weak-invert') {
+    constructor(use = true, label = 'Yess', style: PepStyleType = 'weak-invert', visible = 'true') {
         this.Use = use;
         this.Label = label;
         this.Style = style;
-
+        this.Visible = visible;
       }
 }
 
@@ -131,6 +132,7 @@ export class ISlideEditor {
     GradientOverlay: PepColorSettings = new PepColorSettings(true, 'hsl(0, 100%, 50%)', 75);
     Overlay: PepColorSettings = new PepColorSettings(true, 'hsl(0, 0%, 0%)', 75);
     Image: SlideImage = new SlideImage();
+    SlideInteractivity: string = 'false';
 }
 
 

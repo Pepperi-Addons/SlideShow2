@@ -178,11 +178,22 @@ export class SlideshowComponent implements OnInit {
         return res;
     }
 
+    onSlideClicked(event){
+        if(this.configuration?.Slides[event.id].SlideInteractivity == 'true' && event){
+            const btn = this.configuration?.Slides[event.id]['FirstButton'] || null;
+            if(btn?.Flow && btn.Use){
+                this.hostEvents.emit({
+                    action: 'button-click',
+                    buttonKey: btn.ButtonKey
+                });
+            }
+        }
+    }
     onSlideButtonClicked(event){
         //check if slide btn has flow
         if(event){
             const btn = this.configuration?.Slides[event.slideIndex][event.btnName] || null;
-            if(btn?.Flow){
+            if(btn?.Flow && btn.Use){
                 this.hostEvents.emit({
                     action: 'button-click',
                     buttonKey: btn.ButtonKey

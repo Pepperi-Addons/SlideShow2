@@ -12,155 +12,153 @@
         (menuItemClick)="onMenuItemClick($event)">
     </pep-menu>
     <div class="editorCont" *ngIf="id ==  selectedSlideIndex?.toString()">
-   <pep-checkbox [value]="configuration?.Slides[id].Title?.Use" [label]="'SLIDE_EDITOR.TITLE' | translate" [renderTitle]="false" 
-        (valueChange)="onSlideFieldChange('Title.Use',$event)">
-    </pep-checkbox>
-    <pep-textbox [label]="'SLIDE_EDITOR.TITLE_CONTENT' | translate" type="string" 
-                 [disabled]="!configuration?.Slides[id].Title?.Use" [value]="configuration?.Slides[id].Title?.Content" 
-                 (valueChange)="onSlideFieldChange('Title.Content',$event)">
-    </pep-textbox>
-    <pep-group-buttons-settings 
-        pepResetConfigurationField="Slides[{{id}}].Title.Size" [hideReset]="configuration?.Slides[id]?.Title?.Size === configurationSource?.Slides[id]?.Title?.Size"
-        [resetHostEvents]="hostEvents"
-        [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.MAIN_TITLE_SIZE' | translate" 
-        [btnKey]="configuration?.Slides[id].Title.Size" [excludeKeys]="['xs', '2xl']"
-        (btnkeyChange)="onSlideFieldChange('Title.Size',$event)">
-    </pep-group-buttons-settings>
-
-    <pep-group-buttons-settings 
-        [groupType]="'custom'" [subHeader]="'SLIDE_EDITOR.MAIN_TITLE_WEIGHT' | translate" [btnsArray]="TitleWeight"
-        [disabled]="!configuration?.Slides[id].Title?.Use" [btnKey]="configuration?.Slides[id].Title.Weight">
-    </pep-group-buttons-settings>
-
-    <pep-checkbox [value]="configuration?.Slides[id].SubTitle.Use" [label]="'SLIDE_EDITOR.SUB_TITLE' | translate" [renderTitle]="false" 
-    (valueChange)="onSlideFieldChange('SubTitle.Use',$event)"></pep-checkbox>
-    
-    <pep-textarea [value]="configuration?.Slides[id].SubTitle.Content" [label]="'SLIDE_EDITOR.SUBTITLE_CONTENT' | translate" [disabled]="!configuration?.Slides[id].SubTitle.Use" 
-                  rowSpan="2" (valueChange)="onSlideFieldChange('SubTitle.Content',$event)">
-    </pep-textarea>
-
-    <pep-group-buttons-settings 
-        pepResetConfigurationField="Slides[{{id}}].SubTitle?.Size" [hideReset]="configuration.Slides[id]?.SubTitle?.Size === configurationSource?.Slides[id]?.SubTitle?.Size"
-         [resetHostEvents]="hostEvents"
-        [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.SUB_TITLE_SIZE' | translate" [excludeKeys]="['xs','2xl']" (btnkeyChange)="onSlideFieldChange('SubTitle.Size',$event)"
-        [disabled]="!configuration?.Slides[id].SubTitle.Use" [btnKey]="configuration?.Slides[id].SubTitle?.Size">
-    </pep-group-buttons-settings>
-
-    <pep-group-buttons-settings
-        pepResetConfigurationField="Slides[{{id}}].ContentWidth" [hideReset]="configuration.Slides[id]?.ContentWidth === configurationSource?.Slides[id]?.ContentWidth"
-         [resetHostEvents]="hostEvents" 
-        [groupType]="'custom'" [header]="'SLIDE_EDITOR.CONTENT' | translate" [subHeader]="'SLIDE_EDITOR.CONTENT_BLOCK_WIDTH' | translate" [btnsArray]="WidthSize"
-        [btnKey]="configuration?.Slides[id].ContentWidth">
-    </pep-group-buttons-settings>
-
-    <pep-group-buttons-settings 
-        [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERSPACING_TITLE' | translate" [useNone]="true"
-        [btnKey]="configuration?.Slides[id].InnerSpacing" [excludeKeys]="['lg','xl', '2xl']"
-        (btnkeyChange)="onSlideFieldChange('InnerSpacing',$event)">
-    </pep-group-buttons-settings>
-
-    <pep-group-buttons-settings 
-            pepResetConfigurationField="Slides[{{id}}].Alignment.Horizontal" [hideReset]="configuration?.Slides[id]?.Alignment.Horizontal === configurationSource?.Slides[id]?.Alignment?.Horizontal"
-             [resetHostEvents]="hostEvents" 
-            [groupType]="'horizontal-align'" [subHeader]="'SLIDE_EDITOR.HORIZONTAL_ALIGN' | translate"
-            [btnKey]="configuration?.Slides[id].Alignment?.Horizontal"
-            (btnkeyChange)="onSlideFieldChange('Alignment.Horizontal',$event)">
-    </pep-group-buttons-settings>
-
-    <pep-group-buttons-settings 
-                pepResetConfigurationField="Slides[{{id}}].Alignment.Vertical" [hideReset]="configuration?.Slides[id]?.Alignment?.Vertical === configurationSource?.Slides[id]?.Alignment?.Vertical"
+        <div> <!-- Title -->
+            <pep-checkbox [value]="configuration?.Slides[id].Title?.Use" [label]="'SLIDE_EDITOR.TITLE' | translate" [renderTitle]="false" 
+                (valueChange)="onSlideFieldChange('Title.Use',$event)">
+            </pep-checkbox>
+            <pep-textbox [label]="'SLIDE_EDITOR.TITLE_CONTENT' | translate" type="string" 
+                        [disabled]="!configuration?.Slides[id].Title?.Use" [value]="configuration?.Slides[id].Title?.Content" 
+                        (valueChange)="onSlideFieldChange('Title.Content',$event)">
+            </pep-textbox>
+            <pep-group-buttons-settings 
+                pepResetConfigurationField="Slides[{{id}}].Title.Size" [hideReset]="configuration?.Slides[id]?.Title?.Size === configurationSource?.Slides[id]?.Title?.Size"
+                [resetHostEvents]="hostEvents"
+                [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.MAIN_TITLE_SIZE' | translate" 
+                [btnKey]="configuration?.Slides[id].Title.Size" [excludeKeys]="['xs', '2xl']"
+                (btnkeyChange)="onSlideFieldChange('Title.Size',$event)">
+            </pep-group-buttons-settings>
+            <pep-group-buttons-settings 
+                [groupType]="'custom'" [subHeader]="'SLIDE_EDITOR.MAIN_TITLE_WEIGHT' | translate" [btnsArray]="TitleWeight"
+                [disabled]="!configuration?.Slides[id].Title?.Use" [btnKey]="configuration?.Slides[id].Title.Weight">
+            </pep-group-buttons-settings>
+        </div>
+        <div class="separator pep-border-top"> <!--Sub Title -->
+            <pep-checkbox [value]="configuration?.Slides[id].SubTitle.Use" [label]="'SLIDE_EDITOR.SUB_TITLE' | translate" [renderTitle]="false" 
+                        (valueChange)="onSlideFieldChange('SubTitle.Use',$event)">
+            </pep-checkbox>
+            <pep-textarea [value]="configuration?.Slides[id].SubTitle.Content" [label]="'SLIDE_EDITOR.SUBTITLE_CONTENT' | translate" [disabled]="!configuration?.Slides[id].SubTitle.Use" 
+                        rowSpan="2" (valueChange)="onSlideFieldChange('SubTitle.Content',$event)">
+            </pep-textarea>
+            <pep-group-buttons-settings 
+                pepResetConfigurationField="Slides[{{id}}].SubTitle?.Size" [hideReset]="configuration.Slides[id]?.SubTitle?.Size === configurationSource?.Slides[id]?.SubTitle?.Size"
+                [resetHostEvents]="hostEvents"
+                [groupType]="'sizes'" [subHeader]="'SLIDE_EDITOR.SUB_TITLE_SIZE' | translate" [excludeKeys]="['xs','2xl']" (btnkeyChange)="onSlideFieldChange('SubTitle.Size',$event)"
+                [disabled]="!configuration?.Slides[id].SubTitle.Use" [btnKey]="configuration?.Slides[id].SubTitle?.Size">
+            </pep-group-buttons-settings>
+        </div>
+        <div class="separator pep-border-top"> <!-- Content -->
+            <pep-group-buttons-settings
+                pepResetConfigurationField="Slides[{{id}}].ContentWidth" [hideReset]="configuration.Slides[id]?.ContentWidth === configurationSource?.Slides[id]?.ContentWidth"
                 [resetHostEvents]="hostEvents" 
-                [groupType]="'vertical-align'" [subHeader]="'SLIDE_EDITOR.VERTICAL_ALIGN' | translate"
-                [btnKey]="configuration?.Slides[id].Alignment?.Vertical"
-                (btnkeyChange)="onSlideFieldChange('Alignment.Vertical',$event)">
-    </pep-group-buttons-settings>
+                [groupType]="'custom'" [header]="'SLIDE_EDITOR.CONTENT' | translate" [subHeader]="'SLIDE_EDITOR.CONTENT_BLOCK_WIDTH' | translate" [btnsArray]="WidthSize"
+                [btnKey]="configuration?.Slides[id].ContentWidth">
+            </pep-group-buttons-settings>
+            <pep-group-buttons-settings 
+                [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERSPACING_TITLE' | translate" [useNone]="true"
+                [btnKey]="configuration?.Slides[id].InnerSpacing" [excludeKeys]="['lg','xl', '2xl']"
+                (btnkeyChange)="onSlideFieldChange('InnerSpacing',$event)">
+            </pep-group-buttons-settings>
+            <pep-group-buttons-settings class="margin-top"
+                    pepResetConfigurationField="Slides[{{id}}].Alignment.Horizontal" [hideReset]="configuration?.Slides[id]?.Alignment.Horizontal === configurationSource?.Slides[id]?.Alignment?.Horizontal"
+                    [resetHostEvents]="hostEvents" 
+                    [groupType]="'horizontal-align'" [subHeader]="'SLIDE_EDITOR.HORIZONTAL_ALIGN' | translate"
+                    [btnKey]="configuration?.Slides[id].Alignment?.Horizontal"
+                    (btnkeyChange)="onSlideFieldChange('Alignment.Horizontal',$event)">
+            </pep-group-buttons-settings>
+            <pep-group-buttons-settings 
+                        pepResetConfigurationField="Slides[{{id}}].Alignment.Vertical" [hideReset]="configuration?.Slides[id]?.Alignment?.Vertical === configurationSource?.Slides[id]?.Alignment?.Vertical"
+                        [resetHostEvents]="hostEvents" 
+                        [groupType]="'vertical-align'" [subHeader]="'SLIDE_EDITOR.VERTICAL_ALIGN' | translate"
+                        [btnKey]="configuration?.Slides[id].Alignment?.Vertical"
+                        (btnkeyChange)="onSlideFieldChange('Alignment.Vertical',$event)">
+            </pep-group-buttons-settings>
+            <pep-select [label]="'SLIDE_EDITOR.TEXT_COLOR_TITLE' | translate" [value]="configuration?.Slides[id].TextColor" [options]="textColors"
+                        (valueChange)="onSlideFieldChange('TextColor',$event)" [emptyOption]="false" [disabled]="false">
+            </pep-select>
+        </div>
+        <div class="separator pep-border-top"> <!-- Flow -->
+            <pep-checkbox [value]="configuration?.Slides[id].FirstButton.Use" [label]="'SLIDE_EDITOR.SLIDE_CHOOSE_FLOW' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('FirstButton.Use',$event)"></pep-checkbox>
+            <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONCLICK_DESC' | translate"></pep-field-title>
+            <pep-flow-picker-button [disabled]="!configuration?.Slides[id].FirstButton.Use" [flowHostObject]="flowHostObject" (flowChange)="onFlowChange($event,'FirstButton')"></pep-flow-picker-button>
+            <pep-textbox [label]="'SLIDE_EDITOR.ACTION_KEY' | translate" type="string" [disabled]="true" 
+            [value]="configuration?.Slides[id].FirstButton.ButtonKey"></pep-textbox>
+        </div>
+        <div class="separator pep-border-top"> <!-- Button -->
+            <label class="body-xl bold ellipsis">{{'SLIDE_EDITOR.BUTTON' | translate}}</label>
+            <pep-textbox [label]="'SLIDE_EDITOR.LABEL' | translate" type="string" [value]="configuration?.Slides[id].FirstButton.Label" (valueChange)="onSlideFieldChange('FirstButton.Label',$event)"></pep-textbox>
+            <pep-select [label]="'SLIDE_EDITOR.BUTTON_STYLE' | translate" [value]="configuration?.Slides[id].FirstButton.Style" 
+                        [options]="buttonStyle" (valueChange)="onSlideFieldChange('FirstButton.Style',$event)" [emptyOption]="false" 
+                        styleType="weak">
+            </pep-select>
+            <pep-group-buttons-settings 
+                    pepResetConfigurationField="Slides[{{id}}].Button.Size" [hideReset]="configuration?.Slides[id]?.Button?.Size === configurationSource?.Slides[id]?.Button?.Size"
+                    [resetHostEvents]="hostEvents" 
+                    [subHeader]="'SLIDE_EDITOR.BUTTON_SIZE' | translate"
+                    [groupType]="'sizes'" [excludeKeys]="['xs', '2xl']" (btnkeyChange)="onSlideFieldChange('Button.Size',$event)"
+                    [btnKey]="configuration?.Slides[id].Button?.Size">
+            </pep-group-buttons-settings>
+            <pep-select [label]="'SLIDE_EDITOR.BUTTON_COLOR_TITLE' | translate" [value]="configuration?.Slides[id].Button?.Color" class="pep-field-no-spacing"
+                        [options]="buttonColor" (valueChange)="onSlideFieldChange('Button.Color',$event)" [emptyOption]="false" 
+                        [disabled]="false" styleType="regular"></pep-select>
+            <pep-group-buttons-settings 
+                        pepResetConfigurationField="Slides[{{id}}].FirstButton.Visible" [hideReset]="configuration?.Slides[id]?.FirstButton?.Visible === configurationSource?.Slides[id]?.FirstButton?.Visible"
+                        [resetHostEvents]="hostEvents" 
+                        [subHeader]="'SLIDE_EDITOR.BUTTON_VISIBLE' | translate"
+                        [groupType]="'boolean'"  (btnkeyChange)="onSlideFieldChange('FirstButton.Visible',$event)"
+                        [btnKey]="configuration?.Slides[id].FirstButton.Visible">
+            </pep-group-buttons-settings> 
+            <span class="body-xs margin-top">{{'SLIDE_EDITOR.BUTTON_VIS_DESC' | translate}}></span>
+        </div>
+        <div class="separator pep-border-top">
+            <label class="body-xl bold ellipsis">{{'SLIDE_EDITOR.SLIDE_INTERACTIVITY' | translate}}</label>
+            <pep-group-buttons-settings
+                        pepResetConfigurationField="Slides[{{id}}].SlideInteractivity" [hideReset]="configuration?.Slides[id]?.SlideInteractivity === configurationSource?.Slides[id]?.SlideInteractivity"
+                        [resetHostEvents]="hostEvents" 
+                        [subHeader]="'SLIDE_EDITOR.INTERACTIVE_SLIDE' | translate"
+                        [groupType]="'boolean'"  (btnkeyChange)="onSlideFieldChange('SlideInteractivity',$event)"
+                        [btnKey]="configuration?.Slides[id].SlideInteractivity">
+            </pep-group-buttons-settings> 
+            <span class="body-xs margin-top">{{'SLIDE_EDITOR.SLIDE_INTER_DESC' | translate}}></span>
+        </div>
+        <div class="separator pep-border-top">
+            <pep-color-settings [title]="'SLIDE_EDITOR.GRADIENT_OVERLAY' | translate"
+                                [checkAAComplient]="false"
+                                [color]="configuration?.Slides[id].GradientOverlay"
+                                (colorChange)="onSlideFieldChange('GradientOverlay',$event)">
+            </pep-color-settings>
+            <pep-color-settings [title]="'SLIDE_EDITOR.OVERLAY' | translate"
+                                [checkAAComplient]="false"
+                                [color]="configuration?.Slides[id].Overlay"
+                                (colorChange)="onSlideFieldChange('Overlay',$event)">
+            </pep-color-settings>
+            <pep-checkbox [value]="configuration?.Slides[id].Image.Use" [label]="'SLIDE_EDITOR.IMAGE' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('Image.Use',$event)"></pep-checkbox>
 
-    <pep-select [label]="'SLIDE_EDITOR.TEXT_COLOR_TITLE' | translate" [value]="configuration?.Slides[id].TextColor" [options]="textColors"
-                (valueChange)="onSlideFieldChange('TextColor',$event)" [emptyOption]="false" [disabled]="false"></pep-select>
-
-    <pep-group-buttons-settings 
-            pepResetConfigurationField="Slides[{{id}}].Button.Size" [hideReset]="configuration?.Slides[id]?.Button?.Size === configurationSource?.Slides[id]?.Button?.Size"
-             [resetHostEvents]="hostEvents" 
-            [header]="'SLIDE_EDITOR.BUTTONS' | translate" [subHeader]="'SLIDE_EDITOR.BUTTON_SIZE' | translate"
-            [groupType]="'sizes'" [excludeKeys]="['xs', '2xl']" (btnkeyChange)="onSlideFieldChange('Button.Size',$event)"
-            [btnKey]="configuration?.Slides[id].Button?.Size">
-    </pep-group-buttons-settings>
-
-    <pep-select [label]="'SLIDE_EDITOR.BUTTON_COLOR_TITLE' | translate" [value]="configuration?.Slides[id].Button?.Color" 
-                [options]="buttonColor" (valueChange)="onSlideFieldChange('Button.Color',$event)" [emptyOption]="false" 
-                [disabled]="false" styleType="regular"></pep-select>
-
-
-    <pep-checkbox [value]="configuration?.Slides[id].FirstButton.Use" [label]="'SLIDE_EDITOR.FIRST_BUTTON' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('FirstButton.Use',$event)"></pep-checkbox>
-    <pep-textbox [label]="'SLIDE_EDITOR.LABEL' | translate" type="string" [disabled]="!configuration?.Slides[id].FirstButton.Use" [value]="configuration?.Slides[id].FirstButton.Label" (valueChange)="onSlideFieldChange('FirstButton.Label',$event)"></pep-textbox>
-
-    <div>
-        <label class="body-lg bold ellipsis">{{'SLIDE_EDITOR.CHOOSE_FLOW' | translate}}</label>
-        <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONCLICK_DESC' | translate"></pep-field-title>
-        <pep-flow-picker-button [flowHostObject]="flowHostObject" (flowChange)="onFlowChange($event,'FirstButton')"></pep-flow-picker-button>
-    </div>
-    <pep-textbox [label]="'SLIDE_EDITOR.ACTION_KEY' | translate" type="string" [disabled]="true" 
-                     [value]="configuration?.Slides[id].FirstButton.ButtonKey"></pep-textbox>
-
-    <pep-select [label]="'SLIDE_EDITOR.BUTTON_STYLE' | translate" [value]="configuration?.Slides[id].FirstButton.Style" 
-                [options]="buttonStyle" (valueChange)="onSlideFieldChange('FirstButton.Style',$event)" [emptyOption]="false" 
-                [disabled]="!configuration?.Slides[id].FirstButton.Use" styleType="weak">
-    </pep-select>
-
-    <pep-checkbox [value]="configuration?.Slides[id].SecondButton.Use" [label]="'SLIDE_EDITOR.SECOND_BUTTON' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('SecondButton.Use',$event)"></pep-checkbox>
-    <pep-textbox [label]="'SLIDE_EDITOR.LABEL' | translate" type="string" [disabled]="!configuration?.Slides[id].SecondButton.Use" [value]="configuration?.Slides[id].SecondButton.Label" (valueChange)="onSlideFieldChange('SecondButton.Label',$event)"></pep-textbox>
-    <div>
-        <label class="body-lg bold ellipsis">{{'SLIDE_EDITOR.CHOOSE_FLOW' | translate}}</label>
-        <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONCLICK_DESC' | translate"></pep-field-title>
-        <pep-flow-picker-button [flowHostObject]="flowHostObjectBtn2" (flowChange)="onFlowChange($event, 'SecondButton')"></pep-flow-picker-button>
-    </div>
-    <pep-textbox [label]="'SLIDE_EDITOR.ACTION_KEY' | translate" type="string" [disabled]="true" 
-                     [value]="configuration?.Slides[id].SecondButton.ButtonKey"></pep-textbox>
-
-    <pep-select [label]="'SLIDE_EDITOR.BUTTON_STYLE' | translate" [value]="configuration?.Slides[id].SecondButton.Style" [options]="buttonStyle"
-                (valueChange)="onSlideFieldChange('SecondButton.Style',$event)" [emptyOption]="false" [disabled]="!configuration?.Slides[id].SecondButton.Use">
-    </pep-select>
-    
-    <pep-color-settings [title]="'SLIDE_EDITOR.GRADIENT_OVERLAY' | translate"
-                        [checkAAComplient]="false"
-                        [color]="configuration?.Slides[id].GradientOverlay"
-                        (colorChange)="onSlideFieldChange('GradientOverlay',$event)">
-    </pep-color-settings>
-    
-    <pep-color-settings [title]="'SLIDE_EDITOR.OVERLAY' | translate"
-                        [checkAAComplient]="false"
-                        [color]="configuration?.Slides[id].Overlay"
-                        (colorChange)="onSlideFieldChange('Overlay',$event)">
-    </pep-color-settings>
-
-    <pep-checkbox [value]="configuration?.Slides[id].Image.Use" [label]="'SLIDE_EDITOR.IMAGE' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('Image.Use',$event)"></pep-checkbox>
-
-    <assets-button [imageURL]="configuration?.Slides[id].Image?.AssetUrl"
-                   [disabled]="!configuration?.Slides[id].Image.Use" 
-                   (hostEvents)="onHostEvents($event);">
-    </assets-button>
-
-    <pep-slider
-        pepResetConfigurationField="Slides[{{id}}].Image.HorizontalPosition" [hideReset]="configuration?.Slides[id]?.Image?.HorizontalPosition === configurationSource?.Slides[id]?.Image?.HorizontalPosition"
-         [resetHostEvents]="hostEvents" 
-        [label]="'SLIDE_EDITOR.IMAGE_HORIZONTAL_POSITION' | translate" 
-        [hint]="configuration?.Slides[id].Image.HorizontalPosition?.toString()" 
-        [minValue]="0" 
-        [maxValue]="100"
-        [disabled]="!configuration?.Slides[id].Image.Use" 
-        [value]="configuration?.Slides[id].Image.HorizontalPosition"
-        (valueChange)="onSlideFieldChange('Image.HorizontalPosition',$event)">
-    </pep-slider>
-    <pep-slider
-        pepResetConfigurationField="Slides[{{id}}].Image.VerticalPosition" [hideReset]="configuration?.Slides[id]?.Image?.VerticalPosition === configurationSource?.Slides[id]?.Image?.VerticalPosition"
-         [resetHostEvents]="hostEvents" 
-        [label]="'SLIDE_EDITOR.IMAGE_VERTICAL_POSITION' | translate" 
-        [hint]="configuration?.Slides[id].Image.VerticalPosition?.toString()" 
-        [minValue]="0" 
-        [maxValue]="100"
-        [disabled]="!configuration?.Slides[id].Image.Use" 
-        [value]="configuration?.Slides[id].Image.VerticalPosition"
-        (valueChange)="onSlideFieldChange('Image.VerticalPosition',$event)">
-    </pep-slider>
+            <assets-button [imageURL]="configuration?.Slides[id].Image?.AssetUrl"
+                        [disabled]="!configuration?.Slides[id].Image.Use" 
+                        (hostEvents)="onHostEvents($event);">
+            </assets-button>
+            <pep-slider
+                pepResetConfigurationField="Slides[{{id}}].Image.HorizontalPosition" [hideReset]="configuration?.Slides[id]?.Image?.HorizontalPosition === configurationSource?.Slides[id]?.Image?.HorizontalPosition"
+                [resetHostEvents]="hostEvents" 
+                [label]="'SLIDE_EDITOR.IMAGE_HORIZONTAL_POSITION' | translate" 
+                [hint]="configuration?.Slides[id].Image.HorizontalPosition?.toString()" 
+                [minValue]="0" 
+                [maxValue]="100"
+                [disabled]="!configuration?.Slides[id].Image.Use" 
+                [value]="configuration?.Slides[id].Image.HorizontalPosition"
+                (valueChange)="onSlideFieldChange('Image.HorizontalPosition',$event)">
+            </pep-slider>
+            <pep-slider
+                pepResetConfigurationField="Slides[{{id}}].Image.VerticalPosition" [hideReset]="configuration?.Slides[id]?.Image?.VerticalPosition === configurationSource?.Slides[id]?.Image?.VerticalPosition"
+                [resetHostEvents]="hostEvents" 
+                [label]="'SLIDE_EDITOR.IMAGE_VERTICAL_POSITION' | translate" 
+                [hint]="configuration?.Slides[id].Image.VerticalPosition?.toString()" 
+                [minValue]="0" 
+                [maxValue]="100"
+                [disabled]="!configuration?.Slides[id].Image.Use" 
+                [value]="configuration?.Slides[id].Image.VerticalPosition"
+                (valueChange)="onSlideFieldChange('Image.VerticalPosition',$event)">
+            </pep-slider>
+        </div>
 </div>
 </div>

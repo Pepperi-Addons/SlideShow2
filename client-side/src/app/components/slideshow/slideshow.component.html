@@ -26,7 +26,7 @@
                      (buttonClick)="navigate('forward')">
          </pep-button>
 </div>
-<slide *ngFor="let currentSlide of configuration?.Slides" (buttonClick)="onSlideButtonClicked($event)"
+<slide *ngFor="let currentSlide of configuration?.Slides" (click)="onSlideClicked(currentSlide)" (buttonClick)="onSlideButtonClicked($event)"
        [showSlide]="slideIndex == currentSlide.id"
        [slide]="currentSlide" 
        [SlideshowConfig]="configuration?.SlideshowConfig"

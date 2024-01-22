@@ -37,10 +37,10 @@
                                 'textColor_'+slide?.TextColor]">
                         {{slide?.SubTitle.Content}} 
                 </div>
-                <div class="buttons-box" *ngIf="slide?.FirstButton?.Use || slide?.SecondButton?.Use"
+                <div class="buttons-box" *ngIf="slide?.FirstButton?.Visible == 'true'"
                      [ngStyle]="{'justify-content' : slide?.Alignment?.Horizontal}">
-                    <pep-button *ngIf="slide?.FirstButton?.Use" [sizeType]="slide?.Button?.Size" [value]="slide?.FirstButton.Label" [styleType]="slide?.FirstButton?.Style" [classNames]="slide?.Button?.Color" (buttonClick)="onSlideButtonClicked('FirstButton')"></pep-button>
-                    <pep-button *ngIf="slide?.SecondButton?.Use" [sizeType]="slide?.Button?.Size" [value]="slide?.SecondButton.Label" [styleType]="slide?.SecondButton?.Style" [classNames]="slide?.Button?.Color"  (buttonClick)="onSlideButtonClicked('SecondButton')"></pep-button>
+                    <pep-button [sizeType]="slide?.Button?.Size" [value]="slide?.FirstButton.Label" [styleType]="slide?.FirstButton?.Style" [classNames]="slide?.Button?.Color" (buttonClick)="onSlideButtonClicked('FirstButton')"></pep-button>
+                    <!-- <pep-button *ngIf="slide?.SecondButton?.Use" [sizeType]="slide?.Button?.Size" [value]="slide?.SecondButton.Label" [styleType]="slide?.SecondButton?.Style" [classNames]="slide?.Button?.Color"  (buttonClick)="onSlideButtonClicked('SecondButton')"></pep-button> -->
                 </div>
             </div>
 </div>

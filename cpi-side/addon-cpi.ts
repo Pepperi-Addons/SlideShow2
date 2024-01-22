@@ -50,10 +50,10 @@ router.post('/run_slide_click_event', async (req, res) => {
                 btn = slide['FirstButton']; 
                 break;  
              }
-             else if(slide['SecondButton'].ButtonKey === btnKey){
-                 btn = slide['SecondButton'];
-                 break;
-             } 
+            //  else if(slide['SecondButton'].ButtonKey === btnKey){
+            //      btn = slide['SecondButton'];
+            //      break;
+            //  } 
     }
     let configurationRes = null;
     // check if button is enable and have flow

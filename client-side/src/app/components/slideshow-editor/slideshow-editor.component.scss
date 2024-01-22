@@ -1,0 +1,57 @@
+@use '@pepperi-addons/ngx-lib/src/core/style/abstracts/variables' as ngx-variables;
+
+.editor-tabs {
+
+    .split-area {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    ::ng-deep{
+        .pep-reset-configuration-field-container{
+            margin-bottom: 0 !important;
+        }
+
+        .mat-tab-body-content{
+            gap: ngx-variables.$spacing-lg;
+        }
+        .pep-border-top{
+            padding-top: ngx-variables.$spacing-md;
+        }
+        pep-slider{
+            display: block;
+            margin-bottom: ngx-variables.$spacing-xl;
+        }
+        .mat-slider-disabled{
+            opacity: 0.6;
+        }
+
+        pep-select{
+            width: 100%;
+        }
+
+        pep-group-buttons-settings{
+            &.margin-top{
+                margin-top: ngx-variables.$spacing-lg;
+                display: block;
+            }
+        }
+
+        span{
+            &.margin-top{
+                display: block;;
+                margin-top: ngx-variables.$spacing-lg;
+            }
+            &.body-xl{
+                display: block;
+            }
+        }
+    } 
+
+    // pep-textbox{
+    //     &.pep-field{
+    //         margin-bottom: 0 !important;
+    //     }
+    // } 
+}
