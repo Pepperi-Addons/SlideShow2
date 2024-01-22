@@ -30,8 +30,8 @@
                 </pep-textbox>
                 <div class="split-area">
                     <pep-select [label]="'SLIDESHOW.TRANSITION_TYPE' | translate" [value]="configuration?.SlideshowConfig?.Transition?.Type" [options]="transitionTypes" 
-                        (valueChange)="onSlideshowFieldChange('Transition.Type',$event)" [emptyOption]="false"></pep-select>
-                    <pep-textbox [label]="'SLIDESHOW.TRANSITION_TIME' | translate" type="real" 
+                        class="pep-field-no-spacing" (valueChange)="onSlideshowFieldChange('Transition.Type',$event)" [emptyOption]="false"></pep-select>
+                    <pep-textbox class="pep-field-no-spacing" [label]="'SLIDESHOW.TRANSITION_TIME' | translate" type="real" 
                         [value]="configuration?.SlideshowConfig?.Transition?.Time" (valueChange)="onSlideshowFieldChange('Transition.Time',$event)"></pep-textbox>
                 </div>
         </div>  
@@ -95,12 +95,12 @@
             </div>
                 <pep-select style="margin-top:-1rem;" [label]="'SLIDESHOW.ARROWS_STYLE' | translate" [value]="configuration?.SlideshowConfig?.Controllers?.Style" [options]="buttonStyle" 
                         (valueChange)="onSlideshowFieldChange('Controllers.Style',$event)" [emptyOption]="false"></pep-select>
-                
+             
                 <pep-shadow-settings [shadow]="configuration?.SlideshowConfig?.DropShadow"
                                      (shadowChange)="onSlideshowFieldChange('DropShadow',$event)">
                 </pep-shadow-settings>
-
-                <pep-checkbox class="checkbox-as-title" [value]="configuration?.SlideshowConfig?.Corners?.Use" [label]="'SLIDESHOW.ROUND_CORNER' | translate" 
+<div>
+                <pep-checkbox class="checkbox-as-title pep-field-no-spacing" [value]="configuration?.SlideshowConfig?.Corners?.Use" [label]="'SLIDESHOW.ROUND_CORNER' | translate" 
                     [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Corners.Use',$event)">
                 </pep-checkbox>
                 
@@ -109,7 +109,7 @@
                     [btnKey]="configuration?.SlideshowConfig?.Corners?.Size" [excludeKeys]="['xs', '2xl']"
                     (btnkeyChange)="onSlideshowFieldChange('Corners.Size',$event)">
                 </pep-group-buttons-settings>
-
+            </div>
                 <div>
                     <label class="body-lg bold ellipsis">{{'SLIDE_EDITOR.CHOOSE_FLOW' | translate}}</label>
                     <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONLOAD_DESC' | translate"></pep-field-title>
