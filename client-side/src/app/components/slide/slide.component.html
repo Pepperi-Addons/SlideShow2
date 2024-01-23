@@ -26,15 +26,15 @@
                                     [ngStyle]="{'grid-template-rows' : 'min-content auto min-content'
                                                  }">
                 <div *ngIf="slide?.Title?.Use"
-                class="body-sm ellipsis" 
-                [ngClass]="['title-'+slide?.Title?.Size,
-                            slide?.Title?.Weight,
-                            'textColor_'+slide?.TextColor]">{{slide?.Title?.Content}}
+                    class="body-sm truncate" 
+                    [ngClass]="['title-'+slide?.Title?.Size, slide?.Title?.Weight, 'textColor_'+slide?.TextColor]"
+                    [ngStyle]="{'-webkit-line-clamp': slide?.Title?.MaxRowsNum || 2}">
+                    {{slide?.Title?.Content}}
                 </div>
-                <div class="subtitle-cont ellipsis" 
+                <div class="subtitle-cont truncate" 
                      *ngIf="slide?.SubTitle?.Use" 
-                     [ngClass]="['body-'+slide?.SubTitle?.Size,
-                                'textColor_'+slide?.TextColor]">
+                     [ngClass]="['body-'+slide?.SubTitle?.Size, 'textColor_'+slide?.TextColor]"
+                     [ngStyle]="{'-webkit-line-clamp': slide?.SubTitle?.MaxRowsNum || 2}">
                         {{slide?.SubTitle.Content}} 
                 </div>
                 <div class="buttons-box" *ngIf="slide?.FirstButton?.Visible == 'true'"

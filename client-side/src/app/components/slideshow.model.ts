@@ -99,12 +99,15 @@ export class Title {
     Content: string;
     Size: PepSizeType;
     Weight: FontWeight;
+    MaxRowsNum: number;
 
-    constructor(use = true, content = 'Title', size:PepSizeType  = 'md', weight:FontWeight = 'normal'){
+    constructor(use = true, content = 'Title', size:PepSizeType  = 'md', weight:FontWeight = 'normal', maxrowsnum = 2){
         this.Use = use;
         this.Content = content;
         this.Size = size;
         this.Weight = weight;
+        this.MaxRowsNum = maxrowsnum;
+
     }
 }
 

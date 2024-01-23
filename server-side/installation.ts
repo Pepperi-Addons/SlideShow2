@@ -127,6 +127,10 @@ async function runMigration(client){
                                         "Size": {
                                             "Type": "String",
                                             "ConfigurationPerScreenSize": true
+                                        },
+                                        "MaxRowsNum": {
+                                            "Type": "String",
+                                            "ConfigurationPerScreenSize": true
                                         }
                                     }
                                 },
@@ -134,6 +138,10 @@ async function runMigration(client){
                                     "Type": "Object",
                                     "Fields": {
                                         "Size": {
+                                            "Type": "String",
+                                            "ConfigurationPerScreenSize": true
+                                        },
+                                        "MaxRowsNum": {
                                             "Type": "String",
                                             "ConfigurationPerScreenSize": true
                                         }

@@ -70,6 +70,7 @@
         "HIDE": "Hide",
         "TITLE": "Title",
         "TITLE_CONTENT": "Title text",
+        "MAX_NUM_OF_LINES": "Max num of lines",
         "SUBTITLE_CONTENT": "Subtitle text",
         "CONTENT": "Content",
         "MAIN_TITLE_SIZE": "Main title size",

@@ -32,6 +32,14 @@
                 [disabled]="!configuration?.Slides[id].Title?.Use" [btnKey]="configuration?.Slides[id].Title.Weight">
             </pep-group-buttons-settings>
         </div>
+        <pep-textbox  type="real" class="pep-field-no-spacing"
+                pepResetConfigurationField="Slides[{{id}}].Title.MaxRowsNum" [hideReset]="configuration?.Slides[id]?.Title?.MaxRowsNum === configurationSource?.Slides[id]?.Title?.MaxRowsNum"
+                [resetHostEvents]="hostEvents"
+                [disabled]="!configuration?.Slides[id].Title?.Use" 
+                [value]="configuration?.Slides[id].Title?.MaxRowsNum || 2" 
+                [label]="'SLIDE_EDITOR.MAX_NUM_OF_LINES' | translate" 
+                (valueChange)="onSlideFieldChange('Title.MaxRowsNum',$event)">
+        </pep-textbox>
         <div class="separator pep-border-top"> <!--Sub Title -->
             <pep-checkbox [value]="configuration?.Slides[id].SubTitle.Use" [label]="'SLIDE_EDITOR.SUB_TITLE' | translate" [renderTitle]="false" 
                         (valueChange)="onSlideFieldChange('SubTitle.Use',$event)">
@@ -46,6 +54,14 @@
                 [disabled]="!configuration?.Slides[id].SubTitle.Use" [btnKey]="configuration?.Slides[id].SubTitle?.Size">
             </pep-group-buttons-settings>
         </div>
+        <pep-textbox  type="real" class="pep-field-no-spacing"
+                pepResetConfigurationField="Slides[{{id}}].SubTitle.MaxRowsNum" [hideReset]="configuration?.Slides[id]?.SubTitle?.MaxRowsNum === configurationSource?.Slides[id]?.SubTitle?.MaxRowsNum"
+                [resetHostEvents]="hostEvents"
+                [disabled]="!configuration?.Slides[id].SubTitle?.Use" 
+                [value]="configuration?.Slides[id].SubTitle?.MaxRowsNum || 2" 
+                [label]="'SLIDE_EDITOR.MAX_NUM_OF_LINES' | translate" 
+                (valueChange)="onSlideFieldChange('SubTitle.MaxRowsNum',$event)">
+        </pep-textbox>
         <div class="separator pep-border-top"> <!-- Content -->
             <pep-group-buttons-settings
                 pepResetConfigurationField="Slides[{{id}}].ContentWidth" [hideReset]="configuration.Slides[id]?.ContentWidth === configurationSource?.Slides[id]?.ContentWidth"

@@ -132,6 +132,11 @@
                 grid-row-gap: ngx-variables.$spacing-sm;
             }
 
+            .truncate{
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
             .textColor_system{
                 color: ngx-functions.get-pep-color(color-text, color-regular);
             }
