@@ -20,10 +20,22 @@ export class SlideshowComponent implements OnInit {
         // TODO: support all other properties if needed.
         if(value?.configuration && Object.keys(value.configuration).length){
             this.configuration = value?.configuration;
+            this.setVisibleSlides();
+            
+           
         }
         this._parameters = value?.parameters || {};
     }
     
+    private setVisibleSlides(){
+        this.configuration.Slides = this.configuration.Slides.filter(sl => sl.Filter.ShowSlide == true);
+        this.configuration.Slides.forEach((sl,index) => {
+            sl.id = index;
+        });
+            
+      
+
+    }
     private _parameters: any;
     
     private _configuration: ISlideShow; // = this.getDefaultHostObject();
@@ -66,6 +78,7 @@ export class SlideshowComponent implements OnInit {
         else if(data?.configuration){
             this.mergeConfiguration(data.configuration);
         }
+        this.setVisibleSlides();
         this.showSlides();
     }
     
