@@ -18,10 +18,12 @@ import { PepSelectModule } from '@pepperi-addons/ngx-lib/select';
 import { PepTextareaModule } from '@pepperi-addons/ngx-lib/textarea';
 import { PepShadowSettingsModule } from '@pepperi-addons/ngx-composite-lib/shadow-settings';
 import { PepColorSettingsModule } from '@pepperi-addons/ngx-composite-lib/color-settings';
+import { PepShowIfBadgeModule } from '@pepperi-addons/ngx-composite-lib/show-if-badge';
 import { PepNgxCompositeLibModule } from '@pepperi-addons/ngx-composite-lib';
 import { PepGroupButtonsSettingsModule } from '@pepperi-addons/ngx-composite-lib/group-buttons-settings';
 import { AssetsButtonModule } from '../assets-button/assets-button.module';
-
+import { PepQueryBuilderModule } from '@pepperi-addons/ngx-lib/query-builder';
+import { PepDialogModule } from '@pepperi-addons/ngx-lib/dialog';
 import { config } from '../addon.config';
 import { SlideEditorComponent } from './slide-editor.component';
 
@@ -40,15 +42,18 @@ import { SlideEditorComponent } from './slide-editor.component';
         PepNgxLibModule,
         PepSelectModule,
         MatDialogModule,
+        PepDialogModule,
         PepGroupButtonsModule,
         PepColorModule,
         PepImageModule,
         PepTextareaModule,
         PepShadowSettingsModule,
         PepColorSettingsModule,
+        PepShowIfBadgeModule,
         PepNgxCompositeLibModule,
         PepGroupButtonsSettingsModule,
         AssetsButtonModule,
+        PepQueryBuilderModule,
         
         TranslateModule.forChild({
             loader: {

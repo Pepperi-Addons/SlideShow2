@@ -9,7 +9,7 @@
     min-height: 2.5rem;
     width: 100%;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     padding-top: .4rem;
     border-radius: ngx-variables.$border-radius-md;
     padding-inline: ngx-variables.$spacing-sm;
@@ -32,6 +32,11 @@
         .title {
             display: block;
         }
+    }
+
+    pep-show-if-badge{
+        margin-block-start: -.75rem;
+        margin-inline-end: -.5rem;
     }
 }
 
@@ -125,6 +130,10 @@ mat-slider{
     }
     .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
     background-color: white;
+    }
+
+    .pep-dialog.large .mat-dialog-container .mat-dialog-content {
+        max-height: 100% !important;
     }
 }
 

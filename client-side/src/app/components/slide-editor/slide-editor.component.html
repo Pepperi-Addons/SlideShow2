@@ -6,11 +6,13 @@
         <span class="body-sm ellipsis">{{id+1}}.&nbsp;</span>
         <span class="body-sm color-link bold ellipsis" title="{{title}}">{{title}}</span>
     </div>
+
     <pep-menu
         sizeType="xs"
         [items]="actiosMenu"
         (menuItemClick)="onMenuItemClick($event)">
     </pep-menu>
+    <pep-show-if-badge [showIf]="configuration?.Slides[id].Filter?.Use && configuration?.Slides[id].Filter?.FilterObj"></pep-show-if-badge>
     <div class="editorCont" *ngIf="id ==  selectedSlideIndex?.toString()">
         <div> <!-- Title -->
             <pep-checkbox [value]="configuration?.Slides[id].Title?.Use" [label]="'SLIDE_EDITOR.TITLE' | translate" [renderTitle]="false" 
@@ -91,6 +93,15 @@
             <pep-select [label]="'SLIDE_EDITOR.TEXT_COLOR_TITLE' | translate" [value]="configuration?.Slides[id].TextColor" [options]="textColors"
                         (valueChange)="onSlideFieldChange('TextColor',$event)" [emptyOption]="false" [disabled]="false">
             </pep-select>
+        </div>
+        <div class="separator pep-border-top"> <!-- Show If -->
+            <pep-checkbox [value]="configuration?.Slides[id].Filter?.Use || false" [label]="'SLIDE_EDITOR.SLIDE_SHOW_IF' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('Filter.Use',$event)"></pep-checkbox>
+            <pep-button sizeType="md" 
+                        iconName="system_filter_2" 
+                        [value]="'SLIDE_EDITOR.SLIDE_SHOW_IF_LOGIC' | translate"
+                        (buttonClick)="openFilterBuilderModal($event)" 
+                        [disabled]="!configuration?.Slides[id].Filter?.Use">
+            </pep-button>
         </div>
         <div class="separator pep-border-top"> <!-- Flow -->
             <pep-checkbox [value]="configuration?.Slides[id].FirstButton.Use" [label]="'SLIDE_EDITOR.SLIDE_CHOOSE_FLOW' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('FirstButton.Use',$event)"></pep-checkbox>
@@ -178,3 +189,19 @@
         </div>
 </div>
 </div>
+
+<ng-template #showIfDialogTemplate let-data>
+    <pep-dialog [title]="'SLIDE_EDITOR.SHOW_IF_TITLE' | translate">
+        <ng-container pep-dialog-content>
+            <pep-query-builder [query]="data.query" [fields]="data.fields" (queryChange)="data.outputData.query=$event || ''"
+                (formValidationChange)="data.isValid=$event">
+            </pep-query-builder>            
+        </ng-container>
+        <ng-container pep-dialog-actions class="pepperi-border-top">
+            <div class="flex pep-spacing-element-negative">
+                <pep-button [value]="'ACTIONS.CANCEL' | translate" class="pep-spacing-element" (buttonClick)="showIfDialogRef.close(null)"></pep-button>
+                <pep-button [value]="'ACTIONS.SAVE' | translate" class="pep-spacing-element" styleType="strong" [disabled]="!data.isValid" (buttonClick)="showIfDialogRef.close(data.outputData)"></pep-button>
+            </div>
+        </ng-container>
+    </pep-dialog>
+</ng-template>

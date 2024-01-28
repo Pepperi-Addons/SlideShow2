@@ -1,7 +1,7 @@
 import { Client, Context, IClient, IContext } from '@pepperi-addons/cpi-node/build/cpi-side/events';
 import { AddonUUID } from '../addon.config.json';
 import { FlowObject, RunFlowBody } from '@pepperi-addons/cpi-node';
-
+import { filter } from '@pepperi-addons/pepperi-filters';
 class SlidesowCpiService {
     
     constructor() {}
@@ -9,12 +9,6 @@ class SlidesowCpiService {
     /***********************************************************************************************/
     //                              Private functions
     /************************************************************************************************/
-    
-    private async getGallery(headerKey: string): Promise<any> {
-     
-
-        return {};
-    }
 
     public  async getOptionsFromFlow(flowStr: string, state: any, context: IContext | undefined, configuration = {}): Promise<any> {
         const flowData: FlowObject = flowStr?.length ? JSON.parse(Buffer.from(flowStr, 'base64').toString('utf8')) : {};
@@ -62,7 +56,43 @@ class SlidesowCpiService {
      /***********************************************************************************************/
     //                              Public functions
     /************************************************************************************************/
+    public calcShowIf(slides: any, pageParameters): void {
+        slides.forEach(slide => {
+            let shouldBeVisible = true;
 
+            if (slide?.Filter?.Use && slide.Filter.FilterObj != '') {
+                const query = this.convertShowIfQueryValuesToString(JSON.parse(slide.Filter.FilterObj));
+                
+                // Call pepperi filters to apply this.
+                shouldBeVisible = filter([pageParameters], query).length > 0;
+            }
+
+            slide.Filter.ShowSlide = shouldBeVisible;
+        });
+            
+    }
+
+    private convertShowIfQueryValuesToString(query: any) {
+        if (query) {
+            // If the query has values.
+            if (query.Values) {
+                // If the values is more then one, convert them to array of one string item with ';' delimiter for the comparation.
+                if (query.Values.length > 1 && query.Operation === "IsEqual") {
+                    query.Values = [query.Values.join(';')];
+                }
+            } else {
+                // Convert the left and right nodes if exist.
+                if (query.LeftNode) {
+                    this.convertShowIfQueryValuesToString(query.LeftNode);
+                } 
+                if (query.RightNode) {
+                    this.convertShowIfQueryValuesToString(query.RightNode);
+                }
+            }
+        }
+
+        return query
+    }
 
 }
 export default SlidesowCpiService;

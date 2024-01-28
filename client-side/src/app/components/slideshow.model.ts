@@ -32,6 +32,17 @@ export class SlideButton {
       }
 }
 
+export class Filter {
+    Use: boolean;
+    FilterObj: string;
+    ShowSlide: boolean;
+
+    constructor(use = false, filter = '', showslide = true){
+        this.Use = use;
+        this.FilterObj = filter;
+        this.ShowSlide = showslide;
+    }
+}
 export class SlideImage {
     Use: boolean = false;
     AssetKey: string = '';
@@ -125,6 +136,7 @@ export class ISlideEditor {
     id: number;
     Title = new Title();
     SubTitle = new Title(true, 'Sub title', 'md', 'normal');
+    Filter = new Filter();
     FirstButton: SlideButton = new SlideButton(true, 'Yess', 'weak-invert');
     SecondButton: SlideButton  = new SlideButton(false, 'Noo', 'strong');
     TextColor: textColor = 'inverted';

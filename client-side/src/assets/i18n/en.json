@@ -112,6 +112,8 @@
         "SHADOW_INTENSITY": "Shadow Intensity",
         "SHADOW_TYPE": "Shadow Type",
         "ACTION": "Action",
+        "SLIDE_SHOW_IF": "Show if",
+        "SLIDE_SHOW_IF_LOGIC": "Add Logic",
         "ONLOAD_FLOW": "Onload flow",
         "CHOOSE_FLOW": "Flow",
         "SLIDE_CHOOSE_FLOW": "Click Events",
@@ -157,7 +159,8 @@
             "TOP": "Top",
             "MIDDLE": "Middle",
             "BOTTOM": "Bottom"
-        }
+        },
+        "SHOW_IF_TITLE": "Show if logic"
     }
 
 }

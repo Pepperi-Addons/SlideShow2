@@ -3,7 +3,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { TranslateService } from '@ngx-translate/core';
 import { PepStyleType} from '@pepperi-addons/ngx-lib';
 import { PepButton } from '@pepperi-addons/ngx-lib/button';
-import { ISlideShow, ISlideshowEditor, TransitionType, ISlideEditor, IHostObject } from '../slideshow.model';
+import { ISlideShow, ISlideshowEditor, TransitionType, ISlideEditor, IHostObject, Filter } from '../slideshow.model';
 import { Page, PageConfiguration } from '@pepperi-addons/papi-sdk';
 import { FlowService } from 'src/services/flow.service';
 import { v4 as uuid } from 'uuid';
@@ -24,7 +24,6 @@ export class SlideshowEditorComponent implements OnInit {
             if(value.configurationSource && Object.keys(value.configuration).length > 0){
                     this.configurationSource = value.configurationSource;
             }
-
             this.flowHostObject = this.flowService.prepareFlowHostObject((value.configuration.SlideshowConfig?.OnLoadFlow || null));
         } else {
             if(this.blockLoaded){
@@ -35,6 +34,15 @@ export class SlideshowEditorComponent implements OnInit {
         this.initPageConfiguration(value?.pageConfiguration);
         this._page = value?.page;
         this.flowService.recalculateEditorData(this._page, this._pageConfiguration); 
+
+        if(value?.pageParameters  && Object.keys(value.pageParameters).length > 0){
+            this._pageParameters = value.pageParameters;
+        }
+    }
+
+    private _pageParameters: Object;
+    get pageParameters(): object {
+        return this._pageParameters;
     }
 
     private _page: Page;
@@ -219,7 +227,15 @@ export class SlideshowEditorComponent implements OnInit {
         //this.hostEvents.emit({action: 'block-editor-loaded'});
         this.blockLoaded = true;
         this.flowHostObject = this.flowService.prepareFlowHostObject((this.configuration.SlideshowConfig?.OnLoadFlow || null));
+  
+        // this code is for update old slideshow object with new objects
+        this.configuration.Slides.forEach( slide => {
+            if(slide.Filter === undefined){
+                slide['Filter'] = new Filter();
+            }
+        });
     }
+
 
     addNewSlideClick() {
         let slide = new ISlideEditor();
@@ -365,6 +381,12 @@ export class SlideshowEditorComponent implements OnInit {
             }
             });
         }
+
+        //add the page parameters
+        for (const [key, value] of Object.entries(this.pageParameters)) {
+            parametersKeys.set(key, key);
+        }
+   
         return parametersKeys;
     }
 

@@ -6,7 +6,7 @@
                          ((configuration?.SlideshowConfig?.Structure?.FillHeight && configuration?.SlideshowConfig?.Controllers?.ShowInSlider) || 
                          (!configuration?.SlideshowConfig?.Structure?.FillHeight && configuration?.SlideshowConfig?.Controllers?.ShowInSlider)) ? configuration?.SlideshowConfig?.DropShadow?.intensity : '',
                          configuration?.SlideshowConfig?.Corners?.Use ? 'border-radius-' + configuration?.SlideshowConfig?.Corners?.Size : '']">
-<div *ngIf="configuration?.SlideshowConfig?.Arrows?.Use"
+<div *ngIf="configuration?.SlideshowConfig?.Arrows?.Use && configuration?.Slides?.length"
        [ngStyle]="{ 'display': configuration?.SlideshowConfig?.Arrows?.Display === 'hide' ? 'none' : 'flex'   }"
        id="navigationCont">
          <pep-button sizeType='sm'

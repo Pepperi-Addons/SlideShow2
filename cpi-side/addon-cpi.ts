@@ -5,12 +5,19 @@ import * as _ from 'lodash'
 
 router.post('/on_slideshow_block_load', async (req, res) => {
     let configuration = req?.body?.Configuration;
+    const pageParameters = req?.context?.State?.PageParameters || null;
     let configurationRes = configuration;
+
     const state = req.body.State;
+
+    const cpiService = new SlidesowCpiService();
+   
+    //check if should show the slide according to the 'Show If' query & page parameters
+    await cpiService.calcShowIf(configuration.Slides, pageParameters );
     //check if flow configured to on load --> run flow (instaed of onload event)
     if(configuration?.SlideshowConfig?.OnLoadFlow){
         try{
-            const cpiService = new SlidesowCpiService();
+            
             //CALL TO FLOWS AND SET CONFIGURATION
             const res: any = await cpiService.getOptionsFromFlow(configuration.SlideshowConfig.OnLoadFlow, state, req.context, configuration );
             configurationRes = res?.configuration || configuration;
@@ -30,7 +37,6 @@ router.post('/on_slideshow_block_load', async (req, res) => {
             configurationRes.Slides = Slides;
          }
     }
-
     res.json({
         State: state,
         Configuration: configurationRes,

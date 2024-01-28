@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, AfterViewInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, AfterViewInit, Output, ViewChild, TemplateRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ISlideShow, ISlideshowEditor, TransitionType, ArrowShape, ISlideEditor, textColor, IHostObject } from '../slideshow.model';
 import { PepStyleType, PepSizeType, PepColorService} from '@pepperi-addons/ngx-lib';
@@ -6,6 +6,9 @@ import { PepButton } from '@pepperi-addons/ngx-lib/button';
 import { PepColorSettings } from '@pepperi-addons/ngx-composite-lib/color-settings';
 import { FlowService } from 'src/services/flow.service';
 import { IPepMenuItemClickEvent, PepMenuItem } from '@pepperi-addons/ngx-lib/menu';
+import { PepDialogService } from '@pepperi-addons/ngx-lib/dialog';
+import { PepQueryBuilderComponent } from '@pepperi-addons/ngx-lib/query-builder';
+import { MatDialogRef } from '@angular/material/dialog';
 
 interface groupButtonArray {
     key: string; 
@@ -19,8 +22,11 @@ interface groupButtonArray {
 })
 export class SlideEditorComponent implements OnInit, AfterViewInit {
     
+    @ViewChild('showIfDialogTemplate') showIfDialogTemplate: TemplateRef<any>;
+    
     @Input() configuration: ISlideShow;
     @Input() configurationSource: ISlideShow;
+    @Input() pageParameters;
     @Input() id: string;
     @Input() isDraggable = false;
     @Input() selectedSlideIndex = -1;
@@ -30,7 +36,7 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
     @Output() editClick: EventEmitter<any> = new EventEmitter();
     @Output() duplicateClick: EventEmitter<any> = new EventEmitter();
     @Output() flowChange: EventEmitter<any> = new EventEmitter();
-
+    
     TitleWeight: Array<PepButton> = [];
     WidthSize:  Array<PepButton> = [];
     
@@ -43,10 +49,13 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
     public flowHostObject;
     public flowHostObjectBtn2;
 
+    protected showIfDialogRef: MatDialogRef<any> = null;
+    
     constructor(
         private translate: TranslateService,
         private pepColorService: PepColorService,
-        private flowService: FlowService
+        private flowService: FlowService,
+        public dialogService: PepDialogService
     ) { 
 
     }
@@ -179,5 +188,69 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
         this.configuration.Slides[this.id][btnName].Flow =  base64Flow;
         this.updateHostObjectField(`Slides[${this.id}][${btnName}].Flow`, base64Flow, true);
         this.flowChange.emit();
+    }
+
+    buildShowIfQuery(){
+        const fields = [];
+        for (const [key, value] of Object.entries(this.pageParameters)) {
+            fields.push({FieldID: key, Title: key, FieldType: 'String' });
+          }
+          return fields;
+    }
+
+    openFilterBuilderModal(event: any){
+        
+        const query = JSON.parse(this.configuration?.Slides[this.id]?.Filter?.FilterObj || null);
+        
+        //     { FieldID: 'TSAAttachmentTest1', Title: 'TSA Attachment Test11', FieldType: 'String'},
+        //     { FieldID: 'AvnerTest', Title: 'Avner Test', FieldType: 'MultipleStringValues' , OptionalValues: [
+        //         { Key: 'value0', Value: 'value d' },
+        //         { Key: 'value1', Value: 'value e' },
+        //         { Key: 'value2', Value: 'value 2' }
+        //     ]},
+        //     { FieldID: 'AllowDecimal', Title: 'Allow Decimal', FieldType: 'Bool' },
+        //     { FieldID: 'Double Check', Title: 'Double', FieldType: 'Double' },
+        //     { FieldID: 'CostPrice', Title: 'Cost Price', FieldType: 'Integer' },
+        //     { FieldID: 'CaseQuantity', Title: 'Case Quantity', FieldType: 'Integer' },
+        //     { FieldID: 'CampaignName', Title: 'Campaign Name', FieldType: 'String' },
+        //     { FieldID: 'ActionDateTime', Title: 'Action Date Time', FieldType: 'DateTime' },
+        //     { FieldID: 'Type', Title: 'Type', FieldType: 'String' },
+        //     { FieldID: 'TSAboolll', Title: 'TSA boolll', FieldType: 'Bool' },
+
+        //     {
+        //         FieldID: 'BillToState', Title: 'Bill To State', FieldType: 'MultipleStringValues', OptionalValues: [
+        //             { Key: 'value0', Value: 'value 0' },
+        //             { Key: 'value1', Value: 'value 1' },
+        //             { Key: 'value2', Value: 'value 2' },
+        //             { Key: 'value3', Value: 'value 3' },
+        //             { Key: 'value4', Value: 'value 4' },
+        //             { Key: 'value5', Value: 'value 5' },
+        //             { Key: 'value6', Value: 'value 6' },
+        //             { Key: 'value7', Value: 'value 7' },
+        //             { Key: 'value8', Value: 'value 8' },
+        //             { Key: 'value9', Value: 'value 9' },
+        //         ]
+        //     }
+        // ];
+        const data = {
+            query: query,
+            fields: this.buildShowIfQuery(), //this.getShowIfFields(),
+            isValid: true,
+            outputData: { query: '' }
+        };
+
+        const config = this.dialogService.getDialogConfig({ minWidth: '30rem'}, 'large');
+
+        this.showIfDialogRef = this.dialogService.openDialog(this.showIfDialogTemplate, data, config);        
+        this.showIfDialogRef.afterClosed().subscribe({
+            next: (res) => {
+                if (res?.query != null) {
+                    const filterQuery = JSON.stringify(res.query);
+                    this.configuration.Slides[this.id].Filter.FilterObj = filterQuery;
+                    this.updateHostObjectField(`Slides[${this.id}].Filter.FilterObj`, filterQuery);
+                }
+            }     
+        })
+        
     }
 }

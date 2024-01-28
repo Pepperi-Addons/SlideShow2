@@ -22,11 +22,6 @@ export class SlideshowComponent implements OnInit {
             this.configuration = value?.configuration;
         }
         this._parameters = value?.parameters || {};
-        // if (value && value.configuration) {
-        //     this._configuration = value.configuration;
-        // } else {
-        //     this._configuration = this.getDefaultHostObject();
-        // }
     }
     
     private _parameters: any;
