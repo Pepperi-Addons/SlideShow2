@@ -4,20 +4,21 @@ import SlidesowCpiService from './slideshow-cpi.service';
 import * as _ from 'lodash'
 
 router.post('/on_slideshow_block_load', async (req, res) => {
+    const cpiService = new SlidesowCpiService();
+    //const pageParameters = req?.context?.State?.PageParameters || null;
+    const state = req.context.State.PageParameters; //req.body.State ||
     let configuration = req?.body?.Configuration;
-    const pageParameters = req?.context?.State?.PageParameters || null;
+
+    //check if should show the slide according to the 'Show If' query & page parameters
+    if(configuration.Slides && state){
+        configuration.Slide = await cpiService.calcShowIf(configuration.Slides, state);
+    }
+    
     let configurationRes = configuration;
 
-    const state = req.body.State;
-
-    const cpiService = new SlidesowCpiService();
-   
-    //check if should show the slide according to the 'Show If' query & page parameters
-    await cpiService.calcShowIf(configuration.Slides, pageParameters );
     //check if flow configured to on load --> run flow (instaed of onload event)
     if(configuration?.SlideshowConfig?.OnLoadFlow){
-        try{
-            
+        try{  
             //CALL TO FLOWS AND SET CONFIGURATION
             const res: any = await cpiService.getOptionsFromFlow(configuration.SlideshowConfig.OnLoadFlow, state, req.context, configuration );
             configurationRes = res?.configuration || configuration;
@@ -45,9 +46,14 @@ router.post('/on_slideshow_block_load', async (req, res) => {
 
 router.post('/run_slide_click_event', async (req, res) => {
     const state = req.body.State;
-
+    const cpiService = new SlidesowCpiService();
     const btnKey = req.body.ButtonKey;
     let configuration = req?.body?.Configuration;
+
+    //check if should show the slide according to the 'Show If' query & page parameters
+    if(configuration?.Slides && state){
+        configuration.Slide = await cpiService.calcShowIf(configuration.Slides, state);
+    }
 
     let btn;
     for(let i=0; i< configuration.Slides.length; i++){
@@ -56,15 +62,10 @@ router.post('/run_slide_click_event', async (req, res) => {
                 btn = slide['FirstButton']; 
                 break;  
              }
-            //  else if(slide['SecondButton'].ButtonKey === btnKey){
-            //      btn = slide['SecondButton'];
-            //      break;
-            //  } 
     }
     let configurationRes = null;
     // check if button is enable and have flow
     if (btn?.Flow){
-        const cpiService = new SlidesowCpiService();
         //CALL TO FLOWS AND SET CONFIGURATION
         const result: any = await cpiService.getOptionsFromFlow(btn.Flow || [], state , req.context, configuration);
         configurationRes = result?.configuration;
@@ -95,8 +96,13 @@ async function getFilePath(image) {
     const assetKey = image.AssetKey;
    
     try {
-            const res = await pepperi.addons.pfs.uuid("ad909780-0c23-401e-8e8e-f514cc4f6aa2").schema("Assets").key(assetKey).get();
-            fileUrl = res.URL;
+            if(assetKey && assetKey != ''){
+                const res = await pepperi.addons.pfs.uuid("ad909780-0c23-401e-8e8e-f514cc4f6aa2").schema("Assets").key(assetKey).get();
+                fileUrl = res.URL;
+            }
+            else{
+                fileUrl = '';
+            }
         }
         catch (error) {
            fileUrl = fixURLIfNeeded(image.AssetUrl);        

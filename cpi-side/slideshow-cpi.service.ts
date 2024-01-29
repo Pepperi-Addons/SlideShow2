@@ -62,14 +62,12 @@ class SlidesowCpiService {
 
             if (slide?.Filter?.Use && slide.Filter.FilterObj != '') {
                 const query = this.convertShowIfQueryValuesToString(JSON.parse(slide.Filter.FilterObj));
-                
                 // Call pepperi filters to apply this.
                 shouldBeVisible = filter([pageParameters], query).length > 0;
             }
-
-            slide.Filter.ShowSlide = shouldBeVisible;
-        });
-            
+            slide.Filter['ShowSlide'] = shouldBeVisible;  
+        }); 
+        return slides;
     }
 
     private convertShowIfQueryValuesToString(query: any) {

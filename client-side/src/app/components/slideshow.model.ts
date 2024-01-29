@@ -136,7 +136,7 @@ export class ISlideEditor {
     id: number;
     Title = new Title();
     SubTitle = new Title(true, 'Sub title', 'md', 'normal');
-    Filter = new Filter();
+    Filter = new Filter(false, null, true);
     FirstButton: SlideButton = new SlideButton(true, 'Yess', 'weak-invert');
     SecondButton: SlideButton  = new SlideButton(false, 'Noo', 'strong');
     TextColor: textColor = 'inverted';
