@@ -43,7 +43,7 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
     textColors: Array<groupButtonArray> = [];
     buttonColor: Array<PepButton> = [];
     buttonStyle: Array<{key: PepStyleType, value: string}> = [];
-    actiosMenu: Array<PepMenuItem> = [];
+    actionsMenu: Array<PepMenuItem> = [];
         
     public title: string;
     public flowHostObject;
@@ -95,7 +95,7 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
             { key: 'strong', value:this.translate.instant('SLIDE_EDITOR.BUTTON_STYLES.STRONG')}
         ]; 
         
-        this.actiosMenu = [
+        this.actionsMenu = [
             { key: 'duplicate', text: this.translate.instant('SLIDESHOW.DUPLICATE') },
             { key: 'delete', text: this.translate.instant('SLIDESHOW.DELETE') }
         ]
@@ -107,8 +107,8 @@ export class SlideEditorComponent implements OnInit, AfterViewInit {
         //this.flowHostObjectBtn2 = this.flowService.prepareFlowHostObject((this.configuration?.Slides[this.id]['SecondButton'].Flow || null));
     }
 
-    onEditClick() {
-        this.editClick.emit({id: this.id});
+    onEditClick(event) {
+        this.editClick.emit({id: event ? this.id : -1});
     }
 
     onMenuItemClick(item: IPepMenuItemClickEvent){

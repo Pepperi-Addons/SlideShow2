@@ -26,6 +26,7 @@ import { PepQueryBuilderModule } from '@pepperi-addons/ngx-lib/query-builder';
 import { PepDialogModule } from '@pepperi-addons/ngx-lib/dialog';
 import { config } from '../addon.config';
 import { SlideEditorComponent } from './slide-editor.component';
+import { PepDraggableItemsModule } from '@pepperi-addons/ngx-lib/draggable-items';
 
 @NgModule({
     declarations: [SlideEditorComponent],
@@ -54,7 +55,7 @@ import { SlideEditorComponent } from './slide-editor.component';
         PepGroupButtonsSettingsModule,
         AssetsButtonModule,
         PepQueryBuilderModule,
-        
+        PepDraggableItemsModule,
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,

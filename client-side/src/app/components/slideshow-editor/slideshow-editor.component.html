@@ -1,105 +1,103 @@
-<mat-tab-group  #tabGroup class="editor-tabs page-builder-editor-tabs mat-primary" animationDuration="0ms">
+<mat-tab-group #tabGroup class="page-builder-editor-tabs" animationDuration="0ms">
     <mat-tab label="{{'SLIDESHOW.GENERAL' | translate}}">
-        <div>
-            <pep-checkbox class="checkbox-as-title" [value]="configuration?.SlideshowConfig?.Structure?.FillHeight" [label]="'SLIDESHOW.FILL_HEIGHT_SECTION_TITLE' | translate" [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Structure.FillHeight',$event)"></pep-checkbox>
-            <span class="header-title body-xs checkbox-description">{{('SLIDESHOW.FILL_HEIGHT_SECTION_DESCRIPTION' | translate)}}</span>
-        </div>
-        <div> <!-- -->
-            <pep-textbox  type="real" class="pep-field-no-spacing"
-                            pepResetConfigurationField="SlideshowConfig.Structure.Height" [hideReset]="configuration?.SlideshowConfig?.Structure?.Height === configurationSource?.SlideshowConfig?.Structure?.Height"
+        <div class="page-builder-editor-tab">
+            <div>
+                <pep-checkbox class="checkbox-as-title" [value]="configuration?.SlideshowConfig?.Structure?.FillHeight" [label]="'SLIDESHOW.FILL_HEIGHT_SECTION_TITLE' | translate" [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Structure.FillHeight',$event)"></pep-checkbox>
+                <span class="header-title body-xs checkbox-description">{{('SLIDESHOW.FILL_HEIGHT_SECTION_DESCRIPTION' | translate)}}</span>
+            </div>
+            <div>
+                <pep-textbox  type="real" class="pep-field-no-spacing"
+                                pepResetConfigurationField="SlideshowConfig.Structure.Height" [hideReset]="configuration?.SlideshowConfig?.Structure?.Height === configurationSource?.SlideshowConfig?.Structure?.Height"
+                                [resetHostEvents]="hostEvents"
+                                [disabled]="configuration?.SlideshowConfig?.Structure?.FillHeight" 
+                                [value]="configuration?.SlideshowConfig?.Structure.Height" 
+                                [label]="'SLIDESHOW.HEIGHT' | translate" 
+                                (valueChange)="onSlideshowFieldChange('Structure.Height',$event)">
+                </pep-textbox>
+                <pep-group-buttons-settings 
+                            pepResetConfigurationField="SlideshowConfig.Structure.InnerPadding" [hideReset]="configuration?.SlideshowConfig?.Structure.InnerPadding === configurationSource?.SlideshowConfig?.Structure.InnerPadding"
                             [resetHostEvents]="hostEvents"
-                            [disabled]="configuration?.SlideshowConfig?.Structure?.FillHeight" 
-                            [value]="configuration?.SlideshowConfig?.Structure.Height" 
-                            [label]="'SLIDESHOW.HEIGHT' | translate" 
-                            (valueChange)="onSlideshowFieldChange('Structure.Height',$event)">
-            </pep-textbox>
-                    
-            <pep-group-buttons-settings 
-                        pepResetConfigurationField="SlideshowConfig.Structure.InnerPadding" [hideReset]="configuration?.SlideshowConfig?.Structure.InnerPadding === configurationSource?.SlideshowConfig?.Structure.InnerPadding"
-                        [resetHostEvents]="hostEvents"
-                        [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERPADDING_TITLE' | translate"
-                        [btnKey]="configuration?.SlideshowConfig?.Structure.InnerPadding" [excludeKeys]="['xs','xl', '2xl']"
-                        (btnkeyChange)="onSlideshowFieldChange('Structure.InnerPadding',$event)">
-            </pep-group-buttons-settings>  
-        </div>  
-        <div> <!-- Transition -->
+                            [groupType]="'sizes'" [subHeader]="'SLIDESHOW.INNERPADDING_TITLE' | translate"
+                            [btnKey]="configuration?.SlideshowConfig?.Structure.InnerPadding" [excludeKeys]="['xs','xl', '2xl']"
+                            (btnkeyChange)="onSlideshowFieldChange('Structure.InnerPadding',$event)">
+                </pep-group-buttons-settings>  
+                <div class="editor-separator"></div>
+            </div> 
+            <div> <!-- Transition -->
                 <pep-checkbox class="checkbox-as-title" [value]="configuration?.SlideshowConfig?.Transition.Use" [label]="'SLIDESHOW.TRANSITION' | translate" [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Transition.Use',$event)"></pep-checkbox>
                 <label class="body-xs normal ellipsis">{{'SLIDESHOW.TRANSITION_TITLE' | translate}}</label>
                 <pep-textbox [label]="'SLIDESHOW.SLIDE_DURATION' | translate" type="int" [disabled]="!configuration?.SlideshowConfig?.Transition.Use"
-                             [value]="configuration?.SlideshowConfig?.Transition?.Duration || '0'" (valueChange)="onSlideshowFieldChange('Transition.Duration',$event)">
+                                [value]="configuration?.SlideshowConfig?.Transition?.Duration || '0'" (valueChange)="onSlideshowFieldChange('Transition.Duration',$event)">
                 </pep-textbox>
-                <div class="split-area">
-                    <pep-select [label]="'SLIDESHOW.TRANSITION_TYPE' | translate" [value]="configuration?.SlideshowConfig?.Transition?.Type" [options]="transitionTypes" 
-                        class="pep-field-no-spacing" (valueChange)="onSlideshowFieldChange('Transition.Type',$event)" [emptyOption]="false"></pep-select>
-                    <pep-textbox class="pep-field-no-spacing" [label]="'SLIDESHOW.TRANSITION_TIME' | translate" type="real" 
-                        [value]="configuration?.SlideshowConfig?.Transition?.Time" (valueChange)="onSlideshowFieldChange('Transition.Time',$event)"></pep-textbox>
-                </div>
-        </div>  
-                
-                
-        <div>
+            </div>  
+            <div class="split-area">
+                <pep-select [label]="'SLIDESHOW.TRANSITION_TYPE' | translate" [value]="configuration?.SlideshowConfig?.Transition?.Type" [options]="transitionTypes" 
+                    class="pep-field-no-spacing" (valueChange)="onSlideshowFieldChange('Transition.Type',$event)" [emptyOption]="false"></pep-select>
+                <pep-textbox class="pep-field-no-spacing" [label]="'SLIDESHOW.TRANSITION_TIME' | translate" type="real" 
+                    [value]="configuration?.SlideshowConfig?.Transition?.Time" (valueChange)="onSlideshowFieldChange('Transition.Time',$event)"></pep-textbox>
+            </div>
+            <div class="editor-separator"></div>
+            <div>
                 <pep-checkbox class="checkbox-as-title" [value]="configuration?.SlideshowConfig?.Arrows?.Use" [label]="'SLIDESHOW.ARROWS' | translate" [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Arrows.Use',$event)"></pep-checkbox>
                 <label class="body-xs normal ellipsis" [innerHTML]="'SLIDESHOW.ARROWS_DESC' | translate"></label>
                 <div>
-                <pep-group-buttons-settings 
-                        pepResetConfigurationField="SlideshowConfig.Arrows.Display" [hideReset]="configuration?.SlideshowConfig?.Arrows?.Display === configurationSource?.SlideshowConfig?.Arrows?.Display"
-                        [resetHostEvents]="hostEvents" [btnsArray]="arrowsDisplayTypes"
-                        [groupType]="'custom'" [subHeader]="'SLIDESHOW.ARROWS_DISPLAY' | translate" 
-                        [btnKey]="configuration?.SlideshowConfig?.Arrows?.Display"
-                        [disabled]="!configuration?.SlideshowConfig?.Arrows?.Use"
-                        (btnkeyChange)="onSlideshowFieldChange('Arrows.Display',$event)">
-                </pep-group-buttons-settings>
-
-                <pep-group-buttons-settings [groupType]="'custom'" [subHeader]="'SLIDESHOW.ARROWS_TYPE' | translate" 
-                    [btnsArray]="ArrowsType" [disabled]="!configuration?.SlideshowConfig?.Arrows?.Use" 
-                    [btnKey]="configuration?.SlideshowConfig?.Arrows?.Type">
-                </pep-group-buttons-settings>
+                    <pep-group-buttons-settings 
+                            pepResetConfigurationField="SlideshowConfig.Arrows.Display" [hideReset]="configuration?.SlideshowConfig?.Arrows?.Display === configurationSource?.SlideshowConfig?.Arrows?.Display"
+                            [resetHostEvents]="hostEvents" [btnsArray]="arrowsDisplayTypes"
+                            [groupType]="'custom'" [subHeader]="'SLIDESHOW.ARROWS_DISPLAY' | translate" 
+                            [btnKey]="configuration?.SlideshowConfig?.Arrows?.Display"
+                            [disabled]="!configuration?.SlideshowConfig?.Arrows?.Use"
+                            (btnkeyChange)="onSlideshowFieldChange('Arrows.Display',$event)">
+                    </pep-group-buttons-settings>
+    
+                    <pep-group-buttons-settings [groupType]="'custom'" [subHeader]="'SLIDESHOW.ARROWS_TYPE' | translate" 
+                        [btnsArray]="ArrowsType" [disabled]="!configuration?.SlideshowConfig?.Arrows?.Use" 
+                        [btnKey]="configuration?.SlideshowConfig?.Arrows?.Type">
+                    </pep-group-buttons-settings>
+                </div>
             </div>
-                <pep-group-buttons-settings [groupType]="'custom'" [subHeader]="'SLIDESHOW.ARROWS_BUTTONS' | translate" [btnsArray]="ArrowButtons"
-                    [disabled]="!configuration?.SlideshowConfig?.Arrows?.Use" [btnKey]="configuration?.SlideshowConfig?.Arrows?.Shape">
-                </pep-group-buttons-settings>
+            <pep-group-buttons-settings [groupType]="'custom'" [subHeader]="'SLIDESHOW.ARROWS_BUTTONS' | translate" [btnsArray]="ArrowButtons"
+                [disabled]="!configuration?.SlideshowConfig?.Arrows?.Use" [btnKey]="configuration?.SlideshowConfig?.Arrows?.Shape">
+            </pep-group-buttons-settings>
 
-                <pep-select [disabled]="!configuration?.SlideshowConfig?.Arrows?.Use" [label]="'SLIDESHOW.ARROWS_STYLE' | translate" [value]="configuration?.SlideshowConfig?.Arrows?.Style" [options]="buttonStyle" 
-                        (valueChange)="onSlideshowFieldChange('Arrows.Style',$event)" [emptyOption]="false"></pep-select>
-            
-            </div>
+            <pep-select [disabled]="!configuration?.SlideshowConfig?.Arrows?.Use" [label]="'SLIDESHOW.ARROWS_STYLE' | translate" [value]="configuration?.SlideshowConfig?.Arrows?.Style" [options]="buttonStyle" 
+                    (valueChange)="onSlideshowFieldChange('Arrows.Style',$event)" [emptyOption]="false"></pep-select>
+            <div class="editor-separator"></div>
             <div>
                 <label class="body-xl bold ellipsis">{{'SLIDESHOW.CONTROLLERS' | translate}}</label>
                 <label class="body-xs normal" [innerHTML]="'SLIDESHOW.CONTROLLERS_DESC' | translate"></label>
                 <pep-group-buttons-settings 
-                              pepResetConfigurationField="SlideshowConfig.Controllers.Display" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Display === configurationSource?.SlideshowConfig?.Controllers?.Display"
-                              [resetHostEvents]="hostEvents" [btnsArray]="controllersDisplayTypes"
-                              [groupType]="'custom'" [subHeader]="'SLIDESHOW.CONTROLLER_DISPLAY' | translate" 
-                              [btnKey]="configuration?.SlideshowConfig?.Controllers?.Display"
-                              (btnkeyChange)="onSlideshowFieldChange('Controllers.Display',$event)">
+                                pepResetConfigurationField="SlideshowConfig.Controllers.Display" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Display === configurationSource?.SlideshowConfig?.Controllers?.Display"
+                                [resetHostEvents]="hostEvents" [btnsArray]="controllersDisplayTypes"
+                                [groupType]="'custom'" [subHeader]="'SLIDESHOW.CONTROLLER_DISPLAY' | translate" 
+                                [btnKey]="configuration?.SlideshowConfig?.Controllers?.Display"
+                                (btnkeyChange)="onSlideshowFieldChange('Controllers.Display',$event)">
                 </pep-group-buttons-settings>
-                
-               
-                    <pep-checkbox class="body-sm checkbox-no-background" 
-                                [disabled]="!configuration?.SlideshowConfig?.Transition?.Use" 
-                                [value]="configuration?.SlideshowConfig?.Controllers?.ShowPause && configuration?.SlideshowConfig?.Transition?.Use" 
-                                [label]="'SLIDESHOW.CONTROLLERS_PROPERTIES.PAUSE_PLAY' | translate" [renderTitle]="false" 
-                                (valueChange)="onSlideshowFieldChange('Controllers.ShowPause',$event)"></pep-checkbox>
-                    <pep-checkbox class="body-sm checkbox-no-background"  [value]="configuration?.SlideshowConfig?.Controllers?.ShowInSlider"
-                                [label]="'SLIDESHOW.CONTROLLERS_PROPERTIES.SHOW_CONTROLLERS' | translate" [renderTitle]="false" 
-                                (valueChange)="onSlideshowFieldChange('Controllers.ShowInSlider',$event)"></pep-checkbox>
-    
-                
+                <pep-checkbox class="body-sm checkbox-no-background" 
+                            [disabled]="!configuration?.SlideshowConfig?.Transition?.Use" 
+                            [value]="configuration?.SlideshowConfig?.Controllers?.ShowPause && configuration?.SlideshowConfig?.Transition?.Use" 
+                            [label]="'SLIDESHOW.CONTROLLERS_PROPERTIES.PAUSE_PLAY' | translate" [renderTitle]="false" 
+                            (valueChange)="onSlideshowFieldChange('Controllers.ShowPause',$event)"></pep-checkbox>
+                <pep-checkbox class="body-sm checkbox-no-background"  [value]="configuration?.SlideshowConfig?.Controllers?.ShowInSlider"
+                            [label]="'SLIDESHOW.CONTROLLERS_PROPERTIES.SHOW_CONTROLLERS' | translate" [renderTitle]="false" 
+                            (valueChange)="onSlideshowFieldChange('Controllers.ShowInSlider',$event)"></pep-checkbox>
                 <pep-group-buttons-settings 
-                              pepResetConfigurationField="SlideshowConfig.Controllers.Size" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Size === configurationSource?.SlideshowConfig?.Controllers?.Size"
-                              [resetHostEvents]="hostEvents"
-                              [groupType]="'sizes'" [subHeader]="'SLIDESHOW.CONTROLLER_SIZE' | translate" 
-                              [btnKey]="configuration?.SlideshowConfig?.Controllers?.Size || 'sm'" [excludeKeys]="['xs','xl','2xl']"
-                              (btnkeyChange)="onSlideshowFieldChange('Controllers.Size',$event)">
+                                pepResetConfigurationField="SlideshowConfig.Controllers.Size" [hideReset]="configuration?.SlideshowConfig?.Controllers?.Size === configurationSource?.SlideshowConfig?.Controllers?.Size"
+                                [resetHostEvents]="hostEvents"
+                                [groupType]="'sizes'" [subHeader]="'SLIDESHOW.CONTROLLER_SIZE' | translate" 
+                                [btnKey]="configuration?.SlideshowConfig?.Controllers?.Size || 'sm'" [excludeKeys]="['xs','xl','2xl']"
+                                (btnkeyChange)="onSlideshowFieldChange('Controllers.Size',$event)">
                 </pep-group-buttons-settings>
-            </div>
-                <pep-select style="margin-top:-1rem;" [label]="'SLIDESHOW.ARROWS_STYLE' | translate" [value]="configuration?.SlideshowConfig?.Controllers?.Style" [options]="buttonStyle" 
+                <pep-select [label]="'SLIDESHOW.ARROWS_STYLE' | translate" [value]="configuration?.SlideshowConfig?.Controllers?.Style" [options]="buttonStyle" 
                         (valueChange)="onSlideshowFieldChange('Controllers.Style',$event)" [emptyOption]="false"></pep-select>
-             
-                <pep-shadow-settings [shadow]="configuration?.SlideshowConfig?.DropShadow"
-                                     (shadowChange)="onSlideshowFieldChange('DropShadow',$event)">
-                </pep-shadow-settings>
-<div>
+            </div>
+            
+            <div class="editor-separator"></div>
+            <pep-shadow-settings [shadow]="configuration?.SlideshowConfig?.DropShadow"
+                                    (shadowChange)="onSlideshowFieldChange('DropShadow',$event)">
+            </pep-shadow-settings>
+            <div class="editor-separator"></div>
+            <div>
                 <pep-checkbox class="checkbox-as-title pep-field-no-spacing" [value]="configuration?.SlideshowConfig?.Corners?.Use" [label]="'SLIDESHOW.ROUND_CORNER' | translate" 
                     [renderTitle]="false" (valueChange)="onSlideshowFieldChange('Corners.Use',$event)">
                 </pep-checkbox>
@@ -110,16 +108,18 @@
                     (btnkeyChange)="onSlideshowFieldChange('Corners.Size',$event)">
                 </pep-group-buttons-settings>
             </div>
-                <div>
-                    <label class="body-lg bold ellipsis">{{'SLIDE_EDITOR.CHOOSE_FLOW' | translate}}</label>
-                    <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONLOAD_DESC' | translate"></pep-field-title>
-                    <pep-flow-picker-button [flowHostObject]="flowHostObject" (flowChange)="onFlowChange($event)"></pep-flow-picker-button>
-                 </div>
+            <div class="editor-separator"></div>
+            <div>
+                <label class="editor-title">{{'SLIDE_EDITOR.CHOOSE_FLOW' | translate}}</label>
+                <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONLOAD_DESC' | translate"></pep-field-title>
+                <pep-flow-picker-button [flowHostObject]="flowHostObject" styleType="regular" (flowChange)="onFlowChange($event)"></pep-flow-picker-button>
+            </div>
+        </div>
     </mat-tab>
     <mat-tab cdkDropListGroup label="{{'SLIDESHOW.CONTENT' | translate}}">
-        <ng-container>
-            <label class="body-xl bold ellipsis">{{'SLIDESHOW.SLIDES' | translate}}</label>
-            <div (cdkDropListDropped)="drop($event)"  cdkDropList #availableSlidesContainer id="availableSlides" class="available-slides">
+        <div class="page-builder-editor-tab">
+            <label class="editor-title">{{'SLIDESHOW.SLIDES' | translate}}</label>
+            <div (cdkDropListDropped)="drop($event)" cdkDropList class="available-items">
                 <slide-editor *ngFor="let currentSlide of configuration?.Slides;" class="available-slide" (hostEvents)='onHostObjectChange($event)'
                     [id]="currentSlide?.id" [selectedSlideIndex]="selectedSlideIndex" [pageParameters]="pageParameters"
                     [isDraggable]="true" (editClick)='onSlideEditClick($event);' (removeClick)='onSlideRemoveClick($event);' (duplicateClick)="onSlideDuplicateClick($event)"
@@ -130,6 +130,6 @@
 
             <pep-button class="add-content-button" value="{{'SLIDESHOW.ADD_SLIDE' | translate}}" styleType="regular" iconName="number_plus" iconPosition="end"
                     (buttonClick)="addNewSlideClick()" [disabled]="configuration?.Slides.length > 9"></pep-button>
-        </ng-container>
+        </div>
     </mat-tab>
 </mat-tab-group>

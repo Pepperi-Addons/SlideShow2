@@ -28,7 +28,7 @@ export class SlideshowComponent implements OnInit {
     }
     
     private setVisibleSlides(){
-        this.configuration.Slides = this.configuration.Slides.filter(sl => sl.Filter.ShowSlide == true);
+        this.configuration.Slides = this.configuration.Slides.filter(sl => sl.Filter?.ShowSlide === true);
         this.configuration.Slides.forEach((sl,index) => {
             sl.id = index;
         });

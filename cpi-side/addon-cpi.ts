@@ -11,9 +11,11 @@ router.post('/on_slideshow_block_load', async (req, res) => {
 
     //check if should show the slide according to the 'Show If' query & page parameters
     if(configuration.Slides && state){
-        configuration.Slide = await cpiService.calcShowIf(configuration.Slides, state);
+        configuration.Slides = await cpiService.calcShowIf(configuration.Slides, state);
     }
     
+    // Set translations;
+    cpiService.setUserTranslations(configuration);
     let configurationRes = configuration;
 
     //check if flow configured to on load --> run flow (instaed of onload event)

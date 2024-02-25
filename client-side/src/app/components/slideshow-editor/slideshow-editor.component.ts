@@ -15,15 +15,21 @@ import { v4 as uuid } from 'uuid';
 })
 export class SlideshowEditorComponent implements OnInit {
     
-    @ViewChild('availableSlidesContainer', { read: ElementRef }) availableBlocksContainer: ElementRef;
-
     @Input()
     set hostObject(value: any) {
         if (value && value.configuration && Object.keys(value.configuration).length > 0) {
-            this._configuration = value.configuration
-            if(value.configurationSource && Object.keys(value.configuration).length > 0){
-                    this.configurationSource = value.configurationSource;
+            // Override only if the configuration is not the same object
+            if (JSON.stringify(this._configuration) !== JSON.stringify(value.configuration)) {
+                this._configuration = value.configuration;
             }
+            
+            if(value.configurationSource && Object.keys(value.configuration).length > 0){
+                // Override only if the configuration is not the same object
+                if (JSON.stringify(this.configurationSource) !== JSON.stringify(value.configurationSource)) {
+                    this.configurationSource = value.configurationSource;
+                }
+            }
+
             this.flowHostObject = this.flowService.prepareFlowHostObject((value.configuration.SlideshowConfig?.OnLoadFlow || null));
         } else {
             if(this.blockLoaded){
