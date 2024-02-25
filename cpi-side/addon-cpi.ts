@@ -13,7 +13,7 @@ router.post('/on_slideshow_block_load', async (req, res) => {
     if(configuration.Slides && state){
         configuration.Slides = await cpiService.calcShowIf(configuration.Slides, state);
     }
-    debugger;
+
     let configurationRes = configuration;
 
     //check if flow configured to on load --> run flow (instaed of onload event)
