@@ -99,7 +99,9 @@
         <div class="editor-separator"></div>
         <div> <!-- Show If -->
             <pep-checkbox class="checkbox-as-sub-title" [value]="configuration?.Slides[id].Filter?.Use || false" [label]="'SLIDE_EDITOR.SLIDE_SHOW_IF' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('Filter.Use',$event)"></pep-checkbox>
+            <pep-field-title [label]="'SLIDE_EDITOR.SLIDE_SHOW_IF_LOGIC_TITLE' | translate"></pep-field-title>
             <pep-button sizeType="md" 
+                        sizeType="regular"
                         iconName="system_filter_2" 
                         [value]="'SLIDE_EDITOR.SLIDE_SHOW_IF_LOGIC' | translate"
                         (buttonClick)="openFilterBuilderModal($event)" 
@@ -110,7 +112,7 @@
         <div> <!-- Flow -->
             <pep-checkbox class="checkbox-as-sub-title" [value]="configuration?.Slides[id].FirstButton.Use" [label]="'SLIDE_EDITOR.SLIDE_CHOOSE_FLOW' | translate" [renderTitle]="false" (valueChange)="onSlideFieldChange('FirstButton.Use',$event)"></pep-checkbox>
             <pep-field-title [label]="'SLIDE_EDITOR.FLOW_ONCLICK_DESC' | translate"></pep-field-title>
-            <pep-flow-picker-button [disabled]="!configuration?.Slides[id].FirstButton.Use" [flowHostObject]="flowHostObject" (flowChange)="onFlowChange($event,'FirstButton')"></pep-flow-picker-button>
+            <pep-flow-picker-button [disabled]="!configuration?.Slides[id].FirstButton.Use" [flowHostObject]="flowHostObject" styleType="regular" (flowChange)="onFlowChange($event,'FirstButton')"></pep-flow-picker-button>
         </div>
         <div>
             <pep-textbox [label]="'SLIDE_EDITOR.ACTION_KEY' | translate" type="string" [disabled]="true" 
@@ -146,7 +148,7 @@
                         [groupType]="'boolean'"  (btnkeyChange)="onSlideFieldChange('FirstButton.Visible',$event)"
                         [btnKey]="configuration?.Slides[id].FirstButton.Visible">
             </pep-group-buttons-settings> 
-            <span class="body-xs">{{'SLIDE_EDITOR.BUTTON_VIS_DESC' | translate}}></span>
+            <span class="body-xs">{{'SLIDE_EDITOR.BUTTON_VIS_DESC' | translate}}</span>
             <div class="editor-separator"></div>
         </div>
         <div>
@@ -158,7 +160,7 @@
                         [groupType]="'boolean'"  (btnkeyChange)="onSlideFieldChange('SlideInteractivity',$event)"
                         [btnKey]="configuration?.Slides[id].SlideInteractivity">
             </pep-group-buttons-settings> 
-            <span class="body-xs">{{'SLIDE_EDITOR.SLIDE_INTER_DESC' | translate}}></span>
+            <span class="body-xs">{{'SLIDE_EDITOR.SLIDE_INTER_DESC' | translate}}</span>
             <div class="editor-separator"></div>
         </div>
         <pep-color-settings titleSize="md" [title]="'SLIDE_EDITOR.GRADIENT_OVERLAY' | translate"
