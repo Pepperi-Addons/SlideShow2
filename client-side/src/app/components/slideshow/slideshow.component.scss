@@ -126,11 +126,24 @@
             transition: none;
             display: block;
             
-            
             &.activeSlide{
                 z-index: 2;
                 transition: transform;
-                transform: translateX(120%);
+                transform: translateX(0);
+                transition-timing-function: linear;  
+            }
+            &.nextSlide{
+                z-index: 2;
+                transform: translateX(-100%);
+
+                &.twoSlides{
+                    transition: transform;
+                }
+            }
+            &.lastSlide{    
+                z-index: 2;
+                transition: transform;
+                transform: translateX(100%);
                 transition-timing-function: linear;  
             }
             
