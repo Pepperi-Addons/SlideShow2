@@ -49,6 +49,7 @@ export class SlideshowComponent implements OnInit {
     @Output() hostEvents: EventEmitter<any> = new EventEmitter<any>();
 
     public isPause = false;
+    public direction = '';
     public slideIndex = 0;
     private timer: any;
 
@@ -104,7 +105,7 @@ export class SlideshowComponent implements OnInit {
                 var that = this;
                 var duration = parseInt(this.configuration.SlideshowConfig.Transition.Duration) * 1000;
                 clearTimeout(this.timer);
-                this.timer = setTimeout(function(){that.slideIndex ++; that.showSlides() }, duration);
+                this.timer = setTimeout(function(){that.direction = ''; that.slideIndex ++; that.showSlides() }, duration);
             }
         }   
       }
@@ -128,15 +129,18 @@ export class SlideshowComponent implements OnInit {
       }
 
       navigate(event){
-        this.slideIndex = event === 'forward' ? this.slideIndex + 1 : this.slideIndex - 1;
-        
-        if(this.slideIndex == this.configuration.Slides.length) {
-            this.slideIndex = 0
+        let sIndex = event === 'forward' ? this.slideIndex + 1 : this.slideIndex - 1;
+        //this.slideIndex = event === 'forward' ? this.slideIndex + 1 : this.slideIndex - 1;
+        this.direction  = event === 'forward' ? '' : 'rtl';
+
+        if(sIndex == this.configuration.Slides.length) {
+            sIndex = 0
         }
-        else if(this.slideIndex < 0) {
-            this.slideIndex = this.configuration.Slides.length -1;
+        else if(sIndex < 0) {
+            sIndex = this.configuration.Slides.length -1;
         }
         
+        this.setSlideIndex(sIndex);
       }
 
       getSliderFooterTop(){
@@ -211,6 +215,7 @@ export class SlideshowComponent implements OnInit {
     }
 
     swipeRight(index){
+        this.direction = '';
         if(this.configuration?.SlideshowConfig?.Transition?.Type !== 'slide'){
             if(index == 0) {
                 index = this.configuration.Slides.length - 1;
@@ -231,6 +236,7 @@ export class SlideshowComponent implements OnInit {
     }
     
     swipeLeft(index){
+        this.direction = 'rtl';
         if(this.configuration?.SlideshowConfig?.Transition?.Type !== 'slide'){
             if(index == this.configuration.Slides.length - 1) {
                 index = 0;

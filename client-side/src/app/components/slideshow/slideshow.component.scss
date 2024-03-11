@@ -81,7 +81,6 @@
     }
 
     slide{
-        
         z-index: 1;
         position: absolute;
         width: 100%;
@@ -130,11 +129,15 @@
                 z-index: 2;
                 transition: transform;
                 transform: translateX(0);
-                transition-timing-function: linear;  
+                transition-timing-function: linear;    
             }
             &.nextSlide{
                 z-index: 2;
                 transform: translateX(-100%);
+
+                &.rtl{
+                    transform: translateX(100%);
+                }
 
                 &.twoSlides{
                     transition: transform;
@@ -144,7 +147,11 @@
                 z-index: 2;
                 transition: transform;
                 transform: translateX(100%);
-                transition-timing-function: linear;  
+                transition-timing-function: linear; 
+                
+                &.rtl{
+                    transform: translateX(-100%);
+                }
             }
             
         }

@@ -30,9 +30,9 @@
        [showSlide]="slideIndex == currentSlide.id"
        [slide]="currentSlide" 
        [SlideshowConfig]="configuration?.SlideshowConfig"
-       [ngClass]="[configuration?.SlideshowConfig?.Transition?.Type , slideIndex == currentSlide.id ? 'activeSlide' : '' ,
-                  configuration?.Slides.length > 2 && (slideIndex - 1 == currentSlide.id || ( currentSlide.id == configuration?.Slides.length - 1 && slideIndex == 0))  ? 'lastSlide' : '',
-                  configuration?.Slides.length > 1 && (slideIndex + 1 == currentSlide.id || ( currentSlide.id == 0 && slideIndex == configuration?.Slides.length - 1))  ? 'nextSlide' : '',
+       [ngClass]="[configuration?.SlideshowConfig?.Transition?.Type , slideIndex == currentSlide.id ? 'activeSlide' : '' , direction ,
+                  configuration?.Slides.length > 2 && (slideIndex - 1 == currentSlide.id || ( currentSlide.id == configuration?.Slides.length - 1 && slideIndex == 0))  ? (direction !== 'rtl' ? 'lastSlide' : 'nextSlide') : '',
+                  configuration?.Slides.length > 1 && (slideIndex + 1 == currentSlide.id || ( currentSlide.id == 0 && slideIndex == configuration?.Slides.length - 1))  ? (direction !== 'rtl' ? 'nextSlide' : 'lastSlide') : '',
                   configuration?.Slides.length == 2 ? 'twoSlides' : '']"
        [ngStyle]="{'transition-duration':  configuration?.SlideshowConfig?.Transition?.Time + 's',
                    'height' : getSlideHeight()}"
