@@ -254,4 +254,9 @@ export class SlideshowComponent implements OnInit {
         }
         this.setSlideIndex(index);
     }
+
+    slideDotsClicked(index){
+        this.direction = (this.slideIndex - 1 == index) ? 'rtl' : '';
+        this.setSlideIndex(index);
+    }
 }

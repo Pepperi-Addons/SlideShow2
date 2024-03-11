@@ -50,7 +50,7 @@
             <pep-icon name="system_circle" 
                       class="dot" 
                       *ngFor="let slide of configuration?.Slides; let i = index"
-                      (click)="setSlideIndex(i)"
+                      (click)="slideDotsClicked(i)"
                       [ngClass]="[i  ===  slideIndex ? 'active' : '']">
             </pep-icon>
        </div>
