@@ -35,7 +35,9 @@
                   configuration?.Slides.length > 1 && (slideIndex + 1 == currentSlide.id || ( currentSlide.id == 0 && slideIndex == configuration?.Slides.length - 1))  ? 'nextSlide' : '',
                   configuration?.Slides.length == 2 ? 'twoSlides' : '']"
        [ngStyle]="{'transition-duration':  configuration?.SlideshowConfig?.Transition?.Time + 's',
-                   'height' : getSlideHeight()}">
+                   'height' : getSlideHeight()}"
+                   (panright)="swipeRight(currentSlide.id)"
+                   (panleft)="swipeLeft(currentSlide.id)">
 </slide>
 
 <div id="slideFooterBtn" 

@@ -70,7 +70,7 @@ export class SlideshowComponent implements OnInit {
         
         this.showSlides();
     }
-
+      
     private registerStateChange(data: {state: any, configuration: any}) {
         if(!this.configuration && data?.configuration){
             this.configuration = data.configuration;
@@ -208,6 +208,44 @@ export class SlideshowComponent implements OnInit {
                 });
             }
         }
+    }
+
+    swipeRight(index){
+        if(this.configuration?.SlideshowConfig?.Transition?.Type !== 'slide'){
+            if(index == 0) {
+                index = this.configuration.Slides.length - 1;
+            }
+            else{
+                index-- ;
+            }
+        } else{
+            if(index == this.configuration.Slides.length - 1) {
+                index = 0;
+            }
+            else{
+                index++ ;
+            }
+        }  
+
+        this.setSlideIndex(index); 
+    }
     
+    swipeLeft(index){
+        if(this.configuration?.SlideshowConfig?.Transition?.Type !== 'slide'){
+            if(index == this.configuration.Slides.length - 1) {
+                index = 0;
+            }
+            else{
+                index++ ;
+            }
+        } else{
+            if(index == 0) {
+                index = this.configuration.Slides.length - 1;
+            }
+            else{
+                index-- ;
+            }
+        }
+        this.setSlideIndex(index);
     }
 }

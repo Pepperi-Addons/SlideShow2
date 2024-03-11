@@ -13,6 +13,7 @@ import { config } from '../addon.config';
 
 import { SlideshowComponent } from './slideshow.component';
 import { SlideModule } from '../slide/slide.module';
+import { HammerModule } from '@angular/platform-browser';
 
 const pepIcons = [
     pepIconArrowBackRight,
@@ -35,6 +36,7 @@ const pepIcons = [
         PepSelectModule,
         PepPageLayoutModule,
         PepIconModule,
+        HammerModule,
         // When not using module as sub-addon please remark this for not loading twice resources
         TranslateModule.forChild({
             loader: {
